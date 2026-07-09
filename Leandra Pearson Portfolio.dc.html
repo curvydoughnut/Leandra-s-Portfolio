@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<title>Leandra Pearson — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Playfair+Display:ital,wght@1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #141412; }
+  a { color: #E4572E; }
+  a:hover { color: #C43E1B; }
+  /* Card-switch slide transition (tweakable via data-trans on body) */
+  @media (prefers-reduced-motion: no-preference) {
+    body[data-trans="card"] deck-stage > section {
+      transition: opacity 300ms ease, transform 460ms cubic-bezier(.2,.75,.25,1), visibility 0s linear 300ms;
+      transform: translateY(52px) scale(.955);
+    }
+    body[data-trans="card"] deck-stage > section[data-deck-active] {
+      transform: none;
+      transition: opacity 300ms ease 80ms, transform 460ms cubic-bezier(.2,.75,.25,1) 80ms, visibility 0s;
+    }
+    body[data-trans="fade"] deck-stage > section {
+      transition: opacity 400ms ease, visibility 0s linear 400ms;
+    }
+    body[data-trans="fade"] deck-stage > section[data-deck-active] {
+      transition: opacity 400ms ease, visibility 0s;
+    }
+  }
+  @media print { deck-stage > section { transform: none !important; } }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <!-- 01 · Title -->
+  <section data-label="Title" data-screen-label="01 Title" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; overflow: hidden; box-sizing: border-box;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <img src="assets/hero-graphic.png" alt="Decorative line-art swirl with 3D objects" style="position: absolute; right: 0; top: 14px; height: calc(100% - 14px); width: auto; object-fit: cover; object-position: left center;">
+    <div style="position: absolute; left: 110px; top: 300px; width: 900px; display: flex; flex-direction: column; gap: 0;">
+      <div style="font-size: 76px; font-weight: 400; color: #E4572E; line-height: 1.15;">Hi, I&rsquo;m</div>
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 92px; color: #E4572E; line-height: 1.15;">Leandra Pearson</div>
+      <p style="margin: 26px 0 0; font-size: 38px; font-weight: 500; color: #E4572E; line-height: 1.35; max-width: 820px;">I am a Creative Product Designer and an AI builder who focuses on shipping products with scalable digital experiences.</p>
+    </div>
+  </section>
+
+  <!-- 02 · Agenda -->
+  <section data-label="Agenda" data-screen-label="02 Agenda" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 120px 140px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 32px; font-weight: 500; color: #2D5A2E;">Agenda</div>
+    <div style="margin-top: 70px; display: flex; flex-direction: column; gap: 56px;">
+      <div data-go="2" onClick="{{ goSlide }}" style="display: flex; align-items: flex-start; gap: 34px; cursor: pointer;">
+        <div style="width: 58px; height: 58px; border-radius: 50%; background: #E7EDE2; color: #2D5A2E; font-size: 28px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+        <div style="font-size: 44px; font-weight: 500; color: #E4572E; line-height: 1.3;">About me</div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 34px;">
+        <div style="width: 58px; height: 58px; border-radius: 50%; background: #E7EDE2; color: #2D5A2E; font-size: 28px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div data-go="4" onClick="{{ goSlide }}" style="font-size: 44px; font-weight: 500; color: #E4572E; line-height: 1.3; cursor: pointer;">Projects</div>
+          <div data-go="5" onClick="{{ goSlide }}" style="font-size: 30px; font-weight: 400; color: #EF8666; cursor: pointer;">Executely, 2024</div>
+          <div data-go="11" onClick="{{ goSlide }}" style="font-size: 30px; font-weight: 400; color: #EF8666; cursor: pointer;">IBM BOB, 2026</div>
+        </div>
+      </div>
+      <div data-go="18" onClick="{{ goSlide }}" style="display: flex; align-items: flex-start; gap: 34px; cursor: pointer;">
+        <div style="width: 58px; height: 58px; border-radius: 50%; background: #E7EDE2; color: #2D5A2E; font-size: 28px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+        <div style="font-size: 44px; font-weight: 500; color: #E4572E; line-height: 1.3;">Wrap-up and Q&amp;A</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · About me — experience -->
+  <section data-label="Experience" data-screen-label="03 Experience" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 110px 140px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 32px; font-weight: 500; color: #2D5A2E;">About me</div>
+    <div style="margin-top: 14px; font-size: 52px; font-weight: 500; color: #E4572E;">Recent experience and education</div>
+    <div style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 120px;">
+      <div style="display: flex; flex-direction: column; gap: 56px;">
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-spctrl.png" alt="Spectral Cloud logo" style="width: 96px; height: 96px; object-fit: contain; flex-shrink: 0;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-size: 32px; font-weight: 500; color: #E4572E; line-height: 1.35;">Lead UX/UI Design Apprentice at Spectral Cloud</div>
+            <div style="font-size: 26px; font-weight: 400; color: #EF8666;">Since 2025</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-executely.png" alt="Executely logo" style="width: 96px; height: 96px; object-fit: contain; flex-shrink: 0;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-size: 32px; font-weight: 500; color: #E4572E; line-height: 1.35;">UX/UI Designer at Executely</div>
+            <div style="font-size: 26px; font-weight: 400; color: #EF8666;">January 2024 &ndash; May 2024</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-looma.png" alt="The Looma Project logo" style="width: 96px; height: 96px; object-fit: contain; flex-shrink: 0;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="font-size: 32px; font-weight: 500; color: #E4572E; line-height: 1.35;">Graphic Designer at The Looma Project</div>
+            <div style="font-size: 26px; font-weight: 400; color: #EF8666;">November 2022 &ndash; November 2023</div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 84px; height: 58px; object-fit: contain; flex-shrink: 0; margin-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 29px; font-weight: 500; color: #E4572E; line-height: 1.35;">Enterprise Design Thinking Practitioner, IBM</div>
+            <div style="font-size: 24px; font-weight: 400; color: #EF8666;">Certification &middot; May 2026</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 84px; height: 58px; object-fit: contain; flex-shrink: 0; margin-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 29px; font-weight: 500; color: #E4572E; line-height: 1.35;">Introduction to Agile Development and Scrum, IBM</div>
+            <div style="font-size: 24px; font-weight: 400; color: #EF8666;">Certification &middot; March 2026</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 84px; height: 58px; object-fit: contain; flex-shrink: 0; margin-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 29px; font-weight: 500; color: #E4572E; line-height: 1.35;">UX/UI Design Fundamentals: Usability and Visual Principles, SkillUp</div>
+            <div style="font-size: 24px; font-weight: 400; color: #EF8666;">Certification &middot; April 2026</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 84px; height: 58px; object-fit: contain; flex-shrink: 0; margin-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 29px; font-weight: 500; color: #E4572E; line-height: 1.35;">UI/UX Wire framing and Prototyping with Figma, SkillUp</div>
+            <div style="font-size: 24px; font-weight: 400; color: #EF8666;">Certification &middot; May 2026</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 30px;">
+          <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 84px; height: 58px; object-fit: contain; flex-shrink: 0; margin-top: 4px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 29px; font-weight: 500; color: #E4572E; line-height: 1.35;">AI Fundamentals: Foundations for Understanding AI, IBM</div>
+            <div style="font-size: 24px; font-weight: 400; color: #EF8666;">Certification &middot; June 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · About me — personal -->
+  <section data-label="About me" data-screen-label="04 About me" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 110px 160px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 32px; font-weight: 500; color: #2D5A2E;">About me</div>
+    <p style="margin: 24px 0 0; font-size: 42px; font-weight: 500; color: #E4572E; line-height: 1.4;">A little bit about me, I love to watch anime, going to exciting museum exhibits, writing short stories, and going to live musical experiences. I am a bubbly extrovert, who loves meeting and working with new people.</p>
+    <div style="margin-top: 70px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px; height: 520px;">
+      <img src="assets/photo-pen.png" alt="Fountain pen writing on paper" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+      <video controls preload="metadata" poster="assets/photo-singer.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px; background: #141412;">
+      </video>
+      <img src="assets/photo-out.png" alt="Leandra out in the city" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px;">
+    </div>
+  </section>
+
+  <!-- 05 · Selected projects -->
+  <section data-label="Selected projects" data-screen-label="05 Selected projects" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 120px 160px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 54px; font-weight: 500; color: #E4572E;">Selected projects</div>
+    <div style="margin-top: 90px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+      <div data-go="5" onClick="{{ goSlide }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 34px;" title="Go to the Executely case study">
+        <div style="background: #E7EDE2; border-radius: 24px; padding: 40px 60px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-size: 36px; font-weight: 500; color: #E4572E;">Executely</div>
+          <div style="font-size: 30px; font-weight: 400; color: #EF8666;">Executely, 2024</div>
+        </div>
+      </div>
+      <div data-go="11" onClick="{{ goSlide }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 34px;" title="Go to the IBM BOB Hackathon case study">
+        <div style="background: #E7EDE2; border-radius: 24px; padding: 40px 60px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-size: 36px; font-weight: 500; color: #E4572E;">IBM BOB Hackathon</div>
+          <div style="font-size: 30px; font-weight: 400; color: #EF8666;">LabLab.AI, 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · Executely overview -->
+  <section data-label="Executely" data-screen-label="06 Executely overview" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E; z-index: 2;"></div>
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 990px; box-sizing: border-box; padding: 90px 90px 70px 120px; display: flex; flex-direction: column;">
+      <img src="assets/logo-executely.png" alt="Executely logo" style="width: 110px; height: 110px; object-fit: contain;">
+      <div style="margin-top: 30px; font-size: 78px; font-weight: 500; color: #E4572E; line-height: 1.1;">Executely</div>
+      <p style="margin: 22px 0 0; font-size: 30px; font-weight: 400; color: #EF8666; line-height: 1.45;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+      <div style="margin-top: 40px; border-top: 1px solid #F3C9B8; padding-top: 36px;">
+        <div style="font-size: 28px; font-weight: 500; color: #2D5A2E;">The challenge</div>
+        <p style="margin: 16px 0 0; font-size: 32px; font-weight: 500; color: #E4572E; line-height: 1.45;">Startup teams often struggle to move from idea to execution due to a lack of clear guidance and overwhelming tool choices.</p>
+      </div>
+      <div style="margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 27px; font-weight: 500; color: #2D5A2E;">Specific goals</div>
+          <p style="margin: 0; font-size: 25px; font-weight: 400; color: #EF8666; line-height: 1.45;">Increase user retention by creating a new feature, creating consistent branding.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 27px; font-weight: 500; color: #2D5A2E;">Key metrics</div>
+          <p style="margin: 0; font-size: 25px; font-weight: 400; color: #EF8666; line-height: 1.45;">Reduced production cycle by 30%. Enhanced customer retention &amp; satisfaction by 25%.</p>
+        </div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 990px; right: 0; top: 14px; height: 700px; background: #E7EDE2; display: flex; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box;">
+      <video controls preload="metadata" poster="assets/laptop-executely-video.png" style="width: 100%; max-height: 100%; object-fit: contain; background: transparent;">
+      </video>
+    </div>
+    <div style="position: absolute; left: 1030px; right: 120px; top: 760px; display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 20px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Company</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">Executely</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 20px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Role</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">User Experience Designer</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 20px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Year</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">2O24</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · Executely — The Problem -->
+  <section data-label="Problem — Executely" data-screen-label="07 Problem Executely" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 100px 120px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="display: grid; grid-template-columns: 620px 1fr; gap: 90px; align-items: center; height: 100%;">
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        <div style="font-size: 56px; font-weight: 500; color: #E4572E;">The Problem</div>
+        <p style="margin: 0; font-size: 33px; font-weight: 400; color: #EF8666; line-height: 1.5;">Startup teams struggle to move from idea to execution because existing tools feel fragmented, overly complex, and visually cold. Without clear guidance or curated resources, early stage workflows stall exactly when clarity and speed matter most.</p>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="assets/persona-card.png" alt="User persona: Cindy Savvy" style="max-width: 100%; max-height: 820px; object-fit: contain; border-radius: 20px;">
+      </div>
+    </div>
+    <div data-go="5" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #1E2749; cursor: pointer;" title="Back to Executely case study">Project: Executely</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #1E2749;">Leandra Pearson</div>
+  </section>
+
+  <!-- 08 · Executely — How I Solved It -->
+  <section data-label="Solution — Executely" data-screen-label="08 Solution Executely" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 90px 110px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="display: grid; grid-template-columns: 1fr 780px; gap: 90px; height: 100%; align-items: center;">
+      <div style="background: #E7EDE2; border-radius: 28px; height: 760px; display: flex; align-items: center; justify-content: center; padding: 50px; box-sizing: border-box;">
+        <img src="assets/laptop-executely-gif.png" alt="AI Resource Center walkthrough (GIF)" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="font-size: 52px; font-weight: 500; color: #E4572E;">How I Solved It</div>
+        <ol style="margin: 40px 0 0; padding-left: 34px; display: flex; flex-direction: column; gap: 28px; color: #E4572E;">
+          <li style="font-size: 26px; line-height: 1.45;"><strong style="font-weight: 600;">Slowed down and listened.</strong> <span style="color: #EF8666;">Studied the real friction users were feeling before reaching for a redesign.</span></li>
+          <li style="font-size: 26px; line-height: 1.45;"><strong style="font-weight: 600;">Studied proven dashboard patterns.</strong> <span style="color: #EF8666;">Built on frameworks people already understood rather than reinventing the wheel.</span></li>
+          <li style="font-size: 26px; line-height: 1.45;"><strong style="font-weight: 600;">Expanded from a popup to a full-page system.</strong> <span style="color: #EF8666;">Immediately made navigation feel less overwhelming.</span></li>
+          <li style="font-size: 26px; line-height: 1.45;"><strong style="font-weight: 600;">Leaned into a warmer dark themed interface.</strong> <span style="color: #EF8666;">Inspired by Apple and Shopify so the platform felt inviting, not intimidating.</span></li>
+        </ol>
+        <div style="margin-top: 40px; border-top: 1px solid #F3C9B8; padding-top: 34px;">
+          <p style="margin: 0; font-size: 25px; font-weight: 400; color: #7D8A5C; line-height: 1.5;">The result was a scalable AI Resource Center that met users where they already were, both mentally and visually. By leaning into established patterns and refined aesthetics shaped by products like ChatGPT and modern productivity tools, the platform felt immediately familiar without sacrificing function.</p>
+        </div>
+      </div>
+    </div>
+    <div data-go="5" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #1E2749; cursor: pointer;" title="Back to Executely case study">Project: Executely</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #1E2749;">Leandra Pearson</div>
+  </section>
+
+  <!-- 09 · Executely — Results -->
+  <section data-label="Results — Executely" data-screen-label="09 Results Executely" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 90px 170px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 32px; font-weight: 500; color: #2D5A2E;">Results</div>
+    <div style="margin-top: 24px; font-size: 60px; font-weight: 500; color: #E4572E;">Outcomes that tie back to the problems/pain points</div>
+    <div style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 620px;">
+      <div style="background: #E7EDE2; border-radius: 26px; padding: 80px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+        <div style="font-size: 110px; font-weight: 400; color: #2D5A2E; line-height: 1;">25%</div>
+        <p style="margin: 0; font-size: 40px; font-weight: 400; color: #2D5A2E; line-height: 1.4; max-width: 560px;">Increase in customer satisfaction driven by user insights and iterative qualitative testing.</p>
+      </div>
+      <div style="background: #E7EDE2; border-radius: 26px; padding: 80px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+        <div style="font-size: 110px; font-weight: 400; color: #2D5A2E; line-height: 1;">30%</div>
+        <p style="margin: 0; font-size: 40px; font-weight: 400; color: #2D5A2E; line-height: 1.4; max-width: 560px;">Reduction in production cycle issues through close collaboration across design and product teams.</p>
+      </div>
+    </div>
+    <div data-go="5" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #1E2749; cursor: pointer;" title="Back to Executely case study">Project: Executely</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #1E2749;">Leandra Pearson</div>
+  </section>
+
+  <!-- 10 · Executely — Project timeline -->
+  <section data-label="Timeline — Executely" data-screen-label="10 Timeline Executely" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 130px 170px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 64px; font-weight: 500; color: #E4572E;">Project timeline</div>
+    <div style="position: relative; margin-top: 110px; height: 540px;">
+      <div style="position: absolute; left: 0; top: 0; width: 18%; display: flex; flex-direction: column; gap: 18px;">
+        <div style="height: 12px; border-radius: 6px; background: #2F9E55;"></div>
+        <div style="font-size: 30px; font-weight: 400; color: #E4572E; line-height: 1.35;">User Research &amp; Journey</div>
+        <div style="font-size: 28px; font-weight: 400; color: #EF8666; margin-top: -10px;">1 week</div>
+      </div>
+      <div style="position: absolute; left: 18.5%; top: 135px; width: 17%; display: flex; flex-direction: column; gap: 18px;">
+        <div style="height: 12px; border-radius: 6px; background: #F2C230;"></div>
+        <div style="font-size: 30px; font-weight: 400; color: #E4572E;">Ideation</div>
+        <div style="font-size: 28px; font-weight: 400; color: #EF8666; margin-top: -10px;">2 weeks</div>
+      </div>
+      <div style="position: absolute; left: 35.5%; top: 270px; width: 38%; display: flex; flex-direction: column; gap: 18px;">
+        <div style="height: 12px; border-radius: 6px; background: #E4572E;"></div>
+        <div style="font-size: 30px; font-weight: 400; color: #E4572E;">Low, Mid, &amp; High Fidelity Creation</div>
+        <div style="font-size: 28px; font-weight: 400; color: #EF8666; margin-top: -10px;">7 weeks</div>
+      </div>
+      <div style="position: absolute; left: 74%; top: 360px; width: 26%; display: flex; flex-direction: column; gap: 18px;">
+        <div style="height: 12px; border-radius: 6px; background: #F5A9B8;"></div>
+        <div style="font-size: 30px; font-weight: 400; color: #E4572E;">Testing &amp; Re-Iteration Phase</div>
+        <div style="font-size: 28px; font-weight: 400; color: #EF8666; margin-top: -10px;">7 weeks</div>
+      </div>
+      <div style="position: absolute; left: 0; right: 0; top: 560px; border-top: 2px solid #F3C9B8;"></div>
+      <div style="position: absolute; left: 0; top: 580px; font-size: 32px; font-weight: 500; color: #1E1E1C;">Month</div>
+      <div style="position: absolute; right: 0; top: 580px; font-size: 32px; font-weight: 500; color: #1E1E1C;">Month</div>
+    </div>
+    <div data-go="5" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #1E2749; cursor: pointer;" title="Back to Executely case study">Project: Executely</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #1E2749;">Leandra Pearson</div>
+  </section>
+
+  <!-- 11 · Executely — Feature: AI App Center -->
+  <section data-label="Feature — AI App Center" data-screen-label="11 Feature AI App Center" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E; z-index: 2;"></div>
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 960px; background: #E7EDE2; display: flex; align-items: center; justify-content: center; padding: 70px; box-sizing: border-box;">
+      <video controls preload="metadata" poster="assets/laptop-appcenter-video.png" style="width: 100%; object-fit: contain; background: transparent;">
+      </video>
+    </div>
+    <div style="position: absolute; left: 1050px; right: 120px; top: 330px; display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="font-size: 36px; font-weight: 500; color: #2D5A2E;">Feature</div>
+      <div style="margin-top: 18px; font-size: 76px; font-weight: 500; color: #E4572E;">AI App Center</div>
+      <p style="margin: 30px 0 0; font-size: 36px; font-weight: 400; color: #E4572E; line-height: 1.45;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+      <a href="https://www.figma.com/proto/slIfqs4DI3ItNNdHrOqboB/AI-Resource-Center---Notification-Medium-Fidelity?node-id=29-5&amp;p=f&amp;viewport=687%2C529%2C0.09&amp;t=9GXW6ESZUBx43RsR-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=29%3A2" target="_blank" rel="noopener" style="margin-top: 50px; display: inline-flex; align-items: center; gap: 20px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 34px; font-weight: 500; padding: 30px 54px; border-radius: 999px;">
+        <span style="font-size: 30px;">&#9655;</span>
+        <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+      </a>
+    </div>
+    <div data-go="5" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #1E2749; cursor: pointer; z-index: 2;" title="Back to Executely case study">Project: Executely</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #1E2749;">Leandra Pearson</div>
+  </section>
+
+  <!-- 12 · IBM BOB Hackathon section header -->
+  <section data-label="IBM BOB Hackathon" data-screen-label="12 IBM BOB Hackathon" style="background: #315C31; font-family: 'Poppins', sans-serif; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;">
+    <img src="assets/sunburst.png" alt="Sunburst icon" style="width: 220px; height: auto; object-fit: contain;">
+    <div style="margin-top: 40px; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 96px; color: #FFFFFF; text-align: center; line-height: 1.2;">IBM BOB<br>HACKATHON 2026</div>
+    <p style="margin: 36px 0 0; font-size: 38px; font-weight: 400; color: #FFFFFF; text-align: center; line-height: 1.45; max-width: 1150px;">This section details a hackathon where my team and I made a product in 48hrs.</p>
+  </section>
+
+  <!-- 13 · Locci Box overview -->
+  <section data-label="Locci Box" data-screen-label="13 Locci Box overview" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E; z-index: 2;"></div>
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 990px; box-sizing: border-box; padding: 90px 90px 70px 120px; display: flex; flex-direction: column;">
+      <img src="assets/logo-locci.png" alt="Locci Box robot logo" style="width: 120px; height: 110px; object-fit: contain; border-radius: 12px;">
+      <div style="margin-top: 30px; font-size: 78px; font-weight: 500; color: #E4572E; line-height: 1.1;">Locci Box</div>
+      <p style="margin: 22px 0 0; font-size: 30px; font-weight: 400; color: #EF8666; line-height: 1.45;">A B2B execution infrastructure platform. Providing engineers with a space to create, test, and play.</p>
+      <div style="margin-top: 40px; border-top: 1px solid #F3C9B8; padding-top: 36px;">
+        <div style="font-size: 28px; font-weight: 500; color: #2D5A2E;">The challenge</div>
+        <p style="margin: 16px 0 0; font-size: 32px; font-weight: 500; color: #E4572E; line-height: 1.45;">Build solutions that improve how software is built. Work with IBM BOB, a program that understands your codebase, helping you reduce repetitive work and build with real context.</p>
+      </div>
+      <div style="margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 27px; font-weight: 500; color: #2D5A2E; font-family: 'Courier New', monospace;">Specific goals</div>
+          <p style="margin: 0; font-size: 25px; font-weight: 400; color: #EF8666; line-height: 1.45;">Create a sandbox in which engineers can write, test and play with their code before deployment.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 27px; font-weight: 500; color: #2D5A2E;">Key metrics</div>
+          <p style="margin: 0; font-size: 25px; font-weight: 400; color: #EF8666; line-height: 1.45;">94ms execution time, 100% tenant isolation, 3&times; faster review cycles.</p>
+        </div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 990px; right: 0; top: 14px; height: 700px; background: #E7EDE2; display: flex; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box;">
+      <img src="assets/laptop-locci-dash.png" alt="Locci Box dashboard on a laptop" style="width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+    <div style="position: absolute; left: 1030px; right: 120px; top: 745px; display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 16px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Company</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">IBM</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 16px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Role</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">Product Designer</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 16px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Length</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">48 Hours</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 300px 1fr; border-top: 1px solid #F3C9B8; padding: 16px 0;">
+        <div style="font-size: 27px; font-weight: 400; color: #EF8666;">Year</div>
+        <div style="font-size: 27px; font-weight: 500; color: #E4572E;">2O26</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · Locci — The Problem -->
+  <section data-label="Problem — Locci Box" data-screen-label="14 Problem Locci Box" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 100px 120px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="display: grid; grid-template-columns: 620px 1fr; gap: 90px; align-items: center; height: 100%;">
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        <div style="font-size: 56px; font-weight: 500; color: #E4572E;">The Problem</div>
+        <p style="margin: 0; font-size: 31px; font-weight: 400; color: #EF8666; line-height: 1.5;">AI agents and enterprise developers were writing and running code with no safe place to execute it. Existing sandbox tools were built for developers who live in the command line, not for teams who need visibility, speed, and security at once. Code and tests shared the same environment, meaning a bug in one could corrupt the other. There was no zero trust runtime, no isolated execution, and no human friendly interface. The tooling simply wasn&rsquo;t built for the agent era.</p>
+      </div>
+      <div style="background: #E7EDE2; border-radius: 28px; height: 780px; display: flex; align-items: center; justify-content: center; padding: 60px; box-sizing: border-box;">
+        <img src="assets/laptop-sandbox.png" alt="Dual Sandbox Playground on a laptop" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </div>
+    </div>
+    <div data-go="12" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #A29FE0; cursor: pointer;" title="Back to Locci Box case study">Project: Locci Box</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #A29FE0;">Leandra Pearson</div>
+  </section>
+
+  <!-- 15 · Locci — How I Solved It -->
+  <section data-label="Solution — Locci Box" data-screen-label="15 Solution Locci Box" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 60px 100px 90px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="display: grid; grid-template-columns: 760px 1fr; gap: 70px; height: 100%; align-items: center;">
+      <div style="display: flex; flex-direction: column;">
+        <div style="font-size: 46px; font-weight: 500; color: #E4572E;">How I Solved It</div>
+        <ol style="margin: 26px 0 0; padding-left: 32px; display: flex; flex-direction: column; gap: 16px; color: #E4572E;">
+          <li style="font-size: 24px; line-height: 1.35;"><strong style="font-weight: 600;">Researched the concept during handoff.</strong> <span style="color: #EF8666;">Used the wait window to figure out where I could contribute most as the UX/UI designer on a two-person team.</span></li>
+          <li style="font-size: 24px; line-height: 1.35;"><strong style="font-weight: 600;">Vibe coded the interface in Lovable.</strong> <span style="color: #EF8666;">Iterated in real time, moving between the live project and a vibe-coded wireframe to keep each honest.</span></li>
+          <li style="font-size: 24px; line-height: 1.35;"><strong style="font-weight: 600;">Mapped four core surfaces under one mental model.</strong> <span style="color: #EF8666;">Dashboard, Code Editor, BOB AI Reviewer, and API Keys manager, so users never felt lost.</span></li>
+          <li style="font-size: 24px; line-height: 1.35;"><strong style="font-weight: 600;">Designed the Dual Sandbox and a 4-step BOB loop.</strong> <span style="color: #EF8666;">Code and tests run side by side in under 900ms; the reviewer follows submit, analyze, execute, prove, so AI feedback felt verified, not just suggested.</span></li>
+        </ol>
+        <div style="margin-top: 24px; border-top: 1px solid #F3C9B8; padding-top: 22px;">
+          <p style="margin: 0; font-size: 24px; font-weight: 400; color: #7D8A5C; line-height: 1.38;">Locci Box shipped as a live B2B SaaS platform built on React, TypeScript, Express, and MCP. Hardware isolated microVMs boot in under 100ms per tenant, paired with a full in browser IDE, an AI code reviewer that runs the fix rather than just suggesting it, and an API key manager with rate limits and audit trail. It can also plug into Claude as a local MCP server, meeting developers where they already work.</p>
+        </div>
+      </div>
+      <div style="background: #E7EDE2; border-radius: 28px; height: 800px; display: flex; align-items: center; justify-content: center; padding: 50px; box-sizing: border-box;">
+        <img src="assets/laptop-mcp.png" alt="Locci Box as a local MCP server in settings" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </div>
+    </div>
+    <div data-go="12" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 36px; font-size: 26px; font-weight: 500; color: #A29FE0; cursor: pointer;" title="Back to Locci Box case study">Project: Locci Box</div>
+    <div style="position: absolute; right: 70px; bottom: 36px; font-size: 26px; font-weight: 400; color: #A29FE0;">Leandra Pearson</div>
+  </section>
+
+  <!-- 16 · Locci — Product -->
+  <section data-label="Product — Locci Box" data-screen-label="16 Product Locci Box" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E; z-index: 2;"></div>
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 960px; background: #E7EDE2; display: flex; align-items: center; justify-content: center; padding: 70px; box-sizing: border-box;">
+      <video controls preload="metadata" poster="assets/laptop-locci-video.png" style="width: 100%; object-fit: contain; background: transparent;">
+      </video>
+    </div>
+    <div style="position: absolute; left: 1050px; right: 110px; top: 320px; display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="font-size: 36px; font-weight: 500; color: #2D5A2E;">Product</div>
+      <div style="margin-top: 18px; font-size: 76px; font-weight: 500; color: #E4572E;">Locci Box</div>
+      <p style="margin: 24px 0 0; font-size: 36px; font-weight: 400; color: #E4572E; line-height: 1.45;">Every agent deserves its own computer. Write code. code. Test code. Ship code &mdash; in isolated microVMs. microVMs.</p>
+      <a href="https://box.locci.cloud/" target="_blank" rel="noopener" style="margin-top: 50px; display: inline-flex; align-items: center; gap: 20px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 34px; font-weight: 500; padding: 30px 54px; border-radius: 999px;">
+        <span style="font-size: 30px;">&#9655;</span>
+        <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+      </a>
+    </div>
+    <div data-go="12" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #A29FE0; cursor: pointer; z-index: 2;" title="Back to Locci Box case study">Project: Locci Box</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #A29FE0;">Leandra Pearson</div>
+  </section>
+
+  <!-- 17 · Locci — Results -->
+  <section data-label="Results — Locci Box" data-screen-label="17 Results Locci Box" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 90px 170px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="font-size: 32px; font-weight: 500; color: #2D5A2E;">Results</div>
+    <div style="margin-top: 24px; font-size: 60px; font-weight: 500; color: #E4572E;">Outcomes that tie back to the challenge</div>
+    <div style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; height: 620px;">
+      <div style="background: #E7EDE2; border-radius: 26px; padding: 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+        <div style="font-size: 100px; font-weight: 400; color: #2D5A2E; line-height: 1;">94ms</div>
+        <p style="margin: 0; font-size: 34px; font-weight: 400; color: #2D5A2E; line-height: 1.4;">Unified design kept execution fast and developers in flow.</p>
+      </div>
+      <div style="background: #E7EDE2; border-radius: 26px; padding: 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+        <div style="font-size: 100px; font-weight: 400; color: #2D5A2E; line-height: 1;">100%</div>
+        <p style="margin: 0; font-size: 34px; font-weight: 400; color: #2D5A2E; line-height: 1.4;">Clear environment boundaries made full tenant isolation possible.</p>
+      </div>
+      <div style="background: #E7EDE2; border-radius: 26px; padding: 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+        <div style="font-size: 100px; font-weight: 400; color: #2D5A2E; line-height: 1;">3X Faster</div>
+        <p style="margin: 0; font-size: 34px; font-weight: 400; color: #2D5A2E; line-height: 1.4;">The BOB four step design turned reviews into verified results instantly.</p>
+      </div>
+    </div>
+    <div data-go="12" onClick="{{ goSlide }}" style="position: absolute; left: 70px; bottom: 42px; font-size: 26px; font-weight: 500; color: #A29FE0; cursor: pointer;" title="Back to Locci Box case study">Project: Locci Box</div>
+    <div style="position: absolute; right: 70px; bottom: 42px; font-size: 26px; font-weight: 400; color: #A29FE0;">Leandra Pearson</div>
+  </section>
+
+  <!-- 18 · Testimonial -->
+  <section data-label="Testimonial" data-screen-label="18 Testimonial" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; padding: 120px 170px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <div style="width: 76px; height: 76px; border-radius: 50%; background: #E7EDE2; color: #2D5A2E; font-size: 46px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif;">&ldquo;</div>
+    <p style="margin: 50px 0 0; font-size: 54px; font-weight: 500; color: #E4572E; line-height: 1.35; max-width: 1560px;">&ldquo;Working with Leandra Pearson was an excellent experience. Their product design skills, attention to detail, and ability to collaborate effectively helped us successfully ship the project, Locci Box, within a tight timeline. They consistently brought thoughtful ideas and strong execution throughout the process.&rdquo;</p>
+    <div style="display: flex; justify-content: flex-end; margin-top: 30px;">
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: #E7EDE2; color: #2D5A2E; font-size: 38px; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif;">&rdquo;</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 34px; margin-top: 40px;">
+      <img src="assets/avatar-mike.png" alt="Mike Omondi" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover;">
+      <div style="font-size: 36px; font-weight: 400; color: #E4572E;">Mike Omondi &ndash; Software Engineer, Hackathon Partner</div>
+    </div>
+  </section>
+
+  <!-- 19 · Wrap-up -->
+  <section data-label="Wrap-up" data-screen-label="19 Wrap-up" style="background: #FFFFFF; font-family: 'Poppins', sans-serif; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 14px; background: #2D5A2E;"></div>
+    <img src="assets/portrait-leandra.png" alt="Leandra Pearson" style="width: 470px; height: 470px; border-radius: 50%; object-fit: cover;">
+    <div style="margin-top: 60px; display: flex; align-items: baseline; gap: 22px;">
+      <span style="font-size: 64px; font-weight: 500; color: #E4572E;">Hello! I&rsquo;m</span>
+      <span style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 68px; color: #E4572E;">Leandra.</span>
+    </div>
+    <div style="margin-top: 20px; font-size: 38px; font-weight: 400; color: #E4572E;">Product designer based in Atlanta</div>
+  </section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;transitionStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;card&quot;,&quot;fade&quot;,&quot;cut&quot;],&quot;default&quot;:&quot;fade&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Presentation&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this._applyTrans();
+  }
+  componentDidUpdate() {
+    this._applyTrans();
+  }
+  _applyTrans() {
+    const t = this.props.transitionStyle ?? 'card';
+    document.body.setAttribute('data-trans', t);
+  }
+  renderVals() {
+    return {
+      goSlide: (e) => {
+        const n = Number(e.currentTarget.dataset.go);
+        const stage = document.querySelector('deck-stage');
+        if (stage && !Number.isNaN(n)) stage.goTo(n);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
