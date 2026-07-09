@@ -859,10 +859,16 @@ class Component extends DCLogic {
         ? this.chatSystemPrompt + '\n\nThe visitor you are talking to is named ' + name + '. Address them by name (e.g. "Great question, ' + name + '!") at least once near the start of your reply, and naturally elsewhere when it fits — never robotically in every sentence.'
         : this.chatSystemPrompt;
       const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 20000));
-      const reply = await Promise.race([
-        window.claude.complete({ system, messages: nextMessages }),
-        timeout,
-      ]);
+      const fetchReply = fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ system, messages: nextMessages }),
+      }).then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || ('Request failed with status ' + res.status));
+        return data.reply;
+      });
+      const reply = await Promise.race([fetchReply, timeout]);
       this.setState({ chatMessages: [...nextMessages, { role: 'assistant', content: reply }], chatLoading: false });
     } catch (err) {
       const msg = String(err && err.message || err || '');
