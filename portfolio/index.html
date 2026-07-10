@@ -68,11 +68,21 @@
     .lp-nav-link { display: none !important; }
     .lp-hamburger { display: flex !important; }
   }
-  @media (max-width: 900px) {
-    .lp-play-canvas { transform: scale(.72) !important; transform-origin: top left !important; height: 620px !important; }
+  /* Playground canvas keeps its fixed 1216x860 design coordinate space at every
+     breakpoint (so the artworks' percentage/pixel positions never recompute
+     against a narrower box) and is scaled as a whole unit to exactly fill the
+     available width, fluidly, rather than jumping between a couple of fixed
+     breakpoint scales. The height is scaled by the same factor so no empty
+     space is left below it once shrunk. */
+  .lp-play-canvas { width: 1216px; transform-origin: top left; transform: scale(min(1, (100vw - 64px) / 1216px)); height: calc(860px * min(1, (100vw - 64px) / 1216px)) !important; }
+  @media (max-width: 640px) {
+    .lp-play-canvas { transform: scale(min(1, (100vw - 40px) / 1216px)); height: calc(860px * min(1, (100vw - 40px) / 1216px)) !important; }
   }
-  @media (max-width: 560px) {
-    .lp-play-canvas { transform: scale(.48) !important; height: 420px !important; }
+
+  /* Scroll hint overlays the hero video on desktop, but flows below it
+     (out of the video's way) on mobile/tablet. */
+  @media (max-width: 900px) {
+    .lp-scroll-hint { position: static !important; left: auto !important; bottom: auto !important; transform: none !important; width: fit-content; margin: 14px auto 0 !important; animation: none !important; }
   }
   @media (max-width: 480px) {
     .lp-persona-pill { max-width: 108px !important; font-size: 11px !important; padding: 5px 10px !important; }
@@ -161,7 +171,7 @@
         <div style="position: absolute; inset: 0; box-shadow: inset 0 0 30px rgba(0,255,240,.22), inset 0 0 60px rgba(255,0,200,.16); pointer-events: none;"></div>
       </div>
     </div>
-    <div style="position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: .85; animation: lp-scrollhint 2.2s ease-in-out infinite;">
+    <div class="lp-scroll-hint" style="position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: .85; animation: lp-scrollhint 2.2s ease-in-out infinite;">
       <div style="font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #5D4E8C;">Scroll</div>
       <div style="font-size: 18px; color: #5D4E8C;">▼</div>
     </div>
@@ -177,7 +187,14 @@
         <div onClick="{{ toggleConcert }}" title="Live music, click to play" style="position: relative; width: 100%; aspect-ratio: 6/7; border-radius: 16px; overflow: hidden; cursor: pointer;">
           <img src="assets/concert-still.png" alt="Live music show" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
           <div style="position: absolute; inset: 0; background: rgba(20,20,18,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
-            <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.92); color: #1E1E1C; font-size: 26px; display: flex; align-items: center; justify-content: center;">{{ concertIcon }}</div>
+            <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.92); color: #1E1E1C; display: flex; align-items: center; justify-content: center;">
+              <sc-if value="{{ concertPlaying }}" hint-placeholder-val="{{ false }}">
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="#1E1E1C"></rect><rect x="14" y="4" width="5" height="16" rx="1.5" fill="#1E1E1C"></rect></svg>
+              </sc-if>
+              <sc-if value="{{ !concertPlaying }}" hint-placeholder-val="{{ true }}">
+                <svg width="20" height="24" viewBox="0 0 20 24" aria-hidden="true"><path d="M1 1 L19 12 L1 23 Z" fill="#1E1E1C"></path></svg>
+              </sc-if>
+            </div>
             <div style="font-size: 15px; font-weight: 500; color: #FFFFFF; text-shadow: 0 1px 6px rgba(0,0,0,.5);">{{ concertLabel }}</div>
           </div>
         </div><img src="./abcd9981-770e-45f1-aae0-277af26df8ad-mrcudr2x.jpeg" alt="Leandra out in the city" style="width: 100%; aspect-ratio: 6/7; object-fit: cover; border-radius: 16px">
@@ -983,7 +1000,7 @@ class Component extends DCLogic {
       preppalVideoRef: (el) => this._bindHeroVideo(el),
       togglePlay: (e) => this._togglePlay(e),
       artworks: this.artworks,
-      concertIcon: this.state.concertPlaying ? '❚❚' : '▶',
+      concertPlaying: this.state.concertPlaying,
       concertLabel: this.state.concertPlaying ? 'Playing, click to pause' : 'Live music, click to play',
       showConcert: this.state.concertPlaying,
       toggleConcert: () => {
