@@ -162,7 +162,8 @@
         <a href="#about" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
         <a href="#experience" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
         <a href="#projects" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Projects</a>
-        <a href="#playground" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="#playground" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+        <div onClick="{{ openContactMobile }}" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; cursor: pointer;">Say hello</div>
       </div>
     </sc-if>
   </nav>
@@ -1052,6 +1053,7 @@ class Component extends DCLogic {
       contactError: this.state.cError,
       contactSendLabel: this.state.cSending ? 'Sending…' : this.state.cSent ? 'Message sent!' : 'Send message',
       openContact: () => this.setState({ contactOpen: true, cSent: false, cError: false }),
+      openContactMobile: () => this.setState({ mobileNavOpen: false, contactOpen: true, cSent: false, cError: false }),
       closeContact: () => this.setState({ contactOpen: false }),
       setContactName: (e) => this.setState({ cName: e.target.value }),
       setContactEmail: (e) => this.setState({ cEmail: e.target.value }),
