@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<meta charset="utf-8">
+<title>AI Adaptive Experience — Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #F3F1EC; font-family: 'Geist', sans-serif; }
+  a { color: #5D4E8C; }
+  a:hover { color: #B84A14; }
+</style>
+</helmet>
+
+<section id="t2" style="padding: 48px 48px 30px; border-bottom: 1px solid rgba(0,0,0,.08);">
+  <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+    <a href="#t2" style="font: 600 11px ui-monospace, Menlo, monospace; padding: 3px 8px; background: #1E1E1C; color: #FFFFFF; border-radius: 4px; text-decoration: none;">2</a>
+    <span style="font: 600 14px system-ui, sans-serif; color: #1E1E1C;">Riff on <a href="#1a" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">1a</a> — small popup, asks for name first</span>
+  </div>
+  <p style="margin: 0 0 26px; font-size: 14px; color: rgba(0,0,0,.55); max-width: 720px; line-height: 1.5;">A compact floating popup instead of a full-page takeover — the page stays visible and only lightly dimmed behind it. Step 1 asks for the visitor's name; step 2 (shown here mid-transition) reveals the persona choices addressed to them by name.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 34px; align-items: flex-start;">
+
+    <div id="2a" style="flex: none; display: flex; flex-direction: column; gap: 9px;">
+      <div style="display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: rgba(0,0,0,.55);">
+        <a href="#2a" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">2a</a>
+        <span>Step 1 — asks for name</span>
+      </div>
+      <div style="width: 480px; height: 340px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); position: relative; background: linear-gradient(155deg, #FBFAF8 0%, #EFEDE7 100%);">
+        <div style="position: absolute; left: 24px; top: 24px; right: 24px; opacity: .35;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 20px; color: #B84A14;">Leandra Pearson</div>
+          <div style="margin-top: 14px; width: 70%; height: 10px; background: rgba(93,78,140,.15); border-radius: 3px;"></div>
+          <div style="margin-top: 8px; width: 50%; height: 10px; background: rgba(93,78,140,.15); border-radius: 3px;"></div>
+        </div>
+        <div style="position: absolute; inset: 0; background: rgba(30,25,20,.18);"></div>
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 320px; background: #FFFFFF; border-radius: 18px; padding: 30px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.28); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
+          <div style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(0,0,0,.5);">✕</div>
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Hi! What's your name?</div>
+          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">So I can tailor things just for you.</div>
+          <div style="width: 100%; margin-top: 4px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #E0DCEA; font-size: 13px; color: rgba(0,0,0,.35); text-align: left;">Your name…</div>
+          <div style="width: 100%; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">Continue →</div>
+          <div style="font-size: 11px; color: rgba(0,0,0,.35);">Skip — just show me the site</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="2b" style="flex: none; display: flex; flex-direction: column; gap: 9px;">
+      <div style="display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: rgba(0,0,0,.55);">
+        <a href="#2b" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">2b</a>
+        <span>Step 2 — persona, addressed by name</span>
+      </div>
+      <div style="width: 480px; height: 340px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); position: relative; background: linear-gradient(155deg, #FBFAF8 0%, #EFEDE7 100%);">
+        <div style="position: absolute; left: 24px; top: 24px; right: 24px; opacity: .35;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 20px; color: #B84A14;">Leandra Pearson</div>
+          <div style="margin-top: 14px; width: 70%; height: 10px; background: rgba(93,78,140,.15); border-radius: 3px;"></div>
+          <div style="margin-top: 8px; width: 50%; height: 10px; background: rgba(93,78,140,.15); border-radius: 3px;"></div>
+        </div>
+        <div style="position: absolute; inset: 0; background: rgba(30,25,20,.18);"></div>
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 340px; background: #FFFFFF; border-radius: 18px; padding: 30px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.28); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px;">
+          <div style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(0,0,0,.5);">✕</div>
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Nice to meet you, Jordan!</div>
+          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">What brings you here today?</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
+            <div style="padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
+            <div style="padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
+            <div style="padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p style="margin: 24px 0 0; font-size: 12px; line-height: 1.6; color: rgba(0,0,0,.5);">Try next: "build <a href="#2a">2a</a>/<a href="#2b">2b</a> for real" &middot; "make the popup smaller/larger" &middot; "skip the name step, just do persona"</p>
+</section>
+
+<section id="t1" style="padding: 48px 48px 30px; border-bottom: 1px solid rgba(0,0,0,.08);">
+  <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+    <a href="#t1" style="font: 600 11px ui-monospace, Menlo, monospace; padding: 3px 8px; background: #1E1E1C; color: #FFFFFF; border-radius: 4px; text-decoration: none;">1</a>
+    <span style="font: 600 14px system-ui, sans-serif; color: #1E1E1C;">Persona-adaptive welcome — 3 directions</span>
+  </div>
+  <p style="margin: 0 0 26px; font-size: 14px; color: rgba(0,0,0,.55); max-width: 720px; line-height: 1.5;">Each picks a persona (Recruiter / Founder / Fellow Designer) that reorders project emphasis, adjusts detail depth (summary vs. full case study), and shifts the visual tone. Shown as it would appear on load, over a dimmed hero.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 34px; align-items: flex-start;">
+
+    <!-- 1a: Minimal centered card, on-brand -->
+    <div id="1a" style="flex: none; display: flex; flex-direction: column; gap: 9px;">
+      <div style="display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: rgba(0,0,0,.55);">
+        <a href="#1a" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">1a</a>
+        <span>Minimal card — quiet, on-brand</span>
+      </div>
+      <div style="width: 480px; height: 340px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); position: relative; background: linear-gradient(155deg, #2a2440 0%, #1a1730 100%);">
+        <div style="position: absolute; inset: 0; backdrop-filter: blur(2px); background: rgba(20,15,35,.5);"></div>
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 380px; background: #FFFFFF; border-radius: 18px; padding: 34px 32px; box-shadow: 0 30px 70px rgba(0,0,0,.4); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 21px; color: #B84A14;">Hi, welcome!</div>
+          <div style="font-size: 14px; color: #5D4E8C; line-height: 1.5;">What brings you here today? I'll tailor what you see.</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 6px;">
+            <div style="padding: 12px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
+            <div style="padding: 12px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
+            <div style="padding: 12px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
+          </div>
+          <div style="font-size: 11px; color: rgba(0,0,0,.35); margin-top: 2px;">Skip — show me everything</div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: rgba(0,0,0,.55); max-width: 480px; line-height: 1.5;">Safest fit visually — reads as an extension of the existing brand modal (contact form). Low commitment, easy skip.</div>
+    </div>
+
+    <!-- 1b: Full takeover, playful/Y2K -->
+    <div id="1b" style="flex: none; display: flex; flex-direction: column; gap: 9px;">
+      <div style="display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: rgba(0,0,0,.55);">
+        <a href="#1b" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">1b</a>
+        <span>Full takeover — playful, matches Playground</span>
+      </div>
+      <div style="width: 480px; height: 340px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); position: relative; background: radial-gradient(ellipse at 30% 20%, #4a3f7a 0%, #1a1730 60%);">
+        <div style="position: absolute; top: 26px; left: 0; right: 0; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 22px; color: #EAE6F3; text-shadow: 0 0 20px rgba(180,150,255,.6);">Choose your path</div>
+        <div style="position: absolute; top: 78px; left: 24px; right: 24px; bottom: 30px; display: flex; gap: 14px;">
+          <div style="flex: 1; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.16), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 30px rgba(110,220,255,.18) inset;">
+            <div style="font-size: 30px;">🔍</div>
+            <div style="font-size: 13px; font-weight: 600; color: #EAE6F3;">Recruiter</div>
+            <div style="font-size: 10px; color: rgba(234,230,243,.6); text-align: center; padding: 0 8px;">Fast, skimmable</div>
+          </div>
+          <div style="flex: 1; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.16), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 30px rgba(255,80,220,.16) inset;">
+            <div style="font-size: 30px;">🚀</div>
+            <div style="font-size: 13px; font-weight: 600; color: #EAE6F3;">Founder</div>
+            <div style="font-size: 10px; color: rgba(234,230,243,.6); text-align: center; padding: 0 8px;">Outcomes, metrics</div>
+          </div>
+          <div style="flex: 1; border-radius: 16px; background: linear-gradient(160deg, rgba(255,255,255,.22), rgba(255,255,255,.06)); border: 1.5px solid #EAE6F3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 0 34px rgba(180,150,255,.35) inset;">
+            <div style="font-size: 30px;">🎨</div>
+            <div style="font-size: 13px; font-weight: 700; color: #FFFFFF;">Designer</div>
+            <div style="font-size: 10px; color: rgba(255,255,255,.8); text-align: center; padding: 0 8px;">Process, craft</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: rgba(0,0,0,.55); max-width: 480px; line-height: 1.5;">Bigger moment, ties to the Y2K/OLED playground language. Best if she wants the AI pick to feel like a memorable part of the site, not just utility.</div>
+    </div>
+
+    <!-- 1c: Non-blocking corner prompt -->
+    <div id="1c" style="flex: none; display: flex; flex-direction: column; gap: 9px;">
+      <div style="display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: rgba(0,0,0,.55);">
+        <a href="#1c" style="font: 600 10.5px ui-monospace, Menlo, monospace; padding: 3px 7px; background: rgba(0,0,0,.08); color: #1E1E1C; border-radius: 5px; text-decoration: none;">1c</a>
+        <span>Corner prompt — non-blocking</span>
+      </div>
+      <div style="width: 480px; height: 340px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); position: relative; background: linear-gradient(180deg, #FFFFFF 0%, #EAE6F3 100%);">
+        <div style="position: absolute; left: 24px; top: 24px; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 26px; color: #B84A14;">Leandra Pearson</div>
+        <div style="position: absolute; left: 24px; top: 66px; width: 200px; height: 3px; background: rgba(93,78,140,.15); border-radius: 2px;"></div>
+        <div style="position: absolute; left: 24px; top: 84px; width: 260px; height: 3px; background: rgba(93,78,140,.15); border-radius: 2px;"></div>
+        <div style="position: absolute; right: 20px; bottom: 20px; width: 250px; background: #1E1E1C; border-radius: 16px; padding: 18px 20px; box-shadow: 0 20px 50px rgba(0,0,0,.3); display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 13px; font-weight: 600; color: #EAE6F3;">Want a tailored view?</div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <div style="padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 11px; color: #EAE6F3;">Recruiter</div>
+            <div style="padding: 6px 12px; border-radius: 999px; background: #B84A14; font-size: 11px; font-weight: 600; color: #FFFFFF;">Founder</div>
+            <div style="padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.12); font-size: 11px; color: #EAE6F3;">Designer</div>
+          </div>
+          <div style="font-size: 10px; color: rgba(234,230,243,.45);">✕ dismiss, browse normally</div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: rgba(0,0,0,.55); max-width: 480px; line-height: 1.5;">Site is fully visible and usable immediately; the prompt is an offer, not a gate. Best for visitors who dislike modals blocking content.</div>
+    </div>
+
+  </div>
+  <p style="margin: 24px 0 0; font-size: 12px; line-height: 1.6; color: rgba(0,0,0,.5);">Try next: "build <a href="#1a">1a</a> for real" &middot; "combine the takeover visuals from <a href="#1b">1b</a> with the non-blocking behavior of <a href="#1c">1c</a>" &middot; "make the founder path emphasize Locci Box first, recruiter path show About + Experience first, designer path show full case studies"</p>
+</section>
+</x-dc>
+</body>
+</html>

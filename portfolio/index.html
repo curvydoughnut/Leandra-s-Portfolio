@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<title>Leandra Pearson, Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  header#top { position: relative; }
+  @keyframes lp-scrollhint { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  @keyframes lp-drift1 { 0%,100% { transform: translate(0,0) rotate(0deg); } 20% { transform: translate(70px,-55px) rotate(3deg); } 45% { transform: translate(-45px,-90px) rotate(-2deg); } 70% { transform: translate(-85px,25px) rotate(2deg); } 88% { transform: translate(35px,60px) rotate(-3deg); } }
+  @keyframes lp-drift2 { 0%,100% { transform: translate(0,0) rotate(0deg); } 18% { transform: translate(-60px,45px) rotate(-3deg); } 40% { transform: translate(50px,85px) rotate(2deg); } 62% { transform: translate(95px,-30px) rotate(4deg); } 85% { transform: translate(-30px,-70px) rotate(-2deg); } }
+  @keyframes lp-drift3 { 0%,100% { transform: translate(0,0) rotate(0deg); } 25% { transform: translate(40px,75px) rotate(2deg); } 50% { transform: translate(-80px,40px) rotate(-4deg); } 72% { transform: translate(-40px,-80px) rotate(3deg); } 90% { transform: translate(60px,-35px) rotate(-2deg); } }
+  @keyframes lp-drift4 { 0%,100% { transform: translate(0,0) rotate(0deg); } 22% { transform: translate(-75px,-40px) rotate(3deg); } 48% { transform: translate(30px,-85px) rotate(-3deg); } 68% { transform: translate(85px,35px) rotate(2deg); } 88% { transform: translate(-25px,65px) rotate(-2deg); } }
+  @keyframes lp-drift5 { 0%,100% { transform: translate(0,0) rotate(0deg); } 15% { transform: translate(55px,50px) rotate(-2deg); } 42% { transform: translate(-65px,80px) rotate(3deg); } 65% { transform: translate(-90px,-45px) rotate(-3deg); } 85% { transform: translate(45px,-65px) rotate(2deg); } }
+  @keyframes lp-drift6 { 0%,100% { transform: translate(0,0) rotate(0deg); } 20% { transform: translate(-50px,-75px) rotate(2deg); } 45% { transform: translate(75px,-45px) rotate(-2deg); } 70% { transform: translate(55px,70px) rotate(4deg); } 90% { transform: translate(-60px,30px) rotate(-3deg); } }
+
+  /* Responsive layout rules (mobile/tablet) */
+  @media (max-width: 900px) {
+    .lp-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .lp-grid3 { grid-template-columns: 1fr 1fr !important; }
+    .lp-grid4 { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .lp-grid3 { grid-template-columns: 1fr !important; }
+    section > div, footer > div { padding-left: 20px !important; padding-right: 20px !important; }
+    nav > div { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+  @media (max-width: 560px) {
+    .lp-grid4 { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 480px) {
+    .lp-kv { grid-template-columns: 1fr !important; gap: 2px !important; }
+    .lp-footer-bar { flex-direction: column !important; gap: 10px !important; text-align: center !important; }
+  }
+  @media (max-width: 760px) {
+    .lp-nav-link { display: none !important; }
+    .lp-hamburger { display: flex !important; }
+  }
+  @media (max-width: 900px) {
+    .lp-play-canvas { transform: scale(.72) !important; transform-origin: top left !important; height: 620px !important; }
+  }
+  @media (max-width: 560px) {
+    .lp-play-canvas { transform: scale(.48) !important; height: 420px !important; }
+  }
+  @media (max-width: 480px) {
+    .lp-persona-pill { max-width: 108px !important; font-size: 11px !important; padding: 5px 10px !important; }
+    .lp-chat-bubble { width: 50px !important; height: 50px !important; right: 18px !important; bottom: 18px !important; }
+    .lp-chat-panel { right: 12px !important; left: 12px !important; width: auto !important; bottom: 82px !important; }
+    .lp-linkedin-btn { font-size: 14px !important; padding: 9px 18px !important; }
+  }
+  @media (max-width: 400px) {
+    .lp-persona-pill { display: none !important; }
+  }
+  a { color: #B84A14; }
+  a:hover { color: #93390D; }
+</style>
+</helmet>
+
+<div style="font-family: 'Geist', sans-serif; background: #FFFFFF; min-height: 100vh;">
+
+  <!-- Top green accent -->
+  <div style="height: 8px; background: #5D4E8C;"></div>
+
+  <!-- Persona picker — small popup, page stays visible behind it -->
+  <sc-if value="{{ personaModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 200; background: rgba(30,25,20,.28); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box;">
+      <div style="position: relative; width: 100%; max-width: 360px; background: #FFFFFF; border-radius: 18px; padding: 32px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.28); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
+        <div onClick="{{ skipPersona }}" title="Skip" style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(0,0,0,.5); font-size: 13px;">✕</div>
+
+        <sc-if value="{{ personaStepName }}" hint-placeholder-val="{{ true }}">
+          <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Hi! What's your name?</div>
+          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">So I can tailor things just for you.</div>
+          <input value="{{ visitorName }}" onChange="{{ setVisitorName }}" onKeyDown="{{ submitNameOnEnter }}" placeholder="Your name…" style="width: 100%; box-sizing: border-box; margin-top: 4px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #E0DCEA; font-size: 14px; color: #1E1E1C; font-family: 'Geist', sans-serif;">
+          <div onClick="{{ submitName }}" style="width: 100%; box-sizing: border-box; cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 14px; font-weight: 600; color: #FFFFFF;">Continue →</div>
+          <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer;">Skip! Just show me the site</div>
+        </sc-if>
+
+        <sc-if value="{{ personaStepPersona }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Nice to meet you{{ personaGreetingName }}!</div>
+          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">What brings you here today?</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
+            <div onClick="{{ choosePersonaRecruiter }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
+            <div onClick="{{ choosePersonaFounder }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
+            <div onClick="{{ choosePersonaDesigner }}" style="cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
+          </div>
+          <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer; margin-top: 2px;">Skip, just show me the site</div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- Nav -->
+  <nav data-screen-label="Nav" style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <a href="#top" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
+        <div onClick="{{ reopenPersonaModal }}" title="Change your tailored view" class="lp-persona-pill" style="cursor: pointer; font-size: 12px; font-weight: 600; color: #5D4E8C; background: #EAE6F3; padding: 6px 14px; border-radius: 999px; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;">{{ personaPillLabel }}</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <a href="#about" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
+        <a href="#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
+        <a href="#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Projects</a>
+        <a href="#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <div onClick="{{ openContact }}" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; cursor: pointer; padding: 10px 22px; border-radius: 999px;">Say hello</div>
+        <div onClick="{{ toggleMobileNav }}" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
+          <div style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; transform: {{ hamTop }};"></div>
+          <div style="height: 2px; background: #1E1E1C; border-radius: 2px; opacity: {{ hamMidOpacity }};"></div>
+          <div style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; transform: {{ hamBottom }};"></div>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ showMobileNav }}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
+        <a href="#about" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
+        <a href="#experience" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
+        <a href="#projects" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Projects</a>
+        <a href="#playground" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+      </div>
+    </sc-if>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" data-screen-label="Hero" style="position: relative; overflow: hidden;">
+    <div style="width: 100%; aspect-ratio: 16/9; position: relative; background: linear-gradient(155deg, #FDFDFD 0%, #D3D8E4 40%, #9AA0B8 100%); padding: 16px; box-sizing: border-box; box-shadow: inset 0 2px 5px rgba(255,255,255,.9), inset 0 -4px 10px rgba(0,0,0,.25);">
+      <div style="position: relative; width: 100%; height: 100%; overflow: hidden; background: #030303;">
+        <video id="hero-video" ref="{{ heroVideoRef }}" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" src="assets/hero-video.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.45) contrast(1.1) brightness(1.05);"></video>
+        <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 28% 14%, rgba(255,255,255,.4), rgba(255,255,255,.06) 55%, rgba(255,255,255,0) 72%); pointer-events: none;"></div>
+        <div style="position: absolute; inset: 0; box-shadow: inset 0 0 30px rgba(0,255,240,.22), inset 0 0 60px rgba(255,0,200,.16); pointer-events: none;"></div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: .85; animation: lp-scrollhint 2.2s ease-in-out infinite;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #5D4E8C;">Scroll</div>
+      <div style="font-size: 18px; color: #5D4E8C;">▼</div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" data-screen-label="About" style="background: #EAE6F3;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">About me</div>
+      <p style="margin: 20px 0 0; font-size: 28px; font-weight: 500; color: #B84A14; line-height: 1.5; max-width: 980px;">A little bit about me, I love to watch anime, going to exciting museum exhibits, writing short stories, and going to live musical experiences. I am a bubbly extrovert, who loves meeting and working with new people.</p>
+      <div class="lp-grid3" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; position: relative">
+        <img src="assets/photo-pen.png" alt="Fountain pen writing on paper" style="width: 100%; aspect-ratio: 6/7; object-fit: cover; border-radius: 16px;">
+        <div onClick="{{ toggleConcert }}" title="Live music, click to play" style="position: relative; width: 100%; aspect-ratio: 6/7; border-radius: 16px; overflow: hidden; cursor: pointer;">
+          <img src="assets/concert-still.png" alt="Live music show" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; inset: 0; background: rgba(20,20,18,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+            <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.92); color: #1E1E1C; font-size: 26px; display: flex; align-items: center; justify-content: center;">{{ concertIcon }}</div>
+            <div style="font-size: 15px; font-weight: 500; color: #FFFFFF; text-shadow: 0 1px 6px rgba(0,0,0,.5);">{{ concertLabel }}</div>
+          </div>
+        </div><img src="./abcd9981-770e-45f1-aae0-277af26df8ad-mrcudr2x.jpeg" alt="Leandra out in the city" style="width: 100%; aspect-ratio: 6/7; object-fit: cover; border-radius: 16px">
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" data-screen-label="Experience" style="background: #FFFFFF;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Experience &amp; education</div>
+      <h2 style="margin: 14px 0 0; font-size: 40px; font-weight: 500; color: #B84A14;">Recent experience and education</h2>
+      <div class="lp-grid" style="margin-top: 54px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
+        <div style="display: flex; flex-direction: column; gap: 36px;">
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-spctrl.png" alt="Spectral Cloud logo" style="width: 64px; height: 64px; object-fit: contain; flex-shrink: 0;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.4;">Lead UX/UI Design Apprentice at Spectral Cloud</div>
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Since 2025</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-executely.png" alt="Executely logo" style="width: 64px; height: 64px; object-fit: contain; flex-shrink: 0;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.4;">UX/UI Designer at Executely</div>
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">January 2024 to May 2024</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-looma.png" alt="The Looma Project logo" style="width: 64px; height: 64px; object-fit: contain; flex-shrink: 0;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.4;">Graphic Designer at The Looma Project</div>
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">November 2022 to November 2023</div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 26px;">
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 56px; height: 40px; object-fit: contain; flex-shrink: 0; margin-top: 2px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Enterprise Design Thinking Practitioner, IBM</div>
+              <div style="font-size: 15px; font-weight: 400; color: #C77B4E;">Certification · May 2026</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 56px; height: 40px; object-fit: contain; flex-shrink: 0; margin-top: 2px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Introduction to Agile Development and Scrum, IBM</div>
+              <div style="font-size: 15px; font-weight: 400; color: #C77B4E;">Certification · March 2026</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 56px; height: 40px; object-fit: contain; flex-shrink: 0; margin-top: 2px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">UX/UI Design Fundamentals: Usability and Visual Principles, SkillUp</div>
+              <div style="font-size: 15px; font-weight: 400; color: #C77B4E;">Certification · April 2026</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 56px; height: 40px; object-fit: contain; flex-shrink: 0; margin-top: 2px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">UI/UX Wire framing and Prototyping with Figma, SkillUp</div>
+              <div style="font-size: 15px; font-weight: 400; color: #C77B4E;">Certification · May 2026</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 22px;">
+            <img src="assets/logo-ibm.png" alt="IBM logo" style="width: 56px; height: 40px; object-fit: contain; flex-shrink: 0; margin-top: 2px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">AI Fundamentals: Foundations for Understanding AI, IBM</div>
+              <div style="font-size: 15px; font-weight: 400; color: #C77B4E;">Certification · June 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected projects -->
+  <section id="projects" data-screen-label="Projects" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <h2 style="margin: 0; font-size: 40px; font-weight: 500; color: #B84A14;">Projects</h2>
+      <div class="lp-grid3" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px;">
+        <div data-project="executely" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; order: {{ execOrder }};" title="Read about the Executely project">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; display: flex; align-items: center; justify-content: center; position: relative">
+            <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ execBadgeDisplay }}; align-items: center;">Recommended for you</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
+            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Executely, 2024</div>
+          </div>
+        </div>
+        <div data-project="locci" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; order: {{ locciOrder }};" title="Read the Locci Box case study">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; display: flex; align-items: center; justify-content: center; position: relative">
+            <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ locciBadgeDisplay }}; align-items: center;">Recommended for you</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
+            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">LabLab.AI, 2026</div>
+          </div>
+        </div>
+        <div data-project="mealprep" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; order: {{ mealprepOrder }};" title="Read the Meal Prep Pal case study">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; display: flex; align-items: center; justify-content: center; position: relative;">
+            <img src="assets/laptop-preppal-hero.png" alt="Meal Prep Pal landing page on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ mealprepBadgeDisplay }}; align-items: center;">Recommended for you</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
+            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">AI Tinkerers, 2026</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">Click a project to view its case study.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Case study: Executely ═══ -->
+  <sc-if value="{{ showExecutely }}" hint-placeholder-val="{{ false }}">
+  <section id="executely" data-screen-label="Case study Executely" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
+      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <img src="assets/logo-executely.png" alt="Executely logo" style="width: 72px; height: 72px; object-fit: contain;">
+          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Executely</h2>
+          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
+            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
+            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Startup teams often struggle to move from idea to execution due to a lack of clear guidance and overwhelming tool choices.</p>
+          </div>
+          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Specific goals</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Increase user retention by creating a new feature, creating consistent branding.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Reduced production cycle by 30%. Enhanced customer retention &amp; satisfaction by 25%.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+              <img src="./laptop-mrdk018j.png" alt="Executely on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+              <video ref="{{ mockupVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdk018j.png" src="assets/executely-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+            </div>
+          </div><div style="display: flex; flex-direction: column;">
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Executely</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">User Experience Designer</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O24</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
+          <p style="margin: 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Startup teams struggle to move from idea to execution because existing tools feel fragmented, overly complex, and visually cold. Without clear guidance or curated resources, early stage workflows stall exactly when clarity and speed matter most.</p>
+        </div>
+        <img src="assets/persona-card.png" alt="User persona: Cindy Savvy" style="width: 100%; height: auto; object-fit: contain; border-radius: 16px;">
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;">
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+          <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+            <img src="./laptop-mrdki3st.png" alt="AI Resource Center walkthrough (GIF)" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/executely-gif.gif" alt="AI Resource Center walkthrough animation" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover;">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
+          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Slowed down and listened.</strong> <span style="color: #C77B4E;">Studied the real friction users were feeling before reaching for a redesign.</span></li>
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Studied proven dashboard patterns.</strong> <span style="color: #C77B4E;">Built on frameworks people already understood rather than reinventing the wheel.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ execStepsDisplay }};"><strong style="font-weight: 600;">Expanded from a popup to a full-page system.</strong> <span style="color: #C77B4E;">Immediately made navigation feel less overwhelming.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ execStepsDisplay }};"><strong style="font-weight: 600;">Leaned into a warmer dark themed interface.</strong> <span style="color: #C77B4E;">Inspired by Apple and Shopify so the platform felt inviting, not intimidating.</span></li>
+          </ol>
+          <div onClick="{{ toggleExecDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ execToggleLabel }}</div>
+          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">The result was a scalable AI Resource Center that met users where they already were, both mentally and visually. By leaning into established patterns and refined aesthetics shaped by products like ChatGPT and modern productivity tools, the platform felt immediately familiar without sacrificing function.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
+        <h3 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the problems/pain points</h3>
+        <div class="lp-grid" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
+            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">25%</div>
+            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Increase in customer satisfaction driven by user insights and iterative qualitative testing.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
+            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">30%</div>
+            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Reduction in production cycle issues through close collaboration across design and product teams.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">Project timeline</h3>
+        <div class="lp-grid4" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 26px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #8F7BC4;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">User Research &amp; Journey</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">1 week</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #F2C230;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Ideation</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">2 weeks</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #B84A14;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Low, Mid, &amp; High Fidelity Creation</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #F5A9B8;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Testing &amp; Re-Iteration Phase</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+          <img src="./laptop-mrdkfaum.png" alt="AI App Center on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+          <video controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdkfaum.png" src="assets/executely-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Feature</div>
+          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">AI App Center</h3>
+          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+          <a href="https://www.figma.com/proto/slIfqs4DI3ItNNdHrOqboB/AI-Resource-Center---Notification-Medium-Fidelity?node-id=29-5&amp;p=f&amp;viewport=216%2C476%2C0.06&amp;t=NlY9ySTtsqfu1dW2-1&amp;scaling=contain&amp;content-scaling=fixed&amp;starting-point-node-id=29%3A5&amp;page-id=29%3A2" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
+            <span style="font-size: 16px;">▷</span>
+            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ═══ Case study: Locci Box ═══ -->
+  <sc-if value="{{ showLocci }}" hint-placeholder-val="{{ false }}">
+  <section id="locci-box" data-screen-label="Case study Locci Box" style="background: #4E4275;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px; display: flex; flex-direction: column; align-items: center;">
+      
+      <h2 style="margin: 24px 0 0; font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 54px; color: #FFFFFF; text-align: center; line-height: 1.2;">IBM BOB HACKATHON 2026</h2>
+      <p style="margin: 20px 0 0; font-size: 21px; font-weight: 400; color: #FFFFFF; text-align: center; line-height: 1.5; max-width: 720px;">This section details a hackathon where my team and I made a product in 48hrs.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Locci Box overview" style="background: #FFFFFF;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
+      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <img src="assets/logo-locci.png" alt="Locci Box robot logo" style="width: 80px; height: 74px; object-fit: contain; border-radius: 10px;">
+          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Locci Box</h2>
+          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A B2B execution infrastructure platform. Providing engineers with a space to create, test, and play.</p>
+          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
+            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
+            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Build solutions that improve how software is built. Work with IBM BOB, a program that understands your codebase, helping you reduce repetitive work and build with real context.</p>
+          </div>
+          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; font-family: 'Geist Mono', monospace;">Specific goals</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a sandbox in which engineers can write, test and play with their code before deployment.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">94ms execution time, 100% tenant isolation, 3× faster review cycles.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/laptop-locci-dash.png" alt="Locci Box dashboard on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">IBM</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Product Designer</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Length</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">48 Hours</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O26</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
+          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">AI agents and enterprise developers were writing and running code with no safe place to execute it. Existing sandbox tools were built for developers who live in the command line, not for teams who need visibility, speed, and security at once. Code and tests shared the same environment, meaning a bug in one could corrupt the other. There was no zero trust runtime, no isolated execution, and no human friendly interface. The tooling simply wasn’t built for the agent era.</p>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-sandbox.png" alt="Dual Sandbox Playground on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
+          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Researched the concept during handoff.</strong> <span style="color: #C77B4E;">Used the wait window to figure out where I could contribute most as the UX/UI designer on a two-person team.</span></li>
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Vibe coded the interface in Lovable.</strong> <span style="color: #C77B4E;">Iterated in real time, moving between the live project and a vibe-coded wireframe to keep each honest.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ locciStepsDisplay }};"><strong style="font-weight: 600;">Mapped four core surfaces under one mental model.</strong> <span style="color: #C77B4E;">Dashboard, Code Editor, BOB AI Reviewer, and API Keys manager, so users never felt lost.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ locciStepsDisplay }};"><strong style="font-weight: 600;">Designed the Dual Sandbox and a 4-step BOB loop.</strong> <span style="color: #C77B4E;">Code and tests run side by side in under 900ms; the reviewer follows submit, analyze, execute, prove, so AI feedback felt verified, not just suggested.</span></li>
+          </ol>
+          <div onClick="{{ toggleLocciDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ locciToggleLabel }}</div>
+          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">Locci Box shipped as a live B2B SaaS platform built on React, TypeScript, Express, and MCP. Hardware isolated microVMs boot in under 100ms per tenant, paired with a full in browser IDE, an AI code reviewer that runs the fix rather than just suggesting it, and an API key manager with rate limits and audit trail. It can also plug into Claude as a local MCP server, meeting developers where they already work.</p>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-mcp.png" alt="Locci Box as a local MCP server in settings" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+          <img src="./laptop-mrdkne6t.png" alt="Locci Box on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+          <video ref="{{ locciVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdkne6t.png" src="assets/locci-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Product</div>
+          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">Locci Box</h3>
+          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Every agent deserves its own computer. Write code. Test code. Ship code, in isolated microVMs.</p>
+          <a href="https://box.locci.cloud/" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
+            <span style="font-size: 16px;">▷</span>
+            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
+        <h3 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the challenge</h3>
+        <div class="lp-grid3" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">94ms</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Unified design kept execution fast and developers in flow.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">100%</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Clear environment boundaries made full tenant isolation possible.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">3X Faster</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">The BOB four step design turned reviews into verified results instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ═══ Case study: Meal Prep Pal ═══ -->
+  <sc-if value="{{ showMealPrep }}" hint-placeholder-val="{{ false }}">
+  <section id="meal-prep-pal" data-screen-label="Case study Meal Prep Pal" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
+      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <img src="assets/logo-aitinkerers.png" alt="AI Tinkerers logo" style="width: 150px; height: auto; object-fit: contain;">
+          <h2 style="margin: 24px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Meal Prep Pal</h2>
+          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A B2C online platform that provides users with meal prepping, step-by-step recipe guidance, combines favorited meals into a digital recipe book, plus more!</p>
+          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
+            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
+            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">A synchronized, heads-down build session happening across AI Tinkerers cities worldwide: one global challenge, one submission platform, one day.</p>
+          </div>
+          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; font-family: 'Geist Mono', monospace;">Specific goals</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a platform that is built with generative AI that tackles a real world problem.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">8 hour execution time</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/laptop-preppal-hero.png" alt="PrepPal landing page on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">AI Tinkerers</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Product Designer</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Length</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">8 Hours</div>
+            </div>
+            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O26</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
+          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Most people do not hate cooking. They hate the part that comes before it. The average American makes over 200 food related decisions per day, and by dinnertime decision fatigue has already won. Recipe apps, pantry trackers, nutrition apps, and grocery lists all lived separately, forcing users to carry their own context across four tools every week. No single product connected what someone already had in their kitchen to what they should cook next, and American households were losing over $2,000 a year to food waste because of it.</p>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-preppal-recipes.png" alt="PrepPal recipe library on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column;">
+          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
+          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Audited the competitive landscape to find where the experience broke.</strong> <span style="color: #C77B4E;">Every tool treated diet, budget, time, pantry inventory, and serving size as separate inputs when users think about them all at once. That gap became the design thesis.</span></li>
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Made the Pantry to Grocery List connection the centerpiece of the product.</strong> <span style="color: #C77B4E;">When the AI knows what you already own, it skips those items on your shopping list automatically. It sounds simple but it is the exact loop every other app in the category fails to close.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ mealprepStepsDisplay }};"><strong style="font-weight: 600;">Designed the empty state chat prompts to teach users the grammar of the product without any onboarding.</strong> <span style="color: #C77B4E;">"Build a 7-day high-protein plan, around 2,200 calories, no pork, $80 budget" is not filler copy. It shows users the full range of what they can ask for before they type a single word.</span></li>
+            <li style="font-size: 17px; line-height: 1.5; display: {{ mealprepStepsDisplay }};"><strong style="font-weight: 600;">Applied a favorites first, A to Z hierarchy</strong> <span style="color: #C77B4E;">to the recipe book and surfaced cook time and calories above the fold on every recipe card, designing for how people scan when they are tired, not how they browse when they have time.</span></li>
+          </ol>
+          <div onClick="{{ toggleMealprepDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ mealprepToggleLabel }}</div>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+            <img src="./laptop-mrdljqdi.png" alt="PrepPal chat on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+            <video ref="{{ preppalChatVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdljqdi.png" src="assets/preppal-chat-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+          <img src="./laptop-mrdltvi8.png" alt="PrepPal on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+          <video ref="{{ preppalVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdltvi8.png" src="assets/preppal-video-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Product</div>
+          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">Meal Prep Pal</h3>
+          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Every week deserves a better dinner plan. Set your goals. Stock your pantry. Get the week, without the planning.</p>
+          <a href="https://cook-craft-bot.lovable.app" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
+            <span style="font-size: 16px;">▷</span>
+            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- Playground -->
+  <section id="playground" data-screen-label="Playground" style="position: relative; background-image: linear-gradient(180deg, rgba(10,80,180,.18) 0%, rgba(0,150,190,.10) 45%, rgba(140,110,200,.16) 100%), url('assets/aero-bg3.jpg'); background-size: cover; background-position: center; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% -5%, rgba(255,255,255,.5), rgba(255,255,255,0) 60%); pointer-events: none;"></div>
+    <div style="position: absolute; left: 8%; top: 120px; width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), rgba(255,255,255,.12) 42%, rgba(180,230,255,.20) 70%, rgba(255,255,255,.45) 100%); box-shadow: inset 0 -8px 18px rgba(255,255,255,.35), 0 12px 30px rgba(0,40,90,.18); pointer-events: none;"></div>
+    <div style="position: absolute; right: 12%; top: 300px; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), rgba(255,255,255,.12) 42%, rgba(180,230,255,.20) 70%, rgba(255,255,255,.45) 100%); box-shadow: inset 0 -6px 14px rgba(255,255,255,.35), 0 10px 24px rgba(0,40,90,.18); pointer-events: none;"></div>
+    <div style="position: absolute; left: 30%; bottom: 90px; width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), rgba(255,255,255,.12) 42%, rgba(180,230,255,.20) 70%, rgba(255,255,255,.45) 100%); box-shadow: inset 0 -5px 12px rgba(255,255,255,.35), 0 8px 20px rgba(0,40,90,.18); pointer-events: none;"></div>
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 100px 32px 120px;">
+      <div style="font-size: 17px; font-weight: 600; color: #FFFFFF; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,60,130,.55);">Playground</div>
+      <h2 style="margin: 14px 0 0; font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #FFFFFF; text-shadow: 0 2px 18px rgba(0,60,130,.6);">Where I go to play.</h2>
+      <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #EAF6FF; max-width: 640px; line-height: 1.5; text-shadow: 0 1px 10px rgba(0,60,130,.55);">Personal collage and digital art experiments. Click a piece to view it up close.</p>
+      <div class="lp-play-canvas" style="position: relative; margin-top: 50px; height: 860px;">
+        <sc-for list="{{ artworks }}" as="art" hint-placeholder-count="6">
+          <div data-art="{{ $index }}" onClick="{{ openArt }}" title="{{ art.title }}" style="position: absolute; left: {{ art.x }}; top: {{ art.y }}; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 16px; animation: {{ art.anim }} {{ art.dur }} ease-in-out infinite; animation-delay: {{ art.delay }};">
+            <div style="position: relative; width: {{ art.size }}; height: {{ art.size }}; border-radius: 50%; background: linear-gradient(145deg, #FDFDFD 0%, #D9DCE2 45%, #A8ADB8 100%); padding: 9px; box-sizing: border-box; box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 46px rgba(110,220,255,.22), 0 0 80px rgba(255,80,220,.14), inset 0 2px 4px rgba(255,255,255,.95), inset 0 -3px 7px rgba(0,0,0,.3); transition: transform .3s ease;" style-hover="transform: scale(1.08);">
+              <div style="position: relative; width: 100%; height: 100%; border-radius: 50%; background: #030303; padding: 6px; box-sizing: border-box;">
+                <div role="img" aria-label="{{ art.title }}" style="width: 100%; height: 100%; border-radius: 50%; background-image: url('{{ art.src }}'); background-size: cover; background-position: center; filter: saturate(1.5) contrast(1.08) brightness(1.05);"></div>
+                <div style="position: absolute; inset: 6px; border-radius: 50%; background: radial-gradient(ellipse 62% 46% at 32% 18%, rgba(255,255,255,.45), rgba(255,255,255,.08) 55%, rgba(255,255,255,0) 72%); pointer-events: none;"></div>
+                <div style="position: absolute; inset: 6px; border-radius: 50%; box-shadow: inset 0 0 24px rgba(0,255,240,.20), inset 0 0 48px rgba(255,0,200,.14), inset 0 0 3px rgba(255,255,255,.35); pointer-events: none;"></div>
+              </div>
+            </div>
+            <div style="font-size: 16px; font-weight: 600; color: #FFFFFF; letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,60,130,.7), 0 0 18px rgba(110,220,255,.6);">{{ art.title }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concert popup player -->
+  <sc-if value="{{ showConcert }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ toggleConcert }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(20,20,18,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 48px; box-sizing: border-box; cursor: zoom-out; font-family: 'Geist', sans-serif;">
+      <video autoplay="true" controls="true" playsinline="true" onClick="{{ stopClickThrough }}" src="assets/evanescence-concert.mp4" poster="assets/concert-still.png" style="max-width: min(90vw, 900px); max-height: 70vh; border-radius: 20px; box-shadow: 0 40px 120px rgba(0,0,0,.7); background: #141412; cursor: default;"></video>
+      <div style="font-size: 22px; font-weight: 500; color: #EAE6F3;">Live music, now playing</div>
+      <div style="font-size: 15px; font-weight: 400; color: #B3A9CC;">Click outside the video to close</div>
+    </div>
+  </sc-if>
+
+  <!-- Playground lightbox -->
+  <sc-if value="{{ showArt }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeArt }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(20,20,18,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 48px; box-sizing: border-box; cursor: zoom-out;">
+      <div role="img" aria-label="{{ activeTitle }}" style="width: min(90vw, 820px); height: 74vh; background-image: url('{{ activeSrc }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+      <div style="font-size: 22px; font-weight: 500; color: #EAE6F3; font-family: 'Geist', sans-serif;">{{ activeTitle }}</div>
+      <div style="font-size: 15px; font-weight: 400; color: #B3A9CC; font-family: 'Geist', sans-serif;">Click anywhere to close</div>
+    </div>
+  </sc-if>
+
+  <!-- Contact form popup -->
+  <sc-if value="{{ showContact }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeContact }}" style="position: fixed; inset: 0; z-index: 110; background: rgba(20,20,18,.6); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'Geist', sans-serif;">
+      <div onClick="{{ stopClickThrough }}" style="background: #FFFFFF; border-radius: 24px; width: min(92vw, 520px); padding: 44px; box-sizing: border-box; box-shadow: 0 40px 120px rgba(0,0,0,.4); display: flex; flex-direction: column; cursor: default;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 30px; color: #B84A14;">Say hello</div>
+          <div onClick="{{ closeContact }}" style="width: 36px; height: 36px; border-radius: 50%; background: #EAE6F3; color: #5D4E8C; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer;">×</div>
+        </div>
+        <p style="margin: 10px 0 0; font-size: 15px; color: #C77B4E; line-height: 1.5;">Think I'm Cool? I’d love to hear from you. Drop a note; let's work together!</p>
+        <label style="margin-top: 26px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your name</label>
+        <input value="{{ contactName }}" onChange="{{ setContactName }}" placeholder="Jane Doe" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
+        <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your email</label>
+        <input value="{{ contactEmail }}" onChange="{{ setContactEmail }}" placeholder="jane@email.com" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
+        <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Message</label>
+        <textarea value="{{ contactMessage }}" onChange="{{ setContactMessage }}" placeholder="Hi Leandra, ..." rows="5" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none; resize: vertical;" style-focus="border-color: #B84A14;"></textarea>
+        <div onClick="{{ sendContact }}" style="margin-top: 28px; align-self: flex-start; font-size: 16px; font-weight: 500; color: #FFFFFF; background: #B84A14; cursor: pointer; padding: 14px 34px; border-radius: 999px;">{{ contactSendLabel }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- Testimonial -->
+  <section data-screen-label="Testimonial" style="background: #EAE6F3;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 100px 32px;">
+      <p style="margin: 0; font-size: 30px; font-weight: 500; color: #B84A14; line-height: 1.5;">“Working with Leandra Pearson was an excellent experience. Their product design skills, attention to detail, and ability to collaborate effectively helped us successfully ship the project, Locci Box, within a tight timeline. They consistently brought thoughtful ideas and strong execution throughout the process.”</p>
+      <div style="display: flex; align-items: center; gap: 20px; margin-top: 34px;">
+        <img src="assets/avatar-mike-final.png" alt="Mike Omondi" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+        <div style="font-size: 20px; font-weight: 400; color: #B84A14;">Mike Omondi, Software Engineer, Hackathon Partner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / footer -->
+  <footer id="contact" data-screen-label="Contact" style="background: #FFFFFF;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 110px 32px 90px; display: flex; flex-direction: column; align-items: center;">
+      <img src="assets/portrait-leandra.png" alt="Leandra Pearson" style="width: 260px; height: 260px; border-radius: 50%; object-fit: cover;">
+      <div style="margin-top: 34px; display: flex; align-items: baseline; gap: 14px;">
+        <span style="font-size: 40px; font-weight: 500; color: #B84A14;">Hello! I’m</span>
+        <span style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #B84A14;">Leandra.</span>
+      </div>
+      <div style="margin-top: 12px; font-size: 22px; font-weight: 400; color: #B84A14;">Product designer based in Atlanta</div>
+      <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
+        <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
+        <span style="text-decoration: underline;">Connect on LinkedIn</span>
+      </a>
+    </div>
+    <div style="border-top: 1px solid #F3E7E0;">
+      <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 14px; color: #5D4E8C;">Leandra Pearson · Product Designer</div>
+        <a href="#top" style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ask-about-my-work chat -->
+  <div onClick="{{ chatToggle }}" title="Ask about my work" class="lp-chat-bubble" style="position: fixed; right: 26px; bottom: 26px; z-index: 140; width: 58px; height: 58px; border-radius: 50%; background: #B84A14; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,.3); padding: 9px; box-sizing: border-box;">
+    <img src="assets/chat-robot-lavender.png" alt="Chat" style="width: 100%; height: 100%; object-fit: contain;">
+  </div>
+
+  <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="lp-chat-panel" style="position: fixed; right: 26px; bottom: 96px; z-index: 140; width: min(92vw, 340px); height: min(70vh, 480px); background: #FFFFFF; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.3); display: flex; flex-direction: column; overflow: hidden;">
+      <div style="padding: 16px 18px; background: #B84A14; display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 14px; font-weight: 600; color: #FFFFFF;">Ask about my work</div>
+        <div onClick="{{ chatToggle }}" style="cursor: pointer; color: rgba(255,255,255,.75); font-size: 14px;">✕</div>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="align-self: flex-start; max-width: 88%; background: #EAE6F3; color: #1E1E1C; font-size: 13px; line-height: 1.5; padding: 10px 14px; border-radius: 14px 14px 14px 4px;">{{ chatGreeting }}</div>
+        <sc-for list="{{ chatMessages }}" as="msg" hint-placeholder-count="0">
+          <div style="align-self: {{ msg.align }}; max-width: 88%; background: {{ msg.bg }}; color: {{ msg.color }}; font-size: 13px; line-height: 1.5; padding: 10px 14px; border-radius: {{ msg.radius }}; white-space: pre-wrap;">{{ msg.content }}</div>
+        </sc-for>
+        <sc-if value="{{ chatLoading }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self: flex-start; max-width: 60%; background: #EAE6F3; color: #1E1E1C; font-size: 13px; padding: 10px 14px; border-radius: 14px 14px 14px 4px;">…</div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ showSuggestions }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 12px 10px;">
+          <sc-if value="{{ showSuggestion1 }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ askSuggestion1 }}" style="cursor: pointer; font-size: 12px; color: #5D4E8C; background: #EAE6F3; padding: 8px 12px; border-radius: 10px;">{{ suggestion1 }}</div>
+          </sc-if>
+          <sc-if value="{{ showSuggestion2 }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ askSuggestion2 }}" style="cursor: pointer; font-size: 12px; color: #5D4E8C; background: #EAE6F3; padding: 8px 12px; border-radius: 10px;">{{ suggestion2 }}</div>
+          </sc-if>
+          <sc-if value="{{ showSuggestion3 }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ askSuggestion3 }}" style="cursor: pointer; font-size: 12px; color: #5D4E8C; background: #EAE6F3; padding: 8px 12px; border-radius: 10px;">{{ suggestion3 }}</div>
+          </sc-if>
+        </div>
+      </sc-if>
+      <div style="display: flex; gap: 8px; padding: 12px; border-top: 1px solid #F3E7E0;">
+        <input value="{{ chatInput }}" onChange="{{ setChatInput }}" onKeyDown="{{ sendChatOnEnter }}" placeholder="Ask a question…" style="flex: 1; min-width: 0; padding: 10px 14px; border-radius: 999px; border: 1.5px solid #E0DCEA; font-size: 13px; font-family: 'Geist', sans-serif; color: #1E1E1C;">
+        <div onClick="{{ sendChat }}" style="cursor: pointer; width: 38px; height: 38px; border-radius: 50%; background: #B84A14; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;">→</div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;contactAddress&quot;: {
+    &quot;editor&quot;: &quot;text&quot;,
+    &quot;default&quot;: &quot;leandrastudios@gmail.com&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Contact&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = { active: null, activeArt: null, concertPlaying: false, contactOpen: false, cName: '', cEmail: '', cMsg: '', cSent: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, personaStep: 'name', visitorName: '', persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false };
+  chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Projects, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Projects. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question, just share the ABOUT facts warmly and stop there — do not close with a pointer sentence telling them to go check the About, Experience, or Projects sections.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She holds an Associate of Arts degree in Graphic Design from Wood-Tobe Coburn and spent one year at Ringling College of Art and Design. She started her career as a Graphic Designer creating visual communication between brand and consumer, but grew tired of static screens and wanting to solve real-world problems, so she moved into UX/UI design, becoming a self-taught designer through hackathons, YouTube University, and networking with other design professionals. Now she loves solving problems with design and building exciting digital experiences. Outside work she's an anime fan (Witch Hat Atelier, Wistoria: Wand and Sword, Jujutsu Kaisen, The Apothecary Diaries), enjoys museum exhibits, writing short stories, going to concerts across many musical genres, and generally having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at Spectral Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.";
+  personaMeta = {
+    recruiter: { label: 'Recruiter', icon: '\u{1F50D}', order: { executely: 1, locci: 2, mealprep: 3 }, expand: false },
+    founder: { label: 'Founder', icon: '\u{1F680}', order: { executely: 3, locci: 1, mealprep: 2 }, expand: false },
+    designer: { label: 'Designer', icon: '\u{1F3A8}', order: { executely: 1, locci: 3, mealprep: 2 }, expand: true },
+  };
+  componentDidMount() {}
+  _togglePlay(e) {
+    const video = e.currentTarget.tagName === 'VIDEO' ? e.currentTarget : e.currentTarget.querySelector('video');
+    if (!video) return;
+    if (video.paused) video.play(); else video.pause();
+  }
+  _bindHeroVideo(video) {
+    if (!video) return;
+    const isHero = video.id === 'hero-video';
+    if (isHero) this._heroVideoEl = video;
+    if (video._loopBound) return;
+    video._loopBound = true;
+    if (isHero) {
+      // The hero background clip is permanently silent and must never be
+      // stoppable by the user — always keep looping, muted, on every device.
+      video.muted = true;
+      video.volume = 0;
+      video.addEventListener('volumechange', () => {
+        if (!video.muted) { video.muted = true; video.volume = 0; }
+      });
+      const restart = () => { video.currentTime = 0; video.play().catch(() => {}); };
+      video.addEventListener('ended', restart);
+      video.addEventListener('pause', () => {
+        if (!document.hidden) video.play().catch(() => {});
+      });
+      video.addEventListener('stalled', restart);
+      video.addEventListener('error', restart);
+      video.play().catch(() => {});
+    } else {
+      // Demo mockup videos: silent by design — force mute permanently (some
+      // browsers/controls let a tap toggle it back on, so re-enforce every time).
+      video.muted = true;
+      video.volume = 0;
+      video.addEventListener('volumechange', () => {
+        if (!video.muted) { video.muted = true; video.volume = 0; }
+      });
+      // Respect the user's own play/pause — only recover from genuine playback
+      // failures (stall/error), never fight a deliberate pause.
+      const recover = () => { video.play().catch(() => {}); };
+      video.addEventListener('stalled', recover);
+      video.addEventListener('error', recover);
+      video.play().catch(() => {});
+    }
+  }
+  componentWillUnmount() {
+    if (this._concert) { this._concert.pause(); this._concert = null; }
+    if (this._heroObserver) { this._heroObserver.disconnect(); this._heroObserver = null; }
+  }
+  artworks = [
+    { title: 'Pineapple Haze', src: 'assets/play-pineapplehaze.jpg', size: '230px', anim: 'lp-drift1', dur: '14s', delay: '0s', x: '4%', y: '30px' },
+    { title: 'Far Far Away', src: 'assets/play-farfaraway.jpg', size: '190px', anim: 'lp-drift2', dur: '17s', delay: '-6s', x: '38%', y: '0px' },
+    { title: 'Space Dog', src: 'assets/play-spacedog.jpg', size: '250px', anim: 'lp-drift3', dur: '13s', delay: '-10s', x: '70%', y: '50px' },
+    { title: 'Falling in Space', src: 'assets/play-fallinginspace.jpg', size: '200px', anim: 'lp-drift4', dur: '18s', delay: '-4s', x: '12%', y: '450px' },
+    { title: 'Planet Cherry', src: 'assets/play-planetcherry.gif', size: '240px', anim: 'lp-drift5', dur: '15s', delay: '-12s', x: '42%', y: '500px' },
+    { title: 'Reflection', src: 'assets/play-reflection.gif', size: '210px', anim: 'lp-drift6', dur: '16s', delay: '-8s', x: '73%', y: '430px' },
+  ];
+  _askSuggestion(id, text) {
+    this.setState({ askedSuggestions: [...(this.state.askedSuggestions || []), id] });
+    this._sendChat(text);
+  }
+  async _sendChat(presetText) {
+    const text = (presetText !== undefined ? presetText : this.state.chatInput).trim();
+    if (!text || this.state.chatLoading) return;
+    const nextMessages = [...this.state.chatMessages, { role: 'user', content: text }];
+    this.setState({ chatMessages: nextMessages, chatInput: '', chatLoading: true });
+    try {
+      const name = (this.state.visitorName || '').trim().split(/\s+/)[0];
+      const system = name
+        ? this.chatSystemPrompt + '\n\nThe visitor you are talking to is named ' + name + '. Address them by name (e.g. "Great question, ' + name + '!") at least once near the start of your reply, and naturally elsewhere when it fits — never robotically in every sentence.'
+        : this.chatSystemPrompt;
+      const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 20000));
+      const fetchReply = fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ system, messages: nextMessages }),
+      }).then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || ('Request failed with status ' + res.status));
+        return data.reply;
+      });
+      const reply = await Promise.race([fetchReply, timeout]);
+      this.setState({ chatMessages: [...nextMessages, { role: 'assistant', content: reply }], chatLoading: false });
+    } catch (err) {
+      const msg = String(err && err.message || err || '');
+      const rateLimited = /rate|429|limit/i.test(msg);
+      const fallback = rateLimited
+        ? "I'm getting asked a lot of questions at once, give it about 30 seconds and try again!"
+        : "Sorry, that took too long or hit a snag — please try again in a moment, or use the 'Say hello' form.";
+      this.setState({ chatMessages: [...nextMessages, { role: 'assistant', content: fallback }], chatLoading: false });
+    }
+  }
+  _scrollToId(id) {
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+  renderVals() {
+    const ids = { executely: 'executely', locci: 'locci-box', mealprep: 'meal-prep-pal' };
+    const heroVideoRef = (el) => this._bindHeroVideo(el);
+    const art = this.state.activeArt === null ? null : this.artworks[this.state.activeArt];
+    const persona = this.state.persona;
+    const meta = persona ? this.personaMeta[persona] : null;
+    const order = meta ? meta.order : { executely: 1, locci: 2, mealprep: 3 };
+    const expanded = (key) => {
+      const override = this.state['detailOverride_' + key];
+      if (override !== undefined) return override;
+      return meta ? meta.expand : true;
+    };
+    const personaLandingId = { recruiter: 'about', founder: 'projects', designer: 'top' };
+    const choosePersona = (p) => {
+      this.setState({ persona: p, showPersonaModal: false, personaChosen: true }, () => {
+        if (p !== 'designer') this._scrollToId(personaLandingId[p]);
+      });
+    };
+    const firstName = (this.state.visitorName || '').trim().split(/\s+/)[0] || '';
+    return {
+      personaModalOpen: this.state.showPersonaModal,
+      personaStepName: this.state.personaStep === 'name',
+      personaStepPersona: this.state.personaStep === 'persona',
+      visitorName: this.state.visitorName,
+      visitorFirstName: firstName,
+      personaGreetingName: firstName ? (', ' + firstName) : '',
+      setVisitorName: (e) => this.setState({ visitorName: e.target.value }),
+      submitName: () => this.setState({ personaStep: 'persona' }),
+      submitNameOnEnter: (e) => { if (e.key === 'Enter') this.setState({ personaStep: 'persona' }); },
+      choosePersonaRecruiter: () => choosePersona('recruiter'),
+      choosePersonaFounder: () => choosePersona('founder'),
+      choosePersonaDesigner: () => choosePersona('designer'),
+      skipPersona: () => this.setState({ persona: null, showPersonaModal: false, personaChosen: true }),
+      reopenPersonaModal: () => this.setState({ showPersonaModal: true, personaStep: 'name' }),
+      personaPillLabel: meta ? meta.icon + ' ' + meta.label + ' view' : '\u2728 Personalize',
+      execOrder: order.executely,
+      locciOrder: order.locci,
+      mealprepOrder: order.mealprep,
+      execBadgeDisplay: meta && order.executely === 1 ? 'flex' : 'none',
+      locciBadgeDisplay: meta && order.locci === 1 ? 'flex' : 'none',
+      mealprepBadgeDisplay: meta && order.mealprep === 1 ? 'flex' : 'none',
+      execExpanded: expanded('executely'),
+      locciExpanded: expanded('locci'),
+      mealprepExpanded: expanded('mealprep'),
+      execStepsDisplay: expanded('executely') ? 'list-item' : 'none',
+      locciStepsDisplay: expanded('locci') ? 'list-item' : 'none',
+      mealprepStepsDisplay: expanded('mealprep') ? 'list-item' : 'none',
+      execToggleLabel: expanded('executely') ? 'Show fewer steps' : 'Show all 4 steps',
+      locciToggleLabel: expanded('locci') ? 'Show fewer steps' : 'Show all 4 steps',
+      mealprepToggleLabel: expanded('mealprep') ? 'Show fewer steps' : 'Show all 4 steps',
+      toggleExecDetail: () => this.setState({ detailOverride_executely: !expanded('executely') }),
+      toggleLocciDetail: () => this.setState({ detailOverride_locci: !expanded('locci') }),
+      toggleMealprepDetail: () => this.setState({ detailOverride_mealprep: !expanded('mealprep') }),
+      heroVideoRef,
+      showMobileNav: this.state.mobileNavOpen,
+      toggleMobileNav: () => this.setState({ mobileNavOpen: !this.state.mobileNavOpen }),
+      closeMobileNav: () => this.setState({ mobileNavOpen: false }),
+      hamTop: this.state.mobileNavOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+      hamBottom: this.state.mobileNavOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      hamMidOpacity: this.state.mobileNavOpen ? 0 : 1,
+      mockupVideoRef: (el) => this._bindHeroVideo(el),
+      locciVideoRef: (el) => this._bindHeroVideo(el),
+      preppalChatVideoRef: (el) => this._bindHeroVideo(el),
+      preppalVideoRef: (el) => this._bindHeroVideo(el),
+      togglePlay: (e) => this._togglePlay(e),
+      artworks: this.artworks,
+      concertIcon: this.state.concertPlaying ? '❚❚' : '▶',
+      concertLabel: this.state.concertPlaying ? 'Playing, click to pause' : 'Live music, click to play',
+      showConcert: this.state.concertPlaying,
+      toggleConcert: () => {
+        const opening = !this.state.concertPlaying;
+        if (opening) {
+          // Silence any other video's audio (e.g. an unmuted mockup demo) so only
+          // the concert clip plays sound; the hero loop keeps playing, just muted.
+          document.querySelectorAll('video').forEach((v) => { v.muted = true; });
+        }
+        this.setState({ concertPlaying: opening });
+      },
+      stopClickThrough: (e) => e.stopPropagation(),
+      chatOpen: this.state.chatOpen,
+      chatGreeting: firstName ? ("Hi " + firstName + "! Ask me anything about Leandra's experience, process, or projects.") : "Hi! Ask me anything about Leandra's experience, process, or projects.",
+      chatToggle: () => this.setState({ chatOpen: !this.state.chatOpen }),
+      chatMessages: this.state.chatMessages.map((m) => ({
+        content: m.content,
+        align: m.role === 'user' ? 'flex-end' : 'flex-start',
+        bg: m.role === 'user' ? '#B84A14' : '#EAE6F3',
+        color: m.role === 'user' ? '#FFFFFF' : '#1E1E1C',
+        radius: m.role === 'user' ? '14px 14px 4px 14px' : '14px 14px 14px 4px',
+      })),
+      chatInput: this.state.chatInput,
+      chatLoading: this.state.chatLoading,
+      setChatInput: (e) => this.setState({ chatInput: e.target.value }),
+      sendChatOnEnter: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this._sendChat(); } },
+      sendChat: () => this._sendChat(),
+      showSuggestions: true,
+      suggestion1: 'What projects has she worked on?',
+      suggestion2: "What's her design process like?",
+      suggestion3: 'Tell me more about Leandra',
+      showSuggestion1: !this.state.askedSuggestions?.includes(1),
+      showSuggestion2: !this.state.askedSuggestions?.includes(2),
+      showSuggestion3: !this.state.askedSuggestions?.includes(3),
+      askSuggestion1: () => this._askSuggestion(1, 'What projects has she worked on?'),
+      askSuggestion2: () => this._askSuggestion(2, "What's her design process like?"),
+      askSuggestion3: () => this._askSuggestion(3, 'Tell me more about Leandra'),
+      showContact: this.state.contactOpen,
+      contactName: this.state.cName,
+      contactEmail: this.state.cEmail,
+      contactMessage: this.state.cMsg,
+      contactSendLabel: this.state.cSent ? 'Opening your email app…' : 'Send message',
+      openContact: () => this.setState({ contactOpen: true, cSent: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      setContactName: (e) => this.setState({ cName: e.target.value }),
+      setContactEmail: (e) => this.setState({ cEmail: e.target.value }),
+      setContactMessage: (e) => this.setState({ cMsg: e.target.value }),
+      sendContact: () => {
+        const to = this.props.contactAddress ?? 'leandrastudios@gmail.com';
+        const subject = encodeURIComponent('Portfolio hello from ' + (this.state.cName || 'a visitor'));
+        const body = encodeURIComponent(this.state.cMsg + '\n\nFrom, ' + this.state.cName + (this.state.cEmail ? ' (' + this.state.cEmail + ')' : ''));
+        window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+        this.setState({ cSent: true });
+        setTimeout(() => this.setState({ contactOpen: false, cSent: false, cName: '', cEmail: '', cMsg: '' }), 1600);
+      },
+      showArt: !!art,
+      activeSrc: art ? art.src : '',
+      activeTitle: art ? art.title : '',
+      openArt: (e) => this.setState({ activeArt: Number(e.currentTarget.dataset.art) }),
+      closeArt: () => this.setState({ activeArt: null }),
+      showExecutely: this.state.active === 'executely',
+      showLocci: this.state.active === 'locci',
+      showMealPrep: this.state.active === 'mealprep',
+      openProject: (e) => {
+        const p = e.currentTarget.dataset.project;
+        this.setState({ active: p }, () => this._scrollToId(ids[p]));
+      },
+      closeProject: () => {
+        this.setState({ active: null }, () => this._scrollToId('projects'));
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
