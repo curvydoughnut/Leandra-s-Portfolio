@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leandrasportfolio.netlify.app/sitemap.xml
