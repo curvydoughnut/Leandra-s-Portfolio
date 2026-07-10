@@ -708,13 +708,20 @@
           <div onClick="{{ closeContact }}" style="width: 36px; height: 36px; border-radius: 50%; background: #EAE6F3; color: #5D4E8C; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer;">×</div>
         </div>
         <p style="margin: 10px 0 0; font-size: 15px; color: #C77B4E; line-height: 1.5;">Think I'm Cool? I’d love to hear from you. Drop a note; let's work together!</p>
-        <label style="margin-top: 26px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your name</label>
-        <input value="{{ contactName }}" onChange="{{ setContactName }}" placeholder="Jane Doe" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
-        <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your email</label>
-        <input value="{{ contactEmail }}" onChange="{{ setContactEmail }}" placeholder="jane@email.com" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
-        <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Message</label>
-        <textarea value="{{ contactMessage }}" onChange="{{ setContactMessage }}" placeholder="Hi Leandra, ..." rows="5" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none; resize: vertical;" style-focus="border-color: #B84A14;"></textarea>
-        <div onClick="{{ sendContact }}" style="margin-top: 28px; align-self: flex-start; font-size: 16px; font-weight: 500; color: #FFFFFF; background: #B84A14; cursor: pointer; padding: 14px 34px; border-radius: 999px;">{{ contactSendLabel }}</div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ sendContact }}" style="display: flex; flex-direction: column;">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="position: absolute; left: -9999px;"><label>Don't fill this out: <input name="bot-field" onChange="{{ setBotField }}"></label></p>
+          <label style="margin-top: 26px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your name</label>
+          <input name="name" value="{{ contactName }}" onChange="{{ setContactName }}" placeholder="Jane Doe" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
+          <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Your email</label>
+          <input name="email" type="email" value="{{ contactEmail }}" onChange="{{ setContactEmail }}" placeholder="jane@email.com" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none;" style-focus="border-color: #B84A14;">
+          <label style="margin-top: 20px; font-size: 13px; font-weight: 600; color: #5D4E8C; letter-spacing: .05em; text-transform: uppercase;">Message</label>
+          <textarea name="message" value="{{ contactMessage }}" onChange="{{ setContactMessage }}" placeholder="Hi Leandra, ..." rows="5" style="margin-top: 8px; font-family: 'Geist', sans-serif; font-size: 16px; color: #1E1E1C; padding: 13px 16px; border: 1.5px solid #EAE6F3; border-radius: 12px; outline: none; resize: vertical;" style-focus="border-color: #B84A14;"></textarea>
+          <button type="submit" disabled="{{ contactSending }}" style="margin-top: 28px; align-self: flex-start; font-size: 16px; font-weight: 500; color: #FFFFFF; background: #B84A14; cursor: pointer; padding: 14px 34px; border-radius: 999px; border: none; font-family: 'Geist', sans-serif;">{{ contactSendLabel }}</button>
+          <sc-if value="{{ contactError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 14px 0 0; font-size: 13px; color: #B3261E;">Something went wrong sending that — please try again, or email leandrastudios@gmail.com directly.</p>
+          </sc-if>
+        </form>
       </div>
     </div>
   </sc-if>
@@ -803,7 +810,7 @@
   }
 }">
 class Component extends DCLogic {
-  state = { active: null, activeArt: null, concertPlaying: false, contactOpen: false, cName: '', cEmail: '', cMsg: '', cSent: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, personaStep: 'name', visitorName: '', persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false };
+  state = { active: null, activeArt: null, concertPlaying: false, contactOpen: false, cName: '', cEmail: '', cMsg: '', cBotField: '', cSending: false, cSent: false, cError: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, personaStep: 'name', visitorName: '', persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false };
   chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Projects, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Projects. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question (including the \"Tell me more about Leandra\" suggestion), reproduce the ABOUT text below nearly verbatim — only light rewording to insert the visitor's name naturally, no summarizing or trimming — and stop there; do not close with a pointer sentence telling them to go check the About, Experience, or Projects sections.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She studied Graphic Design at Wood-Tobe Coburn and spent a year at Ringling College of Art and Design before launching her career as a Graphic Designer creating visual communication for brands. After realizing she wanted to solve real-world problems beyond static screens, she transitioned into UX/UI design, teaching herself through hackathons, YouTube, and connecting with other design professionals.\n\nToday she's passionate about solving problems with design and building exciting digital experiences. Her certifications include Enterprise Design Thinking and AI Fundamentals from IBM, plus UX/UI and Figma training from SkillUp. Outside of work, she's an anime enthusiast (loves Witch Hat Atelier, Jujutsu Kaisen, and The Apothecary Diaries), enjoys museum exhibits, writes short stories, goes to concerts across many genres, and just generally loves having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at Spectral Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.";
   personaMeta = {
     recruiter: { label: 'Recruiter', icon: '\u{1F50D}', order: { executely: 1, locci: 2, mealprep: 3 }, expand: false },
@@ -1018,19 +1025,36 @@ class Component extends DCLogic {
       contactName: this.state.cName,
       contactEmail: this.state.cEmail,
       contactMessage: this.state.cMsg,
-      contactSendLabel: this.state.cSent ? 'Opening your email app…' : 'Send message',
-      openContact: () => this.setState({ contactOpen: true, cSent: false }),
+      contactSending: this.state.cSending,
+      contactError: this.state.cError,
+      contactSendLabel: this.state.cSending ? 'Sending…' : this.state.cSent ? 'Message sent!' : 'Send message',
+      openContact: () => this.setState({ contactOpen: true, cSent: false, cError: false }),
       closeContact: () => this.setState({ contactOpen: false }),
       setContactName: (e) => this.setState({ cName: e.target.value }),
       setContactEmail: (e) => this.setState({ cEmail: e.target.value }),
       setContactMessage: (e) => this.setState({ cMsg: e.target.value }),
-      sendContact: () => {
-        const to = this.props.contactAddress ?? 'leandrastudios@gmail.com';
-        const subject = encodeURIComponent('Portfolio hello from ' + (this.state.cName || 'a visitor'));
-        const body = encodeURIComponent(this.state.cMsg + '\n\nFrom, ' + this.state.cName + (this.state.cEmail ? ' (' + this.state.cEmail + ')' : ''));
-        window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
-        this.setState({ cSent: true });
-        setTimeout(() => this.setState({ contactOpen: false, cSent: false, cName: '', cEmail: '', cMsg: '' }), 1600);
+      setBotField: (e) => this.setState({ cBotField: e.target.value }),
+      sendContact: (e) => {
+        e.preventDefault();
+        if (this.state.cBotField) return;
+        this.setState({ cSending: true, cError: false });
+        const body = new URLSearchParams({
+          'form-name': 'contact',
+          name: this.state.cName,
+          email: this.state.cEmail,
+          message: this.state.cMsg,
+        }).toString();
+        fetch('/__forms.html', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        }).then((res) => {
+          if (!res.ok) throw new Error('Form submission failed with status ' + res.status);
+          this.setState({ cSending: false, cSent: true });
+          setTimeout(() => this.setState({ contactOpen: false, cSent: false, cName: '', cEmail: '', cMsg: '' }), 1600);
+        }).catch(() => {
+          this.setState({ cSending: false, cError: true });
+        });
       },
       showArt: !!art,
       activeSrc: art ? art.src : '',
