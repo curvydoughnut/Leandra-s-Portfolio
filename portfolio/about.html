@@ -31,6 +31,7 @@
 <style>
   html { scroll-behavior: smooth; }
   html, body { margin: 0; padding: 0; background: #FFFFFF; overflow-x: hidden; }
+  a, button, [role="button"], input[type="submit"], input[type="button"], select, label, [onclick] { cursor: pointer; }
   a { color: #B84A14; }
   a:hover { color: #93390D; }
   @media (max-width: 640px) {
@@ -45,6 +46,7 @@
     .lp-hamburger { display: flex !important; }
   }
   a.lp-nav-link:hover { color: #B84A14 !important; }
+  .lp-hello-btn:hover, .lp-hello-btn:active { background: #FFFFFF !important; color: #1E1E1C !important; }
   .lp-gallery-card { will-change: transform, filter, opacity; cursor: pointer; }
   @media (max-width: 640px) {
     .lp-gallery-card { width: 220px !important; }
@@ -66,7 +68,7 @@
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
-        <a href="index.html" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px;">Say hello</a>
+        <a href="index.html" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
           <div id="ham-mid" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: opacity .2s ease;"></div>
@@ -283,15 +285,16 @@
 <script>
 (function () {
   var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   var isNarrow = window.innerWidth < 768 || window.innerHeight > window.innerWidth;
-  if (isTouch || isNarrow) return;
+  if (isTouch || isCoarsePointer || isNarrow) return;
 
   var cursor = document.getElementById('smooth-cursor');
   if (!cursor) return;
   var fillPath = document.getElementById('cursor-fill');
 
   var styleEl = document.createElement('style');
-  styleEl.textContent = '* { cursor: none !important; }';
+  styleEl.textContent = '* { cursor: none !important; } @media (pointer: coarse) { #smooth-cursor { display: none !important; } }';
   document.head.appendChild(styleEl);
   cursor.style.display = 'block';
 
@@ -299,6 +302,7 @@
   var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
   var currentState = 'default';
   var stateScale = 1;
+  var inViewport = true;
 
   function isInteractive(el) {
     return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
@@ -307,12 +311,15 @@
     var ctrl = el && el.closest('button, input, textarea, select');
     return !!(ctrl && ctrl.disabled);
   }
+  function applyOpacity() {
+    cursor.style.opacity = !inViewport ? '0' : (currentState === 'disabled' ? '0.6' : '1');
+  }
   function setState(next) {
     if (next === currentState) return;
     currentState = next;
     stateScale = STATE_SCALE[next];
     fillPath.setAttribute('fill', COLORS[next]);
-    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+    applyOpacity();
   }
 
   var mouseX = -100, mouseY = -100;
@@ -330,6 +337,7 @@
   window.addEventListener('mousemove', function (e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!inViewport) { inViewport = true; applyOpacity(); }
     var now = Date.now();
     var dt = now - lastTime || 16;
     var vx = (mouseX - lastX) / dt;
@@ -342,22 +350,40 @@
       scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
     }
     lastX = mouseX; lastY = mouseY; lastTime = now;
+  }, { passive: true });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
+  window.addEventListener('mouseup', function () { targetScale = 1; });
+  document.documentElement.addEventListener('mouseleave', function () {
+    targetScale = 1;
+    inViewport = false;
+    applyOpacity();
+  });
+  document.documentElement.addEventListener('mouseenter', function () {
+    inViewport = true;
+    applyOpacity();
+  });
+  window.addEventListener('blur', function () {
+    inViewport = false;
+    applyOpacity();
+  });
 
+  // Hit-testing (elementFromPoint + closest) is throttled to once per
+  // animation frame rather than run on every raw mousemove event, so
+  // hover-state detection never blocks the position update / causes jank.
+  function updateHoverState() {
     var target = document.elementFromPoint(mouseX, mouseY);
     if (isDisabled(target)) setState('disabled');
     else if (isInteractive(target)) setState('hover');
     else setState('default');
-  });
-  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
-  window.addEventListener('mouseup', function () { targetScale = 1; });
-  window.addEventListener('mouseleave', function () { targetScale = 1; });
+  }
 
   function animate() {
-    curX += (mouseX - curX) * 0.2;
-    curY += (mouseY - curY) * 0.2;
-    curRotation = lerpAngle(curRotation, targetRotation, 0.15);
-    curScale += (targetScale * stateScale - curScale) * 0.2;
-    cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    curX += (mouseX - curX) * 0.35;
+    curY += (mouseY - curY) * 0.35;
+    curRotation = lerpAngle(curRotation, targetRotation, 0.25);
+    curScale += (targetScale * stateScale - curScale) * 0.3;
+    cursor.style.transform = 'translate3d(' + (curX - 17) + 'px, ' + (curY - 18) + 'px, 0) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    updateHoverState();
     requestAnimationFrame(animate);
   }
   animate();

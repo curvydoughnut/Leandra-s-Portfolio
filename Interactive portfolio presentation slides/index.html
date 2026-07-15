@@ -39,6 +39,7 @@
   header#top { position: relative; }
   @keyframes lp-scrollhint { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
   html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  a, button, [role="button"], input[type="submit"], input[type="button"], select, label, [onclick] { cursor: pointer; }
   @keyframes lp-drift1 { 0%,100% { transform: translate(0,0) rotate(0deg); } 20% { transform: translate(70px,-55px) rotate(3deg); } 45% { transform: translate(-45px,-90px) rotate(-2deg); } 70% { transform: translate(-85px,25px) rotate(2deg); } 88% { transform: translate(35px,60px) rotate(-3deg); } }
   @keyframes lp-drift2 { 0%,100% { transform: translate(0,0) rotate(0deg); } 18% { transform: translate(-60px,45px) rotate(-3deg); } 40% { transform: translate(50px,85px) rotate(2deg); } 62% { transform: translate(95px,-30px) rotate(4deg); } 85% { transform: translate(-30px,-70px) rotate(-2deg); } }
   @keyframes lp-drift3 { 0%,100% { transform: translate(0,0) rotate(0deg); } 25% { transform: translate(40px,75px) rotate(2deg); } 50% { transform: translate(-80px,40px) rotate(-4deg); } 72% { transform: translate(-40px,-80px) rotate(3deg); } 90% { transform: translate(60px,-35px) rotate(-2deg); } }
@@ -65,6 +66,7 @@
   .lp-play-blob { padding: 0 !important; }
   @media (max-width: 560px) {
     .lp-grid4 { grid-template-columns: 1fr !important; }
+    .lp-grid2 { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 480px) {
     .lp-kv { grid-template-columns: 1fr !important; gap: 2px !important; }
@@ -75,6 +77,7 @@
     .lp-hamburger { display: flex !important; }
   }
   a.lp-nav-link:hover { color: #B84A14 !important; }
+  .lp-hello-btn:hover, .lp-hello-btn:active { background: #FFFFFF !important; color: #1E1E1C !important; }
   /* Playground canvas keeps its fixed 1216x860 design coordinate space at every
      breakpoint (so the artworks' percentage/pixel positions never recompute
      against a narrower box) and is scaled as a whole unit to exactly fill the
@@ -133,14 +136,16 @@
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 18px;">
         <a href="#top" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
-        <div onClick="{{ reopenPersonaModal }}" title="Change your tailored view" class="lp-persona-pill" style="cursor: pointer; font-size: 12px; font-weight: 600; color: #5D4E8C; background: #EAE6F3; padding: 6px 14px; border-radius: 999px; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;">{{ personaPillLabel }}</div>
+        <sc-if value="{{ showPersonaPill }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ reopenPersonaModal }}" title="Change your tailored view" class="lp-persona-pill" style="cursor: pointer; font-size: 12px; font-weight: 600; color: #5D4E8C; background: #EAE6F3; padding: 6px 14px; border-radius: 999px; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;">{{ personaPillLabel }}</div>
+        </sc-if>
       </div>
       <div style="display: flex; align-items: center; gap: 24px;">
         <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
-        <div onClick="{{ openContact }}" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; cursor: pointer; padding: 10px 22px; border-radius: 999px;">Say hello</div>
+        <div onClick="{{ openContact }}" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; cursor: pointer; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</div>
         <div onClick="{{ toggleMobileNav }}" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; transform: {{ hamTop }};"></div>
           <div style="height: 2px; background: #1E1E1C; border-radius: 2px; opacity: {{ hamMidOpacity }};"></div>
@@ -179,51 +184,57 @@
   <section id="projects" data-screen-label="Selected Products" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
     <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
       <h2 style="margin: 0; font-size: 40px; font-weight: 500; color: #B84A14;">Selected Products</h2>
-      <div class="lp-grid4" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 36px;">
-        <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
-            <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ execBadgeDisplay }}; align-items: center;">Recommended for you</div>
+      <div class="lp-grid" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+        <div>
+          <div class="lp-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+            <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
+                <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ execBadgeDisplay }}; align-items: center;">Recommended for you</div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">User Research Based Design</div>
+              </div>
+            </a>
+            <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
+                <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ behaviorBadgeDisplay }}; align-items: center;">Recommended for you</div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Product Creation and Front End Implementation</div>
+              </div>
+            </a>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
-            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Executely, 2024</div>
+          <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View projects</p>
+        </div>
+        <div>
+          <div class="lp-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+            <a href="locci-box.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Locci Box case study">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
+                <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ locciBadgeDisplay }}; align-items: center;">Recommended for you</div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Product Shipment</div>
+              </div>
+            </a>
+            <a href="meal-prep-pal.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Meal Prep Pal case study">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
+                <img src="assets/laptop-preppal-hero.png" alt="Meal Prep Pal landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ mealprepBadgeDisplay }}; align-items: center;">Recommended for you</div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Generative AI ChatBot Creation and Implementation</div>
+              </div>
+            </a>
           </div>
-        </a>
-        <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ behaviorBadgeDisplay }}; align-items: center;">Recommended for you</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
-            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">SPCTRL Cloud, 2O25</div>
-          </div>
-        </a>
-        <a href="locci-box.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Locci Box case study">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
-            <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ locciBadgeDisplay }}; align-items: center;">Recommended for you</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
-            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">LabLab.AI, 2026</div>
-          </div>
-        </a>
-        <a href="meal-prep-pal.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Meal Prep Pal case study">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="assets/laptop-preppal-hero.png" alt="Meal Prep Pal landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-            <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ mealprepBadgeDisplay }}; align-items: center;">Recommended for you</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 2px;">
-            <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
-            <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">AI Tinkerers, 2026</div>
-          </div>
-        </a>
-      </div>
-      <div class="lp-grid" style="margin-top: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
-        <p style="margin: 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View projects</p>
-        <p style="margin: 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View case studies</p>
+          <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View case studies</p>
+        </div>
       </div>
     </div>
   </section>
@@ -633,7 +644,8 @@ class Component extends DCLogic {
       choosePersonaDesigner: () => choosePersona('designer'),
       skipPersona: () => this.setState({ persona: null, showPersonaModal: false, personaChosen: true }),
       reopenPersonaModal: () => this.setState({ showPersonaModal: true }),
-      personaPillLabel: meta ? meta.icon + ' ' + meta.label + ' view' : '\u2728 Personalize',
+      showPersonaPill: !!meta,
+      personaPillLabel: meta ? meta.icon + ' ' + meta.label : '',
       execBadgeDisplay: meta && order.executely === 1 ? 'flex' : 'none',
       locciBadgeDisplay: meta && order.locci === 1 ? 'flex' : 'none',
       mealprepBadgeDisplay: meta && order.mealprep === 1 ? 'flex' : 'none',
@@ -720,15 +732,16 @@ class Component extends DCLogic {
 <script>
 (function () {
   var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   var isNarrow = window.innerWidth < 768 || window.innerHeight > window.innerWidth;
-  if (isTouch || isNarrow) return;
+  if (isTouch || isCoarsePointer || isNarrow) return;
 
   var cursor = document.getElementById('smooth-cursor');
   if (!cursor) return;
   var fillPath = document.getElementById('cursor-fill');
 
   var styleEl = document.createElement('style');
-  styleEl.textContent = '* { cursor: none !important; }';
+  styleEl.textContent = '* { cursor: none !important; } @media (pointer: coarse) { #smooth-cursor { display: none !important; } }';
   document.head.appendChild(styleEl);
   cursor.style.display = 'block';
 
@@ -736,6 +749,7 @@ class Component extends DCLogic {
   var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
   var currentState = 'default';
   var stateScale = 1;
+  var inViewport = true;
 
   function isInteractive(el) {
     return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
@@ -744,12 +758,15 @@ class Component extends DCLogic {
     var ctrl = el && el.closest('button, input, textarea, select');
     return !!(ctrl && ctrl.disabled);
   }
+  function applyOpacity() {
+    cursor.style.opacity = !inViewport ? '0' : (currentState === 'disabled' ? '0.6' : '1');
+  }
   function setState(next) {
     if (next === currentState) return;
     currentState = next;
     stateScale = STATE_SCALE[next];
     fillPath.setAttribute('fill', COLORS[next]);
-    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+    applyOpacity();
   }
 
   var mouseX = -100, mouseY = -100;
@@ -767,6 +784,7 @@ class Component extends DCLogic {
   window.addEventListener('mousemove', function (e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!inViewport) { inViewport = true; applyOpacity(); }
     var now = Date.now();
     var dt = now - lastTime || 16;
     var vx = (mouseX - lastX) / dt;
@@ -779,22 +797,40 @@ class Component extends DCLogic {
       scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
     }
     lastX = mouseX; lastY = mouseY; lastTime = now;
+  }, { passive: true });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
+  window.addEventListener('mouseup', function () { targetScale = 1; });
+  document.documentElement.addEventListener('mouseleave', function () {
+    targetScale = 1;
+    inViewport = false;
+    applyOpacity();
+  });
+  document.documentElement.addEventListener('mouseenter', function () {
+    inViewport = true;
+    applyOpacity();
+  });
+  window.addEventListener('blur', function () {
+    inViewport = false;
+    applyOpacity();
+  });
 
+  // Hit-testing (elementFromPoint + closest) is throttled to once per
+  // animation frame rather than run on every raw mousemove event, so
+  // hover-state detection never blocks the position update / causes jank.
+  function updateHoverState() {
     var target = document.elementFromPoint(mouseX, mouseY);
     if (isDisabled(target)) setState('disabled');
     else if (isInteractive(target)) setState('hover');
     else setState('default');
-  });
-  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
-  window.addEventListener('mouseup', function () { targetScale = 1; });
-  window.addEventListener('mouseleave', function () { targetScale = 1; });
+  }
 
   function animate() {
-    curX += (mouseX - curX) * 0.2;
-    curY += (mouseY - curY) * 0.2;
-    curRotation = lerpAngle(curRotation, targetRotation, 0.15);
-    curScale += (targetScale * stateScale - curScale) * 0.2;
-    cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    curX += (mouseX - curX) * 0.35;
+    curY += (mouseY - curY) * 0.35;
+    curRotation = lerpAngle(curRotation, targetRotation, 0.25);
+    curScale += (targetScale * stateScale - curScale) * 0.3;
+    cursor.style.transform = 'translate3d(' + (curX - 17) + 'px, ' + (curY - 18) + 'px, 0) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    updateHoverState();
     requestAnimationFrame(animate);
   }
   animate();
