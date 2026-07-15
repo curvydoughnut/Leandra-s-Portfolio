@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Executely | Leandra Pearson</title>
+<meta name="description" content="Executely case study: an AI App Center built to help startup teams move from idea to execution faster, by Leandra Pearson, Creative Product Designer.">
+<meta name="author" content="Leandra Pearson">
+<link rel="canonical" href="https://leandrasportfolio.netlify.app/executely.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leandrasportfolio.netlify.app/executely.html">
+<meta property="og:site_name" content="Leandra Pearson">
+<meta property="og:title" content="Executely | Leandra Pearson">
+<meta property="og:description" content="Executely case study: an AI App Center built to help startup teams move from idea to execution faster, by Leandra Pearson, Creative Product Designer.">
+<meta property="og:image" content="https://leandrasportfolio.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Executely | Leandra Pearson">
+<meta name="twitter:description" content="Executely case study: an AI App Center built to help startup teams move from idea to execution faster, by Leandra Pearson, Creative Product Designer.">
+<meta name="twitter:image" content="https://leandrasportfolio.netlify.app/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; overflow-x: hidden; }
+  a { color: #B84A14; }
+  a:hover { color: #93390D; }
+  @media (max-width: 640px) {
+    section > div, footer > div { padding-left: 20px !important; padding-right: 20px !important; }
+    nav > div { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .lp-footer-bar { flex-direction: column !important; gap: 10px !important; text-align: center !important; }
+  }
+  @media (max-width: 760px) {
+    .lp-nav-link { display: none !important; }
+    .lp-hamburger { display: flex !important; }
+  }
+  a.lp-nav-link:hover { color: #B84A14 !important; }
+  @media (max-width: 900px) {
+    .lp-cs-grid { grid-template-columns: 1fr !important; }
+    .lp-cs-grid4 { grid-template-columns: 1fr 1fr !important; }
+    .lp-cs-grid3 { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div style="font-family: 'Geist', sans-serif; background: #FFFFFF; min-height: 100vh;">
+
+  <!-- Top green accent -->
+  <div style="height: 8px; background: #5D4E8C;"></div>
+
+  <!-- Nav -->
+  <nav data-screen-label="Nav" style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
+        <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
+        <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
+        <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="index.html" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px;">Say hello</a>
+        <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
+          <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
+          <div id="ham-mid" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: opacity .2s ease;"></div>
+          <div id="ham-bottom" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
+      <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
+      <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
+      <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
+    </div>
+  </nav>
+
+  <!-- Executely case study -->
+  <section id="executely" data-screen-label="Case study Executely" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <a href="index.html#projects" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</a>
+      <div class="lp-cs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <img src="assets/logo-executely.png" alt="Executely logo" style="width: 72px; height: 72px; object-fit: contain;">
+          <h1 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Executely</h1>
+          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
+            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
+            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Startup teams often struggle to move from idea to execution due to a lack of clear guidance and overwhelming tool choices.</p>
+          </div>
+          <div class="lp-cs-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Specific goals</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Increase user retention by creating a new feature, creating consistent branding.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Reduced production cycle by 30%. Enhanced customer retention &amp; satisfaction by 25%.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+              <img src="./laptop-mrdk018j.png" alt="Executely on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+              <video class="lp-mockup-video" controls playsinline muted loop autoplay preload="metadata" poster="assets/screen-laptop-mrdk018j.png" src="assets/executely-demo.mp4" onclick="togglePlay(event)" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Executely</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">User Experience Designer</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O24</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h2>
+          <p style="margin: 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Startup teams struggle to move from idea to execution because existing tools feel fragmented, overly complex, and visually cold. Without clear guidance or curated resources, early stage workflows stall exactly when clarity and speed matter most.</p>
+        </div>
+        <img src="assets/persona-card.png" alt="User persona: Cindy Savvy" style="width: 100%; height: auto; object-fit: contain; border-radius: 16px;">
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;">
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+          <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+            <img src="./laptop-mrdki3st.png" alt="AI Resource Center walkthrough (GIF)" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/executely-gif.gif" alt="AI Resource Center walkthrough animation" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover;">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h2>
+          <ol id="exec-steps" style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Slowed down and listened.</strong> <span style="color: #C77B4E;">Studied the real friction users were feeling before reaching for a redesign.</span></li>
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Studied proven dashboard patterns.</strong> <span style="color: #C77B4E;">Built on frameworks people already understood rather than reinventing the wheel.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Expanded from a popup to a full-page system.</strong> <span style="color: #C77B4E;">Immediately made navigation feel less overwhelming.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Leaned into a warmer dark themed interface.</strong> <span style="color: #C77B4E;">Inspired by Apple and Shopify so the platform felt inviting, not intimidating.</span></li>
+          </ol>
+          <div onclick="toggleSteps('exec-steps', this)" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">Show fewer steps</div>
+          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">The result was a scalable AI Resource Center that met users where they already were, both mentally and visually. By leaning into established patterns and refined aesthetics shaped by products like ChatGPT and modern productivity tools, the platform felt immediately familiar without sacrificing function.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
+        <h2 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the problems/pain points</h2>
+        <div class="lp-cs-grid" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
+            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">25%</div>
+            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Increase in customer satisfaction driven by user insights and iterative qualitative testing.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
+            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">30%</div>
+            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Reduction in production cycle issues through close collaboration across design and product teams.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">Project timeline</h2>
+        <div class="lp-cs-grid4" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 26px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #8F7BC4;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">User Research &amp; Journey</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">1 week</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #F2C230;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Ideation</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">2 weeks</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #B84A14;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Low, Mid, &amp; High Fidelity Creation</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 8px; border-radius: 4px; background: #F5A9B8;"></div>
+            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Testing &amp; Re-Iteration Phase</div>
+            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+          <img src="./laptop-mrdkfaum.png" alt="AI App Center on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+          <video class="lp-mockup-video" controls playsinline muted loop autoplay preload="metadata" poster="assets/screen-laptop-mrdkfaum.png" src="assets/executely-demo.mp4" onclick="togglePlay(event)" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Feature</div>
+          <h2 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">AI App Center</h2>
+          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
+          <a href="https://www.figma.com/proto/slIfqs4DI3ItNNdHrOqboB/AI-Resource-Center---Notification-Medium-Fidelity?node-id=29-5&amp;p=f&amp;viewport=216%2C476%2C0.06&amp;t=NlY9ySTtsqfu1dW2-1&amp;scaling=contain&amp;content-scaling=fixed&amp;starting-point-node-id=29%3A5&amp;page-id=29%3A2" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
+            <span style="font-size: 16px;">▷</span>
+            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / footer -->
+  <footer id="contact" data-screen-label="Contact" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 110px 32px 90px; display: flex; flex-direction: column; align-items: center;">
+      <img src="assets/portrait-leandra.png" alt="Leandra Pearson" style="width: 260px; height: 260px; border-radius: 50%; object-fit: cover;">
+      <div style="margin-top: 34px; display: flex; align-items: baseline; gap: 14px;">
+        <span style="font-size: 40px; font-weight: 500; color: #B84A14;">Hello! I’m</span>
+        <span style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #B84A14;">Leandra.</span>
+      </div>
+      <div style="margin-top: 12px; font-size: 22px; font-weight: 400; color: #B84A14;">Product designer based in Atlanta</div>
+      <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
+        <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
+        <span style="text-decoration: underline;">Connect on LinkedIn</span>
+      </a>
+    </div>
+    <div style="border-top: 1px solid #F3E7E0;">
+      <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 14px; color: #5D4E8C;">Leandra Pearson · Product Designer</div>
+        <a href="index.html" style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Back to home ↑</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggleMobileNav() {
+    const menu = document.getElementById('mobile-nav');
+    const top = document.getElementById('ham-top');
+    const mid = document.getElementById('ham-mid');
+    const bottom = document.getElementById('ham-bottom');
+    const opening = menu.style.display !== 'flex';
+    menu.style.display = opening ? 'flex' : 'none';
+    top.style.transform = opening ? 'translateY(7px) rotate(45deg)' : 'none';
+    mid.style.opacity = opening ? '0' : '1';
+    bottom.style.transform = opening ? 'translateY(-7px) rotate(-45deg)' : 'none';
+  }
+  function togglePlay(e) {
+    const video = e.currentTarget;
+    if (video.paused) video.play(); else video.pause();
+  }
+  function toggleSteps(listId, labelEl) {
+    const list = document.getElementById(listId);
+    const extras = list.querySelectorAll('.lp-extra-step');
+    const showing = extras[0].style.display !== 'none';
+    extras.forEach(function (li) { li.style.display = showing ? 'none' : 'list-item'; });
+    labelEl.textContent = showing ? 'Show all ' + list.children.length + ' steps' : 'Show fewer steps';
+  }
+  document.querySelectorAll('.lp-mockup-video').forEach(function (video) {
+    video.muted = true;
+    video.volume = 0;
+    video.addEventListener('volumechange', function () {
+      if (!video.muted) { video.muted = true; video.volume = 0; }
+    });
+    var recover = function () { video.play().catch(function () {}); };
+    video.addEventListener('stalled', recover);
+    video.addEventListener('error', recover);
+    video.play().catch(function () {});
+  });
+</script>
+
+<!-- Smooth cursor effect (desktop only) -->
+<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none; transition: opacity .15s ease;">
+  <svg width="100%" height="100%" viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="cursor-fill" d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C" style="transition: fill .15s ease;"/>
+    <path d="M43.7146 40.6933L28.5431 6.34306C27.3556 3.65428 23.5772 3.69516 22.3668 6.32755L6.57226 40.6778C5.3134 43.4156 7.97238 46.298 10.803 45.2549L24.7662 40.109C25.0221 40.0147 25.2999 40.0156 25.5494 40.1082L39.4193 45.254C42.2261 46.2953 44.9254 43.4347 43.7146 40.6933Z" stroke="#FFFFFF" stroke-width="2.25825"/>
+  </svg>
+</div>
+<script>
+(function () {
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var isNarrow = window.innerWidth < 768 || window.innerHeight > window.innerWidth;
+  if (isTouch || isNarrow) return;
+
+  var cursor = document.getElementById('smooth-cursor');
+  if (!cursor) return;
+  var fillPath = document.getElementById('cursor-fill');
+
+  var styleEl = document.createElement('style');
+  styleEl.textContent = '* { cursor: none !important; }';
+  document.head.appendChild(styleEl);
+  cursor.style.display = 'block';
+
+  var COLORS = { default: '#1E1E1C', hover: '#B84A14', disabled: '#9AA0B8' };
+  var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
+  var currentState = 'default';
+  var stateScale = 1;
+
+  function isInteractive(el) {
+    return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
+  }
+  function isDisabled(el) {
+    var ctrl = el && el.closest('button, input, textarea, select');
+    return !!(ctrl && ctrl.disabled);
+  }
+  function setState(next) {
+    if (next === currentState) return;
+    currentState = next;
+    stateScale = STATE_SCALE[next];
+    fillPath.setAttribute('fill', COLORS[next]);
+    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+  }
+
+  var mouseX = -100, mouseY = -100;
+  var curX = -100, curY = -100;
+  var curRotation = 0, targetRotation = 0;
+  var curScale = 1, targetScale = 1;
+  var lastX = 0, lastY = 0, lastTime = Date.now();
+  var scaleTimeout = null;
+
+  function lerpAngle(a, b, t) {
+    var diff = ((b - a + 180) % 360 + 360) % 360 - 180;
+    return a + diff * t;
+  }
+
+  window.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    var now = Date.now();
+    var dt = now - lastTime || 16;
+    var vx = (mouseX - lastX) / dt;
+    var vy = (mouseY - lastY) / dt;
+    var speed = Math.hypot(vx, vy);
+    if (speed > 0.1) {
+      targetRotation = Math.atan2(vy, vx) * (180 / Math.PI) + 90;
+      targetScale = 0.95;
+      clearTimeout(scaleTimeout);
+      scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
+    }
+    lastX = mouseX; lastY = mouseY; lastTime = now;
+
+    var target = document.elementFromPoint(mouseX, mouseY);
+    if (isDisabled(target)) setState('disabled');
+    else if (isInteractive(target)) setState('hover');
+    else setState('default');
+  });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
+  window.addEventListener('mouseup', function () { targetScale = 1; });
+  window.addEventListener('mouseleave', function () { targetScale = 1; });
+
+  function animate() {
+    curX += (mouseX - curX) * 0.2;
+    curY += (mouseY - curY) * 0.2;
+    curRotation = lerpAngle(curRotation, targetRotation, 0.15);
+    curScale += (targetScale * stateScale - curScale) * 0.2;
+    cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>

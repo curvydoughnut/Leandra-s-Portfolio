@@ -44,6 +44,7 @@
     .lp-nav-link { display: none !important; }
     .lp-hamburger { display: flex !important; }
   }
+  a.lp-nav-link:hover { color: #B84A14 !important; }
   .lp-gallery-card { will-change: transform, filter, opacity; cursor: pointer; }
   @media (max-width: 640px) {
     .lp-gallery-card { width: 220px !important; }
@@ -63,7 +64,7 @@
       <div style="display: flex; align-items: center; gap: 24px;">
         <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
-        <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Projects</a>
+        <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
         <a href="index.html" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
@@ -76,7 +77,7 @@
     <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
       <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
-      <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Projects</a>
+      <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
       <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
       <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
     </div>
@@ -273,9 +274,9 @@
 </script>
 
 <!-- Smooth cursor effect (desktop only) -->
-<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none;">
+<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none; transition: opacity .15s ease;">
   <svg width="100%" height="100%" viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C"/>
+    <path id="cursor-fill" d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C" style="transition: fill .15s ease;"/>
     <path d="M43.7146 40.6933L28.5431 6.34306C27.3556 3.65428 23.5772 3.69516 22.3668 6.32755L6.57226 40.6778C5.3134 43.4156 7.97238 46.298 10.803 45.2549L24.7662 40.109C25.0221 40.0147 25.2999 40.0156 25.5494 40.1082L39.4193 45.254C42.2261 46.2953 44.9254 43.4347 43.7146 40.6933Z" stroke="#FFFFFF" stroke-width="2.25825"/>
   </svg>
 </div>
@@ -287,11 +288,32 @@
 
   var cursor = document.getElementById('smooth-cursor');
   if (!cursor) return;
+  var fillPath = document.getElementById('cursor-fill');
 
   var styleEl = document.createElement('style');
   styleEl.textContent = '* { cursor: none !important; }';
   document.head.appendChild(styleEl);
   cursor.style.display = 'block';
+
+  var COLORS = { default: '#1E1E1C', hover: '#B84A14', disabled: '#9AA0B8' };
+  var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
+  var currentState = 'default';
+  var stateScale = 1;
+
+  function isInteractive(el) {
+    return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
+  }
+  function isDisabled(el) {
+    var ctrl = el && el.closest('button, input, textarea, select');
+    return !!(ctrl && ctrl.disabled);
+  }
+  function setState(next) {
+    if (next === currentState) return;
+    currentState = next;
+    stateScale = STATE_SCALE[next];
+    fillPath.setAttribute('fill', COLORS[next]);
+    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+  }
 
   var mouseX = -100, mouseY = -100;
   var curX = -100, curY = -100;
@@ -320,8 +342,13 @@
       scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
     }
     lastX = mouseX; lastY = mouseY; lastTime = now;
+
+    var target = document.elementFromPoint(mouseX, mouseY);
+    if (isDisabled(target)) setState('disabled');
+    else if (isInteractive(target)) setState('hover');
+    else setState('default');
   });
-  window.addEventListener('mousedown', function () { targetScale = 0.7; });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
   window.addEventListener('mouseup', function () { targetScale = 1; });
   window.addEventListener('mouseleave', function () { targetScale = 1; });
 
@@ -329,7 +356,7 @@
     curX += (mouseX - curX) * 0.2;
     curY += (mouseY - curY) * 0.2;
     curRotation = lerpAngle(curRotation, targetRotation, 0.15);
-    curScale += (targetScale - curScale) * 0.2;
+    curScale += (targetScale * stateScale - curScale) * 0.2;
     cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
     requestAnimationFrame(animate);
   }

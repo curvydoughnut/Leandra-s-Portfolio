@@ -74,6 +74,7 @@
     .lp-nav-link { display: none !important; }
     .lp-hamburger { display: flex !important; }
   }
+  a.lp-nav-link:hover { color: #B84A14 !important; }
   /* Playground canvas keeps its fixed 1216x860 design coordinate space at every
      breakpoint (so the artworks' percentage/pixel positions never recompute
      against a narrower box) and is scaled as a whole unit to exactly fill the
@@ -115,24 +116,14 @@
       <div style="position: relative; width: 100%; max-width: 360px; background: #FFFFFF; border-radius: 18px; padding: 32px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.28); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
         <div onClick="{{ skipPersona }}" title="Skip" style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(0,0,0,.5); font-size: 13px;">✕</div>
 
-        <sc-if value="{{ personaStepName }}" hint-placeholder-val="{{ true }}">
-          <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Hi! What's your name?</div>
-          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">So I can tailor things just for you.</div>
-          <input value="{{ visitorName }}" onChange="{{ setVisitorName }}" onKeyDown="{{ submitNameOnEnter }}" placeholder="Your name…" style="width: 100%; box-sizing: border-box; margin-top: 4px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #E0DCEA; font-size: 14px; color: #1E1E1C; font-family: 'Geist', sans-serif;">
-          <div onClick="{{ submitName }}" style="width: 100%; box-sizing: border-box; cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 14px; font-weight: 600; color: #FFFFFF;">Continue →</div>
-          <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer;">Skip! Just show me the site</div>
-        </sc-if>
-
-        <sc-if value="{{ personaStepPersona }}" hint-placeholder-val="{{ false }}">
-          <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Nice to meet you{{ personaGreetingName }}!</div>
-          <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">What brings you here today?</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
-            <div onClick="{{ choosePersonaRecruiter }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
-            <div onClick="{{ choosePersonaFounder }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
-            <div onClick="{{ choosePersonaDesigner }}" style="cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
-          </div>
-          <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer; margin-top: 2px;">Skip, just show me the site</div>
-        </sc-if>
+        <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Hi! What brings you here today?</div>
+        <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">So I can tailor things just for you.</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
+          <div onClick="{{ choosePersonaRecruiter }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
+          <div onClick="{{ choosePersonaFounder }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
+          <div onClick="{{ choosePersonaDesigner }}" style="cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
+        </div>
+        <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer; margin-top: 2px;">Skip, just show me the site</div>
       </div>
     </div>
   </sc-if>
@@ -147,7 +138,7 @@
       <div style="display: flex; align-items: center; gap: 24px;">
         <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
-        <a href="#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Projects</a>
+        <a href="#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
         <div onClick="{{ openContact }}" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; cursor: pointer; padding: 10px 22px; border-radius: 999px;">Say hello</div>
         <div onClick="{{ toggleMobileNav }}" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
@@ -161,7 +152,7 @@
       <div style="display: flex; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
         <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
         <a href="#experience" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
-        <a href="#projects" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Projects</a>
+        <a href="#projects" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
         <a href="#playground" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
         <div onClick="{{ openContactMobile }}" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; cursor: pointer;">Say hello</div>
       </div>
@@ -173,7 +164,12 @@
     <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">Leandra Pearson — Creative Product Designer &amp; AI Builder</h1>
     <div style="width: 100%; aspect-ratio: 16/9; position: relative; background: linear-gradient(155deg, #FDFDFD 0%, #D3D8E4 40%, #9AA0B8 100%); padding: 16px; box-sizing: border-box; box-shadow: inset 0 2px 5px rgba(255,255,255,.9), inset 0 -4px 10px rgba(0,0,0,.25);">
       <div style="position: relative; width: 100%; height: 100%; overflow: hidden; background: #030303;">
-        <video id="hero-video" ref="{{ heroVideoRef }}" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" src="assets/hero-video.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.45) contrast(1.1) brightness(1.05);"></video>
+        <sc-if value="{{ heroShowPhoto }}" hint-placeholder-val="{{ false }}">
+          <img src="assets/hero-photo-imac.jpg" alt="Hi, I'm Leandra Pearson, a Creative Product Designer and AI builder who focuses on solving problems by shipping products with scalable digital experiences." style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.45) contrast(1.1) brightness(1.05);">
+        </sc-if>
+        <sc-if value="{{ !heroShowPhoto }}" hint-placeholder-val="{{ true }}">
+          <video id="hero-video" ref="{{ heroVideoRef }}" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" src="assets/hero-video.mp4" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.45) contrast(1.1) brightness(1.05);"></video>
+        </sc-if>
         <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 28% 14%, rgba(255,255,255,.4), rgba(255,255,255,.06) 55%, rgba(255,255,255,0) 72%); pointer-events: none;"></div>
         <div style="position: absolute; inset: 0; box-shadow: inset 0 0 30px rgba(0,255,240,.22), inset 0 0 60px rgba(255,0,200,.16); pointer-events: none;"></div>
       </div>
@@ -185,11 +181,11 @@
   </header>
 
   <!-- Selected projects -->
-  <section id="projects" data-screen-label="Projects" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+  <section id="projects" data-screen-label="Selected Products" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
     <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
-      <h2 style="margin: 0; font-size: 40px; font-weight: 500; color: #B84A14;">Projects</h2>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 500; color: #B84A14;">Selected Products</h2>
       <div class="lp-grid4" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 36px;">
-        <div data-project="executely" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px;" title="Read about the Executely project">
+        <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
           <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
             <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
             <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ execBadgeDisplay }}; align-items: center;">Recommended for you</div>
@@ -198,8 +194,8 @@
             <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
             <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Executely, 2024</div>
           </div>
-        </div>
-        <div data-project="behavior" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px;" title="Read the Behavior Insight case study">
+        </a>
+        <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
           <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
             <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
             <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ behaviorBadgeDisplay }}; align-items: center;">Recommended for you</div>
@@ -208,8 +204,8 @@
             <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
             <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">SPCTRL Cloud, 2O25</div>
           </div>
-        </div>
-        <div data-project="locci" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px;" title="Read the Locci Box case study">
+        </a>
+        <a href="locci-box.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Locci Box case study">
           <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
             <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
             <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ locciBadgeDisplay }}; align-items: center;">Recommended for you</div>
@@ -218,8 +214,8 @@
             <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
             <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">LabLab.AI, 2026</div>
           </div>
-        </div>
-        <div data-project="mealprep" onClick="{{ openProject }}" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px;" title="Read the Meal Prep Pal case study">
+        </a>
+        <a href="meal-prep-pal.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Meal Prep Pal case study">
           <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
             <img src="assets/laptop-preppal-hero.png" alt="Meal Prep Pal landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
             <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ mealprepBadgeDisplay }}; align-items: center;">Recommended for you</div>
@@ -228,7 +224,7 @@
             <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
             <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">AI Tinkerers, 2026</div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="lp-grid" style="margin-top: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
         <p style="margin: 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View projects</p>
@@ -306,477 +302,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ═══ Case study: Executely ═══ -->
-  <sc-if value="{{ showExecutely }}" hint-placeholder-val="{{ false }}">
-  <section id="executely" data-screen-label="Case study Executely" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
-      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
-      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
-        <div style="display: flex; flex-direction: column;">
-          <img src="assets/logo-executely.png" alt="Executely logo" style="width: 72px; height: 72px; object-fit: contain;">
-          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Executely</h2>
-          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
-          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
-            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
-            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Startup teams often struggle to move from idea to execution due to a lack of clear guidance and overwhelming tool choices.</p>
-          </div>
-          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Specific goals</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Increase user retention by creating a new feature, creating consistent branding.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Reduced production cycle by 30%. Enhanced customer retention &amp; satisfaction by 25%.</p>
-            </div>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-            <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-              <img src="./laptop-mrdk018j.png" alt="Executely on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-              <video ref="{{ mockupVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdk018j.png" src="assets/executely-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
-            </div>
-          </div><div style="display: flex; flex-direction: column;">
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Executely</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">User Experience Designer</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O24</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
-          <p style="margin: 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Startup teams struggle to move from idea to execution because existing tools feel fragmented, overly complex, and visually cold. Without clear guidance or curated resources, early stage workflows stall exactly when clarity and speed matter most.</p>
-        </div>
-        <img src="assets/persona-card.png" alt="User persona: Cindy Savvy" style="width: 100%; height: auto; object-fit: contain; border-radius: 16px;">
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;">
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-          <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-            <img src="./laptop-mrdki3st.png" alt="AI Resource Center walkthrough (GIF)" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-            <img src="assets/executely-gif.gif" alt="AI Resource Center walkthrough animation" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover;">
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
-          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Slowed down and listened.</strong> <span style="color: #C77B4E;">Studied the real friction users were feeling before reaching for a redesign.</span></li>
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Studied proven dashboard patterns.</strong> <span style="color: #C77B4E;">Built on frameworks people already understood rather than reinventing the wheel.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ execStepsDisplay }};"><strong style="font-weight: 600;">Expanded from a popup to a full-page system.</strong> <span style="color: #C77B4E;">Immediately made navigation feel less overwhelming.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ execStepsDisplay }};"><strong style="font-weight: 600;">Leaned into a warmer dark themed interface.</strong> <span style="color: #C77B4E;">Inspired by Apple and Shopify so the platform felt inviting, not intimidating.</span></li>
-          </ol>
-          <div onClick="{{ toggleExecDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ execToggleLabel }}</div>
-          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">The result was a scalable AI Resource Center that met users where they already were, both mentally and visually. By leaning into established patterns and refined aesthetics shaped by products like ChatGPT and modern productivity tools, the platform felt immediately familiar without sacrificing function.</p>
-        </div>
-      </div>
-
-      <div style="margin-top: 80px;">
-        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
-        <h3 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the problems/pain points</h3>
-        <div class="lp-grid" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px;">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
-            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">25%</div>
-            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Increase in customer satisfaction driven by user insights and iterative qualitative testing.</p>
-          </div>
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 18px;">
-            <div style="font-size: 64px; font-weight: 400; color: #5D4E8C; line-height: 1;">30%</div>
-            <p style="margin: 0; font-size: 20px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Reduction in production cycle issues through close collaboration across design and product teams.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 80px;">
-        <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">Project timeline</h3>
-        <div class="lp-grid4" style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 26px;">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="height: 8px; border-radius: 4px; background: #8F7BC4;"></div>
-            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">User Research &amp; Journey</div>
-            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">1 week</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="height: 8px; border-radius: 4px; background: #F2C230;"></div>
-            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Ideation</div>
-            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">2 weeks</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="height: 8px; border-radius: 4px; background: #B84A14;"></div>
-            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Low, Mid, &amp; High Fidelity Creation</div>
-            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="height: 8px; border-radius: 4px; background: #F5A9B8;"></div>
-            <div style="font-size: 18px; font-weight: 500; color: #B84A14; line-height: 1.4;">Testing &amp; Re-Iteration Phase</div>
-            <div style="font-size: 16px; font-weight: 400; color: #C77B4E; margin-top: -6px;">7 weeks</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
-        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-          <img src="./laptop-mrdkfaum.png" alt="AI App Center on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-          <video controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdkfaum.png" src="assets/executely-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Feature</div>
-          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">AI App Center</h3>
-          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Create a new application center full of AI assisted products for a faster ideation to MVP work flow.</p>
-          <a href="https://www.figma.com/proto/slIfqs4DI3ItNNdHrOqboB/AI-Resource-Center---Notification-Medium-Fidelity?node-id=29-5&amp;p=f&amp;viewport=216%2C476%2C0.06&amp;t=NlY9ySTtsqfu1dW2-1&amp;scaling=contain&amp;content-scaling=fixed&amp;starting-point-node-id=29%3A5&amp;page-id=29%3A2" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
-            <span style="font-size: 16px;">▷</span>
-            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  </sc-if>
-
-  <!-- ═══ Case study: Locci Box ═══ -->
-  <sc-if value="{{ showLocci }}" hint-placeholder-val="{{ false }}">
-  <section id="locci-box" data-screen-label="Case study Locci Box" style="background: #4E4275;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px; display: flex; flex-direction: column; align-items: center;">
-      
-      <h2 style="margin: 24px 0 0; font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 54px; color: #FFFFFF; text-align: center; line-height: 1.2;">IBM BOB HACKATHON 2026</h2>
-      <p style="margin: 20px 0 0; font-size: 21px; font-weight: 400; color: #FFFFFF; text-align: center; line-height: 1.5; max-width: 720px;">This section details a hackathon where my team and I made a product in 48hrs.</p>
-    </div>
-  </section>
-
-  <section data-screen-label="Locci Box overview" style="background: #FFFFFF;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
-      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
-      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
-        <div style="display: flex; flex-direction: column;">
-          <img src="assets/logo-locci.png" alt="Locci Box robot logo" style="width: 80px; height: 74px; object-fit: contain; border-radius: 10px;">
-          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Locci Box</h2>
-          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A B2B execution infrastructure platform. Providing engineers with a space to create, test, and play.</p>
-          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
-            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
-            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Build solutions that improve how software is built. Work with IBM BOB, a program that understands your codebase, helping you reduce repetitive work and build with real context.</p>
-          </div>
-          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; font-family: 'Geist Mono', monospace;">Specific goals</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a sandbox in which engineers can write, test and play with their code before deployment.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">94ms execution time, 100% tenant isolation, 3× faster review cycles.</p>
-            </div>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-            <img src="assets/laptop-locci-dash.png" alt="Locci Box dashboard on a laptop" style="width: 100%; height: auto; object-fit: contain;">
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">IBM</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Product Designer</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Length</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">48 Hours</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O26</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
-          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">AI agents and enterprise developers were writing and running code with no safe place to execute it. Existing sandbox tools were built for developers who live in the command line, not for teams who need visibility, speed, and security at once. Code and tests shared the same environment, meaning a bug in one could corrupt the other. There was no zero trust runtime, no isolated execution, and no human friendly interface. The tooling simply wasn’t built for the agent era.</p>
-        </div>
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/laptop-sandbox.png" alt="Dual Sandbox Playground on a laptop" style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
-          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Researched the concept during handoff.</strong> <span style="color: #C77B4E;">Used the wait window to figure out where I could contribute most as the UX/UI designer on a two-person team.</span></li>
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Vibe coded the interface in Lovable.</strong> <span style="color: #C77B4E;">Iterated in real time, moving between the live project and a vibe-coded wireframe to keep each honest.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ locciStepsDisplay }};"><strong style="font-weight: 600;">Mapped four core surfaces under one mental model.</strong> <span style="color: #C77B4E;">Dashboard, Code Editor, BOB AI Reviewer, and API Keys manager, so users never felt lost.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ locciStepsDisplay }};"><strong style="font-weight: 600;">Designed the Dual Sandbox and a 4-step BOB loop.</strong> <span style="color: #C77B4E;">Code and tests run side by side in under 900ms; the reviewer follows submit, analyze, execute, prove, so AI feedback felt verified, not just suggested.</span></li>
-          </ol>
-          <div onClick="{{ toggleLocciDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ locciToggleLabel }}</div>
-          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">Locci Box shipped as a live B2B SaaS platform built on React, TypeScript, Express, and MCP. Hardware isolated microVMs boot in under 100ms per tenant, paired with a full in browser IDE, an AI code reviewer that runs the fix rather than just suggesting it, and an API key manager with rate limits and audit trail. It can also plug into Claude as a local MCP server, meeting developers where they already work.</p>
-        </div>
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/laptop-mcp.png" alt="Locci Box as a local MCP server in settings" style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
-        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-          <img src="./laptop-mrdkne6t.png" alt="Locci Box on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-          <video ref="{{ locciVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdkne6t.png" src="assets/locci-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Product</div>
-          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">Locci Box</h3>
-          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Every agent deserves its own computer. Write code. Test code. Ship code, in isolated microVMs.</p>
-          <a href="https://box.locci.cloud/" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
-            <span style="font-size: 16px;">▷</span>
-            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
-          </a>
-        </div>
-      </div>
-
-      <div style="margin-top: 80px;">
-        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
-        <h3 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the challenge</h3>
-        <div class="lp-grid3" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px;">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
-            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">94ms</div>
-            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Unified design kept execution fast and developers in flow.</p>
-          </div>
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
-            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">100%</div>
-            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Clear environment boundaries made full tenant isolation possible.</p>
-          </div>
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
-            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">3X Faster</div>
-            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">The BOB four step design turned reviews into verified results instantly.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  </sc-if>
-
-  <!-- ═══ Case study: Meal Prep Pal ═══ -->
-  <sc-if value="{{ showMealPrep }}" hint-placeholder-val="{{ false }}">
-  <section id="meal-prep-pal" data-screen-label="Case study Meal Prep Pal" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
-      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
-      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
-        <div style="display: flex; flex-direction: column;">
-          <img src="assets/logo-aitinkerers.png" alt="AI Tinkerers logo" style="width: 150px; height: auto; object-fit: contain;">
-          <h2 style="margin: 24px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Meal Prep Pal</h2>
-          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A B2C online platform that provides users with meal prepping, step-by-step recipe guidance, combines favorited meals into a digital recipe book, plus more!</p>
-          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
-            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
-            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">A synchronized, heads-down build session happening across AI Tinkerers cities worldwide: one global challenge, one submission platform, one day.</p>
-          </div>
-          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; font-family: 'Geist Mono', monospace;">Specific goals</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a platform that is built with generative AI that tackles a real world problem.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">8 hour execution time</p>
-            </div>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-            <img src="assets/laptop-preppal-hero.png" alt="PrepPal landing page on a laptop" style="width: 100%; height: auto; object-fit: contain;">
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">AI Tinkerers</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Product Designer</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Length</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">8 Hours</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O26</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
-          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Most people do not hate cooking. They hate the part that comes before it. The average American makes over 200 food related decisions per day, and by dinnertime decision fatigue has already won. Recipe apps, pantry trackers, nutrition apps, and grocery lists all lived separately, forcing users to carry their own context across four tools every week. No single product connected what someone already had in their kitchen to what they should cook next, and American households were losing over $2,000 a year to food waste because of it.</p>
-        </div>
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/laptop-preppal-recipes.png" alt="PrepPal recipe library on a laptop" style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
-          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Audited the competitive landscape to find where the experience broke.</strong> <span style="color: #C77B4E;">Every tool treated diet, budget, time, pantry inventory, and serving size as separate inputs when users think about them all at once. That gap became the design thesis.</span></li>
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Made the Pantry to Grocery List connection the centerpiece of the product.</strong> <span style="color: #C77B4E;">When the AI knows what you already own, it skips those items on your shopping list automatically. It sounds simple but it is the exact loop every other app in the category fails to close.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ mealprepStepsDisplay }};"><strong style="font-weight: 600;">Designed the empty state chat prompts to teach users the grammar of the product without any onboarding.</strong> <span style="color: #C77B4E;">"Build a 7-day high-protein plan, around 2,200 calories, no pork, $80 budget" is not filler copy. It shows users the full range of what they can ask for before they type a single word.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ mealprepStepsDisplay }};"><strong style="font-weight: 600;">Applied a favorites first, A to Z hierarchy</strong> <span style="color: #C77B4E;">to the recipe book and surfaced cook time and calories above the fold on every recipe card, designing for how people scan when they are tired, not how they browse when they have time.</span></li>
-          </ol>
-          <div onClick="{{ toggleMealprepDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ mealprepToggleLabel }}</div>
-        </div>
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
-          <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-            <img src="./laptop-mrdljqdi.png" alt="PrepPal chat on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-            <video ref="{{ preppalChatVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdljqdi.png" src="assets/preppal-chat-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
-        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
-          <img src="./laptop-mrdltvi8.png" alt="PrepPal on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
-          <video ref="{{ preppalVideoRef }}" controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" poster="assets/screen-laptop-mrdltvi8.png" src="assets/preppal-video-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start;">
-          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Product</div>
-          <h3 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">Meal Prep Pal</h3>
-          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Every week deserves a better dinner plan. Set your goals. Stock your pantry. Get the week, without the planning.</p>
-          <a href="https://cook-craft-bot.lovable.app" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
-            <span style="font-size: 16px;">▷</span>
-            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  </sc-if>
-
-  <!-- ═══ Case study: Behavior Insight ═══ -->
-  <sc-if value="{{ showBehavior }}" hint-placeholder-val="{{ false }}">
-  <section id="behavior-insight" data-screen-label="Case study Behavior Insight" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
-      <div onClick="{{ closeProject }}" style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</div>
-      <div class="lp-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
-        <div style="display: flex; flex-direction: column;">
-          <img src="assets/logo-spctrl.png" alt="SPCTRL Cloud logo" style="width: 72px; height: 72px; object-fit: contain;">
-          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Behavior Insight</h2>
-          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A trauma informed platform that centers parents and aligns care for children with neurodevelopmental disorders.</p>
-          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
-            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
-            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Multiple caregivers and institutions manage care for the same child with no shared trauma informed system to keep everyone aligned, leaving parents excluded from decisions despite holding the deepest context.</p>
-          </div>
-          <div class="lp-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Specific goals</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Center parents as the source of truth within a multi role system, without compromising trust or safety for educators and institutions.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
-              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Multi role system spanning parents, educators, and institutions.</p>
-            </div>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-            <div style="position: relative; width: 100%; max-width: 220px; aspect-ratio: 1680/3408;">
-              <video controls="true" autoplay="true" muted="true" loop="true" playsinline="true" webkit-playsinline="true" x-webkit-airplay="allow" disablePictureInPicture="true" controlsList="nofullscreen noremoteplayback" preload="metadata" src="assets/behavior-insight-signup-demo.mp4" onClick="{{ togglePlay }}" style="position: absolute; left: 5.77%; top: 2.46%; width: 88.63%; height: 95.01%; object-fit: cover; cursor: pointer;"></video>
-              <img src="assets/behavior-insight-phone-frame.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
-            </div>
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">SPCTRL Cloud</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">UX/UI Apprentice</div>
-            </div>
-            <div class="lp-kv" style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
-              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
-              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O25</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h3>
-          <p style="margin: 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Children with neurodevelopmental disorders rely on multiple caregivers and institutions, yet there is no shared trauma informed system that keeps everyone aligned. Information becomes fragmented, communication breaks down, and parents who hold the deepest context are often excluded from decision making. The result is inconsistent care, missed behavioral patterns, and increased emotional strain on families navigating an already complex system.</p>
-        </div>
-        <div onClick="{{ openFlowchart }}" title="Click to view full size" style="cursor: zoom-in; width: 100%; max-width: 340px;">
-          <img src="assets/behavior-insight-flowchart.png" alt="Behavior Insight primary user flow: calibration, consent, and activation" style="width: 100%; height: auto; object-fit: contain; border-radius: 16px; border: 1px solid #F3E7E0;">
-        </div>
-      </div>
-
-      <div class="lp-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
-        <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/behavior-insight-role.webp" alt="Behavior Insight role selection screen: educator, parent or guardian, institution" style="width: 100%; max-width: 220px; height: auto; object-fit: contain;">
-        </div>
-        <div style="display: flex; flex-direction: column;">
-          <h3 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h3>
-          <ol style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Centered parents as the source of truth.</strong> <span style="color: #C77B4E;">Structured the entire multi role system around parent context, intentionally designing so the people who know the child best are never excluded from decisions.</span></li>
-            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Translated complex system logic into clear, intuitive flows.</strong> <span style="color: #C77B4E;">Structured the experience around behavior based inputs and decision driven actions so caregivers could act without needing to understand what was happening underneath.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ behaviorStepsDisplay }};"><strong style="font-weight: 600;">Introduced role specific dashboards and consent safeguards.</strong> <span style="color: #C77B4E;">Gave each caregiver type, parent, educator, and institution, a view suited to their role, with clear consent and data ownership boundaries.</span></li>
-            <li style="font-size: 17px; line-height: 1.5; display: {{ behaviorStepsDisplay }};"><strong style="font-weight: 600;">Applied trauma informed design choices.</strong> <span style="color: #C77B4E;">Inclusive colorways and progressive disclosure kept the experience calm and controlled, balancing clarity, trust, and emotional safety across every user.</span></li>
-          </ol>
-          <div onClick="{{ toggleBehaviorDetail }}" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">{{ behaviorToggleLabel }}</div>
-        </div>
-      </div>
-
-      <div style="margin-top: 48px;">
-        <div class="lp-grid4" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px;">
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <img src="assets/behavior-insight-splash.webp" alt="Behavior Insight splash screen" style="width: 100%; max-width: 170px; height: auto;">
-            <div style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-align: center;">Splash</div>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <img src="assets/behavior-insight-signin.webp" alt="Behavior Insight sign in screen with email, Google, Apple, and Face ID options" style="width: 100%; max-width: 170px; height: auto;">
-            <div style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-align: center;">Sign in</div>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <img src="assets/behavior-insight-name.webp" alt="Behavior Insight name entry screen" style="width: 100%; max-width: 170px; height: auto;">
-            <div style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-align: center;">Personalize</div>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <img src="assets/behavior-insight-subscription.webp" alt="Behavior Insight select plan screen with Starter, Hero+, Educator, Daycare, and Institutional tiers" style="width: 100%; max-width: 170px; height: auto;">
-            <div style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-align: center;">Select plan</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 80px; max-width: 900px;">
-        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Looking ahead</div>
-        <h3 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">What's Next</h3>
-        <p style="margin: 20px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.6;">The next phase focuses on strengthening the platform's intelligence and adaptability. I would expand AI driven insights to surface early behavioral patterns and support more proactive care decisions. I would also refine the engagement model to encourage consistency without overwhelming users, ensuring the experience remains supportive rather than demanding. Further opportunities include deeper system integrations and expanded accessibility features to better support a wider range of cognitive needs.</p>
-      </div>
-    </div>
-  </section>
-  </sc-if>
-
-  <!-- Behavior Insight flowchart lightbox -->
-  <sc-if value="{{ showFlowchart }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeFlowchart }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(20,20,18,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 48px; box-sizing: border-box; cursor: zoom-out;">
-      <div role="img" aria-label="Behavior Insight primary user flow" style="width: min(92vw, 1000px); height: 80vh; background-image: url('assets/behavior-insight-flowchart.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
-      <div style="font-size: 15px; font-weight: 400; color: #B3A9CC; font-family: 'Geist', sans-serif;">Click anywhere to close</div>
-    </div>
-  </sc-if>
 
   <!-- Playground -->
   <section id="playground" data-screen-label="Playground" style="position: relative; background-image: linear-gradient(180deg, rgba(10,80,180,.18) 0%, rgba(0,150,190,.10) 45%, rgba(140,110,200,.16) 100%), url('assets/aero-bg3.jpg'); background-size: cover; background-position: center; overflow: hidden;">
@@ -902,6 +427,9 @@
           <sc-if value="{{ showSuggestion2 }}" hint-placeholder-val="{{ true }}">
             <div onClick="{{ askSuggestion2 }}" style="cursor: pointer; font-size: 12px; color: #5D4E8C; background: #EAE6F3; padding: 8px 12px; border-radius: 10px;">{{ suggestion2 }}</div>
           </sc-if>
+          <sc-if value="{{ showSuggestion3 }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ askSuggestion3 }}" style="cursor: pointer; font-size: 12px; color: #5D4E8C; background: #EAE6F3; padding: 8px 12px; border-radius: 10px;">{{ suggestion3 }}</div>
+          </sc-if>
         </div>
       </sc-if>
       <div style="display: flex; gap: 8px; padding: 12px; border-top: 1px solid #F3E7E0;">
@@ -922,19 +450,31 @@
   }
 }">
 class Component extends DCLogic {
-  state = { active: null, activeArt: null, flowchartOpen: false, contactOpen: false, cName: '', cEmail: '', cMsg: '', cBotField: '', cSending: false, cSent: false, cError: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, personaStep: 'name', visitorName: '', persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false };
-  chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Projects, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Projects. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question, reproduce the ABOUT text below nearly verbatim — only light rewording to insert the visitor's name naturally, no summarizing or trimming — and stop there; do not close with a pointer sentence telling them to go check the About, Experience, or Projects sections.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She studied Graphic Design at Wood-Tobe Coburn and spent a year at Ringling College of Art and Design before launching her career as a Graphic Designer creating visual communication for brands. After realizing she wanted to solve real-world problems beyond static screens, she transitioned into UX/UI design, teaching herself through hackathons, YouTube, and connecting with other design professionals.\n\nToday she's passionate about solving problems with design and building exciting digital experiences. Her certifications include Enterprise Design Thinking and AI Fundamentals from IBM, plus UX/UI and Figma training from SkillUp. Outside of work, she's an anime enthusiast (loves Witch Hat Atelier, Jujutsu Kaisen, Demon Slayer, and The Apothecary Diaries), enjoys museum exhibits, writes short stories, goes to concerts across many genres, and just generally loves having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at SPCTRL Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nPROJECT 4 - BEHAVIOR INSIGHT (2025, for SPCTRL Cloud, role: UX/UI Apprentice): A trauma informed platform that centers parents and aligns care for children with neurodevelopmental disorders. Challenge: children with neurodevelopmental disorders rely on multiple caregivers and institutions with no shared trauma informed system to keep everyone aligned, leaving parents excluded from decisions despite holding the deepest context. Solution: designed it as a parent first clarity engine, centering parents as the source of truth within a multi role system; structured the experience around behavior based inputs and decision driven actions; introduced role specific dashboards, consent and data ownership safeguards, and trauma informed design choices like inclusive colorways and progressive disclosure. What's next: expanding AI driven insights to surface early behavioral patterns, refining the engagement model for sustainable consistency, and deeper system integrations and accessibility features.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.";
+  state = { activeArt: null, contactOpen: false, cName: '', cEmail: '', cMsg: '', cBotField: '', cSending: false, cSent: false, cError: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false, noRoleVisible: [0, 1, 2], noRoleNextIndex: 3 };
+  chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Selected Products, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Selected Products. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question, reproduce the ABOUT text below nearly verbatim — only light rewording to insert the visitor's name naturally, no summarizing or trimming — and stop there; do not close with a pointer sentence telling them to go check the About, Experience, or Selected Products sections.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She studied Graphic Design at Wood-Tobe Coburn and spent a year at Ringling College of Art and Design before launching her career as a Graphic Designer creating visual communication for brands. After realizing she wanted to solve real-world problems beyond static screens, she transitioned into UX/UI design, teaching herself through hackathons, YouTube, and connecting with other design professionals.\n\nToday she's passionate about solving problems with design and building exciting digital experiences. Her certifications include Enterprise Design Thinking and AI Fundamentals from IBM, plus UX/UI and Figma training from SkillUp. Outside of work, she's an anime enthusiast (loves Witch Hat Atelier, Jujutsu Kaisen, Demon Slayer, and The Apothecary Diaries), enjoys museum exhibits, writes short stories, goes to concerts across many genres, and just generally loves having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at SPCTRL Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nPROJECT 4 - BEHAVIOR INSIGHT (2025, for SPCTRL Cloud, role: UX/UI Apprentice): A trauma informed platform that centers parents and aligns care for children with neurodevelopmental disorders. Challenge: children with neurodevelopmental disorders rely on multiple caregivers and institutions with no shared trauma informed system to keep everyone aligned, leaving parents excluded from decisions despite holding the deepest context. Solution: designed it as a parent first clarity engine, centering parents as the source of truth within a multi role system; structured the experience around behavior based inputs and decision driven actions; introduced role specific dashboards, consent and data ownership safeguards, and trauma informed design choices like inclusive colorways and progressive disclosure. What's next: expanding AI driven insights to surface early behavioral patterns, refining the engagement model for sustainable consistency, and deeper system integrations and accessibility features.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.\n\nRECRUITER FAQ (use when the visitor is screening for fit and logistics): What new roles is Leandra open to? She's open to new opportunities, looking for full-time and contract roles. What are Leandra's design specialties? Problem solving, spanning the creative, enterprise, and health tech industries. Can I see her resume and strongest case study? Her strongest case study is Locci Box, for AI and product shipment (point them to the Locci Box / IBM BOB Hackathon project and suggest the 'Say hello' form for the resume itself).\n\nDESIGNER FAQ (use when the visitor is a fellow designer asking about craft): What tools does Leandra use and what's her day-to-day workflow? Claude, Claude Code, and Figma. She's an adaptable designer, but her usual workflow is research, thumbnailing and iteration, more research, then mid-fidelity and high-fidelity prototyping, always looping back to research and brainstorming to stay on track. What's a project she's most proud of for the problem-solving, not just the visuals? Locci Box, because it solved the problem of creating a secure place for engineers to play and test code, and gave her the opportunity to ship products to GitHub and Claude.\n\nFOUNDER FAQ (use when the visitor is a founder with a project): What type of products has Leandra designed? She's designed for businesses with B2C and B2B audiences, in the mental health and software industries. How does she work with founders on tight deadlines or budgets? Communication and honesty are extremely important to her. As long as the scope and budget are communicated upfront, she can make informed decisions. She also encourages founders to research who they're inquiring with and make sure the connection between founder and designer is a good fit.";
   personaMeta = {
     recruiter: { label: 'Recruiter', icon: '\u{1F50D}', order: { executely: 1, locci: 2, mealprep: 3, behavior: 4 }, expand: false },
     founder: { label: 'Founder', icon: '\u{1F680}', order: { executely: 3, locci: 1, mealprep: 2, behavior: 4 }, expand: false },
     designer: { label: 'Designer', icon: '\u{1F3A8}', order: { executely: 1, locci: 3, mealprep: 2, behavior: 4 }, expand: true },
   };
+  personaQuestions = {
+    recruiter: [
+      'What new roles is Leandra open to?',
+      "What are Leandra's design specialties?",
+      "Leandra's resume and the strongest case study",
+    ],
+    founder: [
+      'What type of products has Leandra designed?',
+      'How does Leandra work with founders on tight deadlines or budgets?',
+    ],
+    designer: [
+      "What's her design process like?",
+      "What tools is Leandra currently using and what's her workflow day to day?",
+      "What's a project Leandra is most proud of problem-solving wise?",
+    ],
+  };
+  allQuestions = [].concat(this.personaQuestions.recruiter, this.personaQuestions.designer, this.personaQuestions.founder);
   componentDidMount() {}
-  _togglePlay(e) {
-    const video = e.currentTarget.tagName === 'VIDEO' ? e.currentTarget : e.currentTarget.querySelector('video');
-    if (!video) return;
-    if (video.paused) video.play(); else video.pause();
-  }
   _bindHeroVideo(video) {
     if (!video) return;
     const isHero = video.id === 'hero-video';
@@ -989,15 +529,27 @@ class Component extends DCLogic {
     this.setState({ askedSuggestions: [...(this.state.askedSuggestions || []), id] });
     this._sendChat(text);
   }
+  _askPoolSuggestion(slotIdx) {
+    const visible = this.state.noRoleVisible;
+    const poolIdx = visible[slotIdx];
+    if (poolIdx == null) return;
+    const text = this.allQuestions[poolIdx];
+    const nextIdx = this.state.noRoleNextIndex;
+    const newVisible = visible.slice();
+    newVisible[slotIdx] = nextIdx < this.allQuestions.length ? nextIdx : null;
+    this.setState({ noRoleVisible: newVisible, noRoleNextIndex: nextIdx + 1 });
+    this._sendChat(text);
+  }
   async _sendChat(presetText) {
     const text = (presetText !== undefined ? presetText : this.state.chatInput).trim();
     if (!text || this.state.chatLoading) return;
     const nextMessages = [...this.state.chatMessages, { role: 'user', content: text }];
     this.setState({ chatMessages: nextMessages, chatInput: '', chatLoading: true });
     try {
-      const name = (this.state.visitorName || '').trim().split(/\s+/)[0];
-      const system = name
-        ? this.chatSystemPrompt + '\n\nThe visitor you are talking to is named ' + name + '. Address them by name (e.g. "Great question, ' + name + '!") at least once near the start of your reply, and naturally elsewhere when it fits — never robotically in every sentence.'
+      const persona = this.state.persona;
+      const personaLabel = persona ? this.personaMeta[persona].label : null;
+      const system = personaLabel
+        ? this.chatSystemPrompt + '\n\nThe visitor identified themselves as: ' + personaLabel + '. Prioritize the matching FAQ section above when it applies to their question.'
         : this.chatSystemPrompt;
       const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 20000));
       const fetchReply = fetch('/.netlify/functions/chat', {
@@ -1030,76 +582,71 @@ class Component extends DCLogic {
     });
   }
   renderVals() {
-    const ids = { executely: 'executely', locci: 'locci-box', mealprep: 'meal-prep-pal', behavior: 'behavior-insight' };
     const heroVideoRef = (el) => this._bindHeroVideo(el);
     const art = this.state.activeArt === null ? null : this.artworks[this.state.activeArt];
     const persona = this.state.persona;
     const meta = persona ? this.personaMeta[persona] : null;
     const order = meta ? meta.order : { executely: 1, locci: 2, mealprep: 3, behavior: 4 };
-    const expanded = (key) => {
-      const override = this.state['detailOverride_' + key];
-      if (override !== undefined) return override;
-      return meta ? meta.expand : true;
-    };
     const personaLandingId = { recruiter: 'experience', founder: 'projects', designer: 'top' };
     const choosePersona = (p) => {
       this.setState({ persona: p, showPersonaModal: false, personaChosen: true }, () => {
         if (p !== 'designer') this._scrollToId(personaLandingId[p]);
       });
     };
-    const firstName = (this.state.visitorName || '').trim().split(/\s+/)[0] || '';
+    let suggestionProps;
+    if (persona) {
+      const activeQs = this.personaQuestions[persona];
+      const qId = (i) => persona + '-' + i;
+      suggestionProps = {
+        suggestion1: activeQs[0] || '',
+        suggestion2: activeQs[1] || '',
+        suggestion3: activeQs[2] || '',
+        showSuggestion1: !!activeQs[0] && !this.state.askedSuggestions?.includes(qId(1)),
+        showSuggestion2: !!activeQs[1] && !this.state.askedSuggestions?.includes(qId(2)),
+        showSuggestion3: !!activeQs[2] && !this.state.askedSuggestions?.includes(qId(3)),
+        askSuggestion1: () => this._askSuggestion(qId(1), activeQs[0]),
+        askSuggestion2: () => this._askSuggestion(qId(2), activeQs[1]),
+        askSuggestion3: () => this._askSuggestion(qId(3), activeQs[2]),
+      };
+    } else {
+      const visible = this.state.noRoleVisible;
+      const textAt = (slot) => (visible[slot] != null ? this.allQuestions[visible[slot]] : '');
+      suggestionProps = {
+        suggestion1: textAt(0),
+        suggestion2: textAt(1),
+        suggestion3: textAt(2),
+        showSuggestion1: visible[0] != null,
+        showSuggestion2: visible[1] != null,
+        showSuggestion3: visible[2] != null,
+        askSuggestion1: () => this._askPoolSuggestion(0),
+        askSuggestion2: () => this._askPoolSuggestion(1),
+        askSuggestion3: () => this._askPoolSuggestion(2),
+      };
+    }
     return {
       personaModalOpen: this.state.showPersonaModal,
-      personaStepName: this.state.personaStep === 'name',
-      personaStepPersona: this.state.personaStep === 'persona',
-      visitorName: this.state.visitorName,
-      visitorFirstName: firstName,
-      personaGreetingName: firstName ? (', ' + firstName) : '',
-      setVisitorName: (e) => this.setState({ visitorName: e.target.value }),
-      submitName: () => this.setState({ personaStep: 'persona' }),
-      submitNameOnEnter: (e) => { if (e.key === 'Enter') this.setState({ personaStep: 'persona' }); },
       choosePersonaRecruiter: () => choosePersona('recruiter'),
       choosePersonaFounder: () => choosePersona('founder'),
       choosePersonaDesigner: () => choosePersona('designer'),
       skipPersona: () => this.setState({ persona: null, showPersonaModal: false, personaChosen: true }),
-      reopenPersonaModal: () => this.setState({ showPersonaModal: true, personaStep: 'name' }),
+      reopenPersonaModal: () => this.setState({ showPersonaModal: true }),
       personaPillLabel: meta ? meta.icon + ' ' + meta.label + ' view' : '\u2728 Personalize',
       execBadgeDisplay: meta && order.executely === 1 ? 'flex' : 'none',
       locciBadgeDisplay: meta && order.locci === 1 ? 'flex' : 'none',
       mealprepBadgeDisplay: meta && order.mealprep === 1 ? 'flex' : 'none',
       behaviorBadgeDisplay: meta && order.behavior === 1 ? 'flex' : 'none',
-      execExpanded: expanded('executely'),
-      locciExpanded: expanded('locci'),
-      mealprepExpanded: expanded('mealprep'),
-      behaviorExpanded: expanded('behavior'),
-      execStepsDisplay: expanded('executely') ? 'list-item' : 'none',
-      locciStepsDisplay: expanded('locci') ? 'list-item' : 'none',
-      mealprepStepsDisplay: expanded('mealprep') ? 'list-item' : 'none',
-      behaviorStepsDisplay: expanded('behavior') ? 'list-item' : 'none',
-      execToggleLabel: expanded('executely') ? 'Show fewer steps' : 'Show all 4 steps',
-      locciToggleLabel: expanded('locci') ? 'Show fewer steps' : 'Show all 4 steps',
-      mealprepToggleLabel: expanded('mealprep') ? 'Show fewer steps' : 'Show all 4 steps',
-      behaviorToggleLabel: expanded('behavior') ? 'Show fewer steps' : 'Show all 4 steps',
-      toggleExecDetail: () => this.setState({ detailOverride_executely: !expanded('executely') }),
-      toggleLocciDetail: () => this.setState({ detailOverride_locci: !expanded('locci') }),
-      toggleMealprepDetail: () => this.setState({ detailOverride_mealprep: !expanded('mealprep') }),
-      toggleBehaviorDetail: () => this.setState({ detailOverride_behavior: !expanded('behavior') }),
       heroVideoRef,
+      heroShowPhoto: persona === 'recruiter' || persona === 'founder',
       showMobileNav: this.state.mobileNavOpen,
       toggleMobileNav: () => this.setState({ mobileNavOpen: !this.state.mobileNavOpen }),
       closeMobileNav: () => this.setState({ mobileNavOpen: false }),
       hamTop: this.state.mobileNavOpen ? 'translateY(7px) rotate(45deg)' : 'none',
       hamBottom: this.state.mobileNavOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
       hamMidOpacity: this.state.mobileNavOpen ? 0 : 1,
-      mockupVideoRef: (el) => this._bindHeroVideo(el),
-      locciVideoRef: (el) => this._bindHeroVideo(el),
-      preppalChatVideoRef: (el) => this._bindHeroVideo(el),
-      preppalVideoRef: (el) => this._bindHeroVideo(el),
-      togglePlay: (e) => this._togglePlay(e),
       artworks: this.artworks,
       stopClickThrough: (e) => e.stopPropagation(),
       chatOpen: this.state.chatOpen,
-      chatGreeting: firstName ? ("Hi " + firstName + "! Ask me anything about Leandra's experience, process, or projects.") : "Hi! Ask me anything about Leandra's experience, process, or projects.",
+      chatGreeting: "Hi! Ask me anything about Leandra's experience, process, or projects.",
       chatToggle: () => this.setState({ chatOpen: !this.state.chatOpen }),
       chatMessages: this.state.chatMessages.map((m) => ({
         content: m.content,
@@ -1114,12 +661,7 @@ class Component extends DCLogic {
       sendChatOnEnter: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this._sendChat(); } },
       sendChat: () => this._sendChat(),
       showSuggestions: true,
-      suggestion1: 'What projects has she worked on?',
-      suggestion2: "What's her design process like?",
-      showSuggestion1: !this.state.askedSuggestions?.includes(1),
-      showSuggestion2: !this.state.askedSuggestions?.includes(2),
-      askSuggestion1: () => this._askSuggestion(1, 'What projects has she worked on?'),
-      askSuggestion2: () => this._askSuggestion(2, "What's her design process like?"),
+      ...suggestionProps,
       showContact: this.state.contactOpen,
       contactName: this.state.cName,
       contactEmail: this.state.cEmail,
@@ -1161,29 +703,15 @@ class Component extends DCLogic {
       activeTitle: art ? art.title : '',
       openArt: (e) => this.setState({ activeArt: Number(e.currentTarget.dataset.art) }),
       closeArt: () => this.setState({ activeArt: null }),
-      showFlowchart: this.state.flowchartOpen,
-      openFlowchart: () => this.setState({ flowchartOpen: true }),
-      closeFlowchart: () => this.setState({ flowchartOpen: false }),
-      showExecutely: this.state.active === 'executely',
-      showLocci: this.state.active === 'locci',
-      showMealPrep: this.state.active === 'mealprep',
-      showBehavior: this.state.active === 'behavior',
-      openProject: (e) => {
-        const p = e.currentTarget.dataset.project;
-        this.setState({ active: p }, () => this._scrollToId(ids[p]));
-      },
-      closeProject: () => {
-        this.setState({ active: null }, () => this._scrollToId('projects'));
-      },
     };
   }
 }
 </script>
 
 <!-- Smooth cursor effect (desktop only, plain JS — independent of the app above) -->
-<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none;">
+<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none; transition: opacity .15s ease;">
   <svg width="100%" height="100%" viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C"/>
+    <path id="cursor-fill" d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C" style="transition: fill .15s ease;"/>
     <path d="M43.7146 40.6933L28.5431 6.34306C27.3556 3.65428 23.5772 3.69516 22.3668 6.32755L6.57226 40.6778C5.3134 43.4156 7.97238 46.298 10.803 45.2549L24.7662 40.109C25.0221 40.0147 25.2999 40.0156 25.5494 40.1082L39.4193 45.254C42.2261 46.2953 44.9254 43.4347 43.7146 40.6933Z" stroke="#FFFFFF" stroke-width="2.25825"/>
   </svg>
 </div>
@@ -1195,11 +723,32 @@ class Component extends DCLogic {
 
   var cursor = document.getElementById('smooth-cursor');
   if (!cursor) return;
+  var fillPath = document.getElementById('cursor-fill');
 
   var styleEl = document.createElement('style');
   styleEl.textContent = '* { cursor: none !important; }';
   document.head.appendChild(styleEl);
   cursor.style.display = 'block';
+
+  var COLORS = { default: '#1E1E1C', hover: '#B84A14', disabled: '#9AA0B8' };
+  var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
+  var currentState = 'default';
+  var stateScale = 1;
+
+  function isInteractive(el) {
+    return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
+  }
+  function isDisabled(el) {
+    var ctrl = el && el.closest('button, input, textarea, select');
+    return !!(ctrl && ctrl.disabled);
+  }
+  function setState(next) {
+    if (next === currentState) return;
+    currentState = next;
+    stateScale = STATE_SCALE[next];
+    fillPath.setAttribute('fill', COLORS[next]);
+    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+  }
 
   var mouseX = -100, mouseY = -100;
   var curX = -100, curY = -100;
@@ -1228,8 +777,13 @@ class Component extends DCLogic {
       scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
     }
     lastX = mouseX; lastY = mouseY; lastTime = now;
+
+    var target = document.elementFromPoint(mouseX, mouseY);
+    if (isDisabled(target)) setState('disabled');
+    else if (isInteractive(target)) setState('hover');
+    else setState('default');
   });
-  window.addEventListener('mousedown', function () { targetScale = 0.7; });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
   window.addEventListener('mouseup', function () { targetScale = 1; });
   window.addEventListener('mouseleave', function () { targetScale = 1; });
 
@@ -1237,7 +791,7 @@ class Component extends DCLogic {
     curX += (mouseX - curX) * 0.2;
     curY += (mouseY - curY) * 0.2;
     curRotation = lerpAngle(curRotation, targetRotation, 0.15);
-    curScale += (targetScale - curScale) * 0.2;
+    curScale += (targetScale * stateScale - curScale) * 0.2;
     cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
     requestAnimationFrame(animate);
   }

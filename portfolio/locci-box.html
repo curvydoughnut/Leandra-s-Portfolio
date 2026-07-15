@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Locci Box | Leandra Pearson</title>
+<meta name="description" content="Locci Box case study: a B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, by Leandra Pearson.">
+<meta name="author" content="Leandra Pearson">
+<link rel="canonical" href="https://leandrasportfolio.netlify.app/locci-box.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leandrasportfolio.netlify.app/locci-box.html">
+<meta property="og:site_name" content="Leandra Pearson">
+<meta property="og:title" content="Locci Box | Leandra Pearson">
+<meta property="og:description" content="Locci Box case study: a B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, by Leandra Pearson.">
+<meta property="og:image" content="https://leandrasportfolio.netlify.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Locci Box | Leandra Pearson">
+<meta name="twitter:description" content="Locci Box case study: a B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, by Leandra Pearson.">
+<meta name="twitter:image" content="https://leandrasportfolio.netlify.app/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; overflow-x: hidden; }
+  a { color: #B84A14; }
+  a:hover { color: #93390D; }
+  @media (max-width: 640px) {
+    section > div, footer > div { padding-left: 20px !important; padding-right: 20px !important; }
+    nav > div { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .lp-footer-bar { flex-direction: column !important; gap: 10px !important; text-align: center !important; }
+  }
+  @media (max-width: 760px) {
+    .lp-nav-link { display: none !important; }
+    .lp-hamburger { display: flex !important; }
+  }
+  a.lp-nav-link:hover { color: #B84A14 !important; }
+  @media (max-width: 900px) {
+    .lp-cs-grid { grid-template-columns: 1fr !important; }
+    .lp-cs-grid3 { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div style="font-family: 'Geist', sans-serif; background: #FFFFFF; min-height: 100vh;">
+
+  <!-- Top green accent -->
+  <div style="height: 8px; background: #5D4E8C;"></div>
+
+  <!-- Nav -->
+  <nav data-screen-label="Nav" style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
+        <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
+        <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
+        <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="index.html" class="lp-nav-link" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px;">Say hello</a>
+        <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
+          <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
+          <div id="ham-mid" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: opacity .2s ease;"></div>
+          <div id="ham-bottom" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
+      <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
+      <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
+      <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
+    </div>
+  </nav>
+
+  <!-- Locci Box case study -->
+  <section id="locci-box" data-screen-label="Case study Locci Box" style="background: #4E4275;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px; display: flex; flex-direction: column; align-items: center;">
+      <h1 style="margin: 24px 0 0; font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 54px; color: #FFFFFF; text-align: center; line-height: 1.2;">IBM BOB HACKATHON 2026</h1>
+      <p style="margin: 20px 0 0; font-size: 21px; font-weight: 400; color: #FFFFFF; text-align: center; line-height: 1.5; max-width: 720px;">This section details a hackathon where my team and I made a product in 48hrs.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Locci Box overview" style="background: #FFFFFF;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 90px 32px;">
+      <a href="index.html#projects" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 16px; font-weight: 500; color: #5D4E8C; margin-bottom: 40px;">← All projects</a>
+      <div class="lp-cs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div style="display: flex; flex-direction: column;">
+          <img src="assets/logo-locci.png" alt="Locci Box robot logo" style="width: 80px; height: 74px; object-fit: contain; border-radius: 10px;">
+          <h2 style="margin: 20px 0 0; font-size: 52px; font-weight: 500; color: #B84A14; line-height: 1.1;">Locci Box</h2>
+          <p style="margin: 16px 0 0; font-size: 20px; font-weight: 400; color: #C77B4E; line-height: 1.5;">A B2B execution infrastructure platform. Providing engineers with a space to create, test, and play.</p>
+          <div style="margin-top: 30px; border-top: 1px solid #F3C9B8; padding-top: 26px;">
+            <div style="font-size: 18px; font-weight: 600; color: #5D4E8C;">The challenge</div>
+            <p style="margin: 10px 0 0; font-size: 21px; font-weight: 500; color: #B84A14; line-height: 1.5;">Build solutions that improve how software is built. Work with IBM BOB, a program that understands your codebase, helping you reduce repetitive work and build with real context.</p>
+          </div>
+          <div class="lp-cs-grid" style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; font-family: 'Geist Mono', monospace;">Specific goals</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">Create a sandbox in which engineers can write, test and play with their code before deployment.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 17px; font-weight: 600; color: #5D4E8C;">Key metrics</div>
+              <p style="margin: 0; font-size: 16px; font-weight: 400; color: #C77B4E; line-height: 1.5;">94ms execution time, 100% tenant isolation, 3× faster review cycles.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 36px; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/laptop-locci-dash.png" alt="Locci Box dashboard on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Company</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">IBM</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Role</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">Product Designer</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Length</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">48 Hours</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; border-top: 1px solid #F3C9B8; padding: 12px 0;">
+              <div style="font-size: 17px; font-weight: 400; color: #C77B4E;">Year</div>
+              <div style="font-size: 17px; font-weight: 500; color: #B84A14;">2O26</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h2>
+          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">AI agents and enterprise developers were writing and running code with no safe place to execute it. Existing sandbox tools were built for developers who live in the command line, not for teams who need visibility, speed, and security at once. Code and tests shared the same environment, meaning a bug in one could corrupt the other. There was no zero trust runtime, no isolated execution, and no human friendly interface. The tooling simply wasn’t built for the agent era.</p>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-sandbox.png" alt="Dual Sandbox Playground on a laptop" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
+        <div style="display: flex; flex-direction: column;">
+          <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">How I Solved It</h2>
+          <ol id="locci-steps" style="margin: 22px 0 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; color: #B84A14;">
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Researched the concept during handoff.</strong> <span style="color: #C77B4E;">Used the wait window to figure out where I could contribute most as the UX/UI designer on a two-person team.</span></li>
+            <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Vibe coded the interface in Lovable.</strong> <span style="color: #C77B4E;">Iterated in real time, moving between the live project and a vibe-coded wireframe to keep each honest.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Mapped four core surfaces under one mental model.</strong> <span style="color: #C77B4E;">Dashboard, Code Editor, BOB AI Reviewer, and API Keys manager, so users never felt lost.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Designed the Dual Sandbox and a 4-step BOB loop.</strong> <span style="color: #C77B4E;">Code and tests run side by side in under 900ms; the reviewer follows submit, analyze, execute, prove, so AI feedback felt verified, not just suggested.</span></li>
+          </ol>
+          <div onclick="toggleSteps('locci-steps', this)" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">Show fewer steps</div>
+          <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">Locci Box shipped as a live B2B SaaS platform built on React, TypeScript, Express, and MCP. Hardware isolated microVMs boot in under 100ms per tenant, paired with a full in browser IDE, an AI code reviewer that runs the fix rather than just suggesting it, and an API key manager with rate limits and audit trail. It can also plug into Claude as a local MCP server, meeting developers where they already work.</p>
+        </div>
+        <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/laptop-mcp.png" alt="Locci Box as a local MCP server in settings" style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="lp-cs-grid" style="margin-top: 80px; background: #EAE6F3; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
+          <img src="./laptop-mrdkne6t.png" alt="Locci Box on a laptop" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+          <video class="lp-mockup-video" controls playsinline muted loop autoplay preload="metadata" poster="assets/screen-laptop-mrdkne6t.png" src="assets/locci-demo.mp4" onclick="togglePlay(event)" style="position: absolute; left: 12.34%; top: 6.83%; width: 75.32%; height: 82.81%; object-fit: cover; cursor: pointer;"></video>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Product</div>
+          <h2 style="margin: 10px 0 0; font-size: 42px; font-weight: 500; color: #B84A14;">Locci Box</h2>
+          <p style="margin: 16px 0 0; font-size: 19px; font-weight: 400; color: #B84A14; line-height: 1.55;">Every agent deserves its own computer. Write code. Test code. Ship code, in isolated microVMs.</p>
+          <a href="https://box.locci.cloud/" target="_blank" rel="noopener" style="margin-top: 28px; display: inline-flex; align-items: center; gap: 12px; background: #1E1E1C; color: #FFFFFF; text-decoration: none; font-size: 18px; font-weight: 500; padding: 16px 32px; border-radius: 999px;">
+            <span style="font-size: 16px;">▷</span>
+            <span style="text-decoration: underline; color: #FFFFFF;">Link to prototype</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <div style="font-size: 17px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Results</div>
+        <h2 style="margin: 12px 0 0; font-size: 34px; font-weight: 500; color: #B84A14;">Outcomes that tie back to the challenge</h2>
+        <div class="lp-cs-grid3" style="margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px;">
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">94ms</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Unified design kept execution fast and developers in flow.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">100%</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">Clear environment boundaries made full tenant isolation possible.</p>
+          </div>
+          <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 56px; font-weight: 400; color: #5D4E8C; line-height: 1;">3X Faster</div>
+            <p style="margin: 0; font-size: 18px; font-weight: 400; color: #5D4E8C; line-height: 1.5;">The BOB four step design turned reviews into verified results instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / footer -->
+  <footer id="contact" data-screen-label="Contact" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 110px 32px 90px; display: flex; flex-direction: column; align-items: center;">
+      <img src="assets/portrait-leandra.png" alt="Leandra Pearson" style="width: 260px; height: 260px; border-radius: 50%; object-fit: cover;">
+      <div style="margin-top: 34px; display: flex; align-items: baseline; gap: 14px;">
+        <span style="font-size: 40px; font-weight: 500; color: #B84A14;">Hello! I’m</span>
+        <span style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #B84A14;">Leandra.</span>
+      </div>
+      <div style="margin-top: 12px; font-size: 22px; font-weight: 400; color: #B84A14;">Product designer based in Atlanta</div>
+      <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
+        <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
+        <span style="text-decoration: underline;">Connect on LinkedIn</span>
+      </a>
+    </div>
+    <div style="border-top: 1px solid #F3E7E0;">
+      <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 14px; color: #5D4E8C;">Leandra Pearson · Product Designer</div>
+        <a href="index.html" style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Back to home ↑</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggleMobileNav() {
+    const menu = document.getElementById('mobile-nav');
+    const top = document.getElementById('ham-top');
+    const mid = document.getElementById('ham-mid');
+    const bottom = document.getElementById('ham-bottom');
+    const opening = menu.style.display !== 'flex';
+    menu.style.display = opening ? 'flex' : 'none';
+    top.style.transform = opening ? 'translateY(7px) rotate(45deg)' : 'none';
+    mid.style.opacity = opening ? '0' : '1';
+    bottom.style.transform = opening ? 'translateY(-7px) rotate(-45deg)' : 'none';
+  }
+  function togglePlay(e) {
+    const video = e.currentTarget;
+    if (video.paused) video.play(); else video.pause();
+  }
+  function toggleSteps(listId, labelEl) {
+    const list = document.getElementById(listId);
+    const extras = list.querySelectorAll('.lp-extra-step');
+    const showing = extras[0].style.display !== 'none';
+    extras.forEach(function (li) { li.style.display = showing ? 'none' : 'list-item'; });
+    labelEl.textContent = showing ? 'Show all ' + list.children.length + ' steps' : 'Show fewer steps';
+  }
+  document.querySelectorAll('.lp-mockup-video').forEach(function (video) {
+    video.muted = true;
+    video.volume = 0;
+    video.addEventListener('volumechange', function () {
+      if (!video.muted) { video.muted = true; video.volume = 0; }
+    });
+    var recover = function () { video.play().catch(function () {}); };
+    video.addEventListener('stalled', recover);
+    video.addEventListener('error', recover);
+    video.play().catch(function () {});
+  });
+</script>
+
+<!-- Smooth cursor effect (desktop only) -->
+<div id="smooth-cursor" style="position: fixed; top: 0; left: 0; width: 34px; height: 36px; pointer-events: none; z-index: 9999; transform: translate(-100px, -100px); will-change: transform; display: none; transition: opacity .15s ease;">
+  <svg width="100%" height="100%" viewBox="0 0 50 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="cursor-fill" d="M42.6817 41.1495L27.5103 6.79925C26.7269 5.02557 24.2082 5.02558 23.3927 6.79925L7.59814 41.1495C6.75833 42.9759 8.52712 44.8902 10.4125 44.1954L24.3757 39.0496C24.8829 38.8627 25.4385 38.8627 25.9422 39.0496L39.8121 44.1954C41.6849 44.8902 43.4884 42.9759 42.6817 41.1495Z" fill="#1E1E1C" style="transition: fill .15s ease;"/>
+    <path d="M43.7146 40.6933L28.5431 6.34306C27.3556 3.65428 23.5772 3.69516 22.3668 6.32755L6.57226 40.6778C5.3134 43.4156 7.97238 46.298 10.803 45.2549L24.7662 40.109C25.0221 40.0147 25.2999 40.0156 25.5494 40.1082L39.4193 45.254C42.2261 46.2953 44.9254 43.4347 43.7146 40.6933Z" stroke="#FFFFFF" stroke-width="2.25825"/>
+  </svg>
+</div>
+<script>
+(function () {
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var isNarrow = window.innerWidth < 768 || window.innerHeight > window.innerWidth;
+  if (isTouch || isNarrow) return;
+
+  var cursor = document.getElementById('smooth-cursor');
+  if (!cursor) return;
+  var fillPath = document.getElementById('cursor-fill');
+
+  var styleEl = document.createElement('style');
+  styleEl.textContent = '* { cursor: none !important; }';
+  document.head.appendChild(styleEl);
+  cursor.style.display = 'block';
+
+  var COLORS = { default: '#1E1E1C', hover: '#B84A14', disabled: '#9AA0B8' };
+  var STATE_SCALE = { default: 1, hover: 1.3, disabled: 0.85 };
+  var currentState = 'default';
+  var stateScale = 1;
+
+  function isInteractive(el) {
+    return !!(el && el.closest('a, button, input, textarea, select, [role="button"], label, [style*="cursor: pointer"], [style*="cursor:pointer"]'));
+  }
+  function isDisabled(el) {
+    var ctrl = el && el.closest('button, input, textarea, select');
+    return !!(ctrl && ctrl.disabled);
+  }
+  function setState(next) {
+    if (next === currentState) return;
+    currentState = next;
+    stateScale = STATE_SCALE[next];
+    fillPath.setAttribute('fill', COLORS[next]);
+    cursor.style.opacity = next === 'disabled' ? '0.6' : '1';
+  }
+
+  var mouseX = -100, mouseY = -100;
+  var curX = -100, curY = -100;
+  var curRotation = 0, targetRotation = 0;
+  var curScale = 1, targetScale = 1;
+  var lastX = 0, lastY = 0, lastTime = Date.now();
+  var scaleTimeout = null;
+
+  function lerpAngle(a, b, t) {
+    var diff = ((b - a + 180) % 360 + 360) % 360 - 180;
+    return a + diff * t;
+  }
+
+  window.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    var now = Date.now();
+    var dt = now - lastTime || 16;
+    var vx = (mouseX - lastX) / dt;
+    var vy = (mouseY - lastY) / dt;
+    var speed = Math.hypot(vx, vy);
+    if (speed > 0.1) {
+      targetRotation = Math.atan2(vy, vx) * (180 / Math.PI) + 90;
+      targetScale = 0.95;
+      clearTimeout(scaleTimeout);
+      scaleTimeout = setTimeout(function () { targetScale = 1; }, 150);
+    }
+    lastX = mouseX; lastY = mouseY; lastTime = now;
+
+    var target = document.elementFromPoint(mouseX, mouseY);
+    if (isDisabled(target)) setState('disabled');
+    else if (isInteractive(target)) setState('hover');
+    else setState('default');
+  });
+  window.addEventListener('mousedown', function () { if (currentState !== 'disabled') targetScale = 0.7; });
+  window.addEventListener('mouseup', function () { targetScale = 1; });
+  window.addEventListener('mouseleave', function () { targetScale = 1; });
+
+  function animate() {
+    curX += (mouseX - curX) * 0.2;
+    curY += (mouseY - curY) * 0.2;
+    curRotation = lerpAngle(curRotation, targetRotation, 0.15);
+    curScale += (targetScale * stateScale - curScale) * 0.2;
+    cursor.style.transform = 'translate(' + (curX - 17) + 'px, ' + (curY - 18) + 'px) rotate(' + curRotation + 'deg) scale(' + curScale + ')';
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
