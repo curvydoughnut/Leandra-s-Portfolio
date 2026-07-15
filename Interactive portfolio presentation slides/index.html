@@ -95,13 +95,9 @@
     .lp-scroll-hint { position: static !important; left: auto !important; bottom: auto !important; transform: none !important; width: fit-content; margin: 14px auto 0 !important; animation: none !important; }
   }
   @media (max-width: 480px) {
-    .lp-persona-pill { max-width: 108px !important; font-size: 11px !important; padding: 5px 10px !important; }
     .lp-chat-bubble { width: 50px !important; height: 50px !important; right: 18px !important; bottom: 18px !important; }
     .lp-chat-panel { right: 12px !important; left: 12px !important; width: auto !important; bottom: 82px !important; }
     .lp-linkedin-btn { font-size: 14px !important; padding: 9px 18px !important; }
-  }
-  @media (max-width: 400px) {
-    .lp-persona-pill { display: none !important; }
   }
   a { color: #B84A14; }
   a:hover { color: #93390D; }
@@ -113,32 +109,11 @@
   <!-- Top green accent -->
   <div style="height: 8px; background: #5D4E8C;"></div>
 
-  <!-- Persona picker — small popup, page stays visible behind it -->
-  <sc-if value="{{ personaModalOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position: fixed; inset: 0; z-index: 200; background: rgba(30,25,20,.28); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box;">
-      <div style="position: relative; width: 100%; max-width: 360px; background: #FFFFFF; border-radius: 18px; padding: 32px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.28); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
-        <div onClick="{{ skipPersona }}" title="Skip" style="position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(0,0,0,.5); font-size: 13px;">✕</div>
-
-        <div style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 19px; color: #B84A14;">Hi! What brings you here today?</div>
-        <div style="font-size: 13px; color: #5D4E8C; line-height: 1.5;">So I can tailor things just for you.</div>
-        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
-          <div onClick="{{ choosePersonaRecruiter }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🔍 I'm hiring / recruiting</div>
-          <div onClick="{{ choosePersonaFounder }}" style="cursor: pointer; padding: 11px; border-radius: 999px; border: 1.5px solid #5D4E8C; font-size: 13px; font-weight: 500; color: #5D4E8C;">🚀 I'm a founder with a project</div>
-          <div onClick="{{ choosePersonaDesigner }}" style="cursor: pointer; padding: 11px; border-radius: 999px; background: #B84A14; font-size: 13px; font-weight: 600; color: #FFFFFF;">🎨 I'm a fellow designer</div>
-        </div>
-        <div onClick="{{ skipPersona }}" style="font-size: 11px; color: rgba(0,0,0,.35); cursor: pointer; margin-top: 2px;">Skip, just show me the site</div>
-      </div>
-    </div>
-  </sc-if>
-
   <!-- Nav -->
   <nav data-screen-label="Nav" style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid #F3E7E0;">
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 18px;">
         <a href="#top" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
-        <sc-if value="{{ showPersonaPill }}" hint-placeholder-val="{{ false }}">
-          <div onClick="{{ reopenPersonaModal }}" title="Change your tailored view" class="lp-persona-pill" style="cursor: pointer; font-size: 12px; font-weight: 600; color: #5D4E8C; background: #EAE6F3; padding: 6px 14px; border-radius: 999px; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis;">{{ personaPillLabel }}</div>
-        </sc-if>
       </div>
       <div style="display: flex; align-items: center; gap: 24px;">
         <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
@@ -190,7 +165,6 @@
             <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
               <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
                 <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ execBadgeDisplay }}; align-items: center;">Recommended for you</div>
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
@@ -200,7 +174,6 @@
             <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
               <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
                 <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ behaviorBadgeDisplay }}; align-items: center;">Recommended for you</div>
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
@@ -215,7 +188,6 @@
             <a href="locci-box.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Locci Box case study">
               <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
                 <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ locciBadgeDisplay }}; align-items: center;">Recommended for you</div>
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
@@ -225,7 +197,6 @@
             <a href="meal-prep-pal.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Meal Prep Pal case study">
               <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
                 <img src="assets/laptop-preppal-hero.png" alt="Meal Prep Pal landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-                <div style="position: absolute; top: 14px; right: 14px; background: #B84A14; color: #FFFFFF; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; display: {{ mealprepBadgeDisplay }}; align-items: center;">Recommended for you</div>
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
@@ -456,13 +427,8 @@
   }
 }">
 class Component extends DCLogic {
-  state = { activeArt: null, contactOpen: false, cName: '', cEmail: '', cMsg: '', cBotField: '', cSending: false, cSent: false, cError: false, heroMuted: true, mobileNavOpen: false, askedSuggestions: [], showPersonaModal: true, persona: null, personaChosen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false, noRoleVisible: [0, 1, 2], noRoleNextIndex: 3 };
-  chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Selected Products, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Selected Products. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question, reproduce the ABOUT text below nearly verbatim — only light rewording to insert the visitor's name naturally, no summarizing or trimming — and stop there; do not close with a pointer sentence telling them to go check the About, Experience, or Selected Products sections.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She studied Graphic Design at Wood-Tobe Coburn and spent a year at Ringling College of Art and Design before launching her career as a Graphic Designer creating visual communication for brands. After realizing she wanted to solve real-world problems beyond static screens, she transitioned into UX/UI design, teaching herself through hackathons, YouTube, and connecting with other design professionals.\n\nToday she's passionate about solving problems with design and building exciting digital experiences. Her certifications include Enterprise Design Thinking and AI Fundamentals from IBM, plus UX/UI and Figma training from SkillUp. Outside of work, she's an anime enthusiast (loves Witch Hat Atelier, Jujutsu Kaisen, Demon Slayer, and The Apothecary Diaries), enjoys museum exhibits, writes short stories, goes to concerts across many genres, and just generally loves having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at SPCTRL Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nPROJECT 4 - BEHAVIOR INSIGHT (2025, for SPCTRL Cloud, role: UX/UI Apprentice): A trauma informed platform that centers parents and aligns care for children with neurodevelopmental disorders. Challenge: children with neurodevelopmental disorders rely on multiple caregivers and institutions with no shared trauma informed system to keep everyone aligned, leaving parents excluded from decisions despite holding the deepest context. Solution: designed it as a parent first clarity engine, centering parents as the source of truth within a multi role system; structured the experience around behavior based inputs and decision driven actions; introduced role specific dashboards, consent and data ownership safeguards, and trauma informed design choices like inclusive colorways and progressive disclosure. What's next: expanding AI driven insights to surface early behavioral patterns, refining the engagement model for sustainable consistency, and deeper system integrations and accessibility features.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.\n\nRECRUITER FAQ (use when the visitor is screening for fit and logistics): What new roles is Leandra open to? She's open to new opportunities, looking for full-time and contract roles. What are Leandra's design specialties? Problem solving, spanning the creative, enterprise, and health tech industries. Can I see her resume and strongest case study? Her strongest case study is Locci Box, for AI and product shipment (point them to the Locci Box / IBM BOB Hackathon project and suggest the 'Say hello' form for the resume itself).\n\nDESIGNER FAQ (use when the visitor is a fellow designer asking about craft): What tools does Leandra use and what's her day-to-day workflow? Claude, Claude Code, and Figma. She's an adaptable designer, but her usual workflow is research, thumbnailing and iteration, more research, then mid-fidelity and high-fidelity prototyping, always looping back to research and brainstorming to stay on track. What's a project she's most proud of for the problem-solving, not just the visuals? Locci Box, because it solved the problem of creating a secure place for engineers to play and test code, and gave her the opportunity to ship products to GitHub and Claude.\n\nFOUNDER FAQ (use when the visitor is a founder with a project): What type of products has Leandra designed? She's designed for businesses with B2C and B2B audiences, in the mental health and software industries. How does she work with founders on tight deadlines or budgets? Communication and honesty are extremely important to her. As long as the scope and budget are communicated upfront, she can make informed decisions. She also encourages founders to research who they're inquiring with and make sure the connection between founder and designer is a good fit.";
-  personaMeta = {
-    recruiter: { label: 'Recruiter', icon: '\u{1F50D}', order: { executely: 1, locci: 2, mealprep: 3, behavior: 4 }, expand: false },
-    founder: { label: 'Founder', icon: '\u{1F680}', order: { executely: 3, locci: 1, mealprep: 2, behavior: 4 }, expand: false },
-    designer: { label: 'Designer', icon: '\u{1F3A8}', order: { executely: 1, locci: 3, mealprep: 2, behavior: 4 }, expand: true },
-  };
+  state = { activeArt: null, contactOpen: false, cName: '', cEmail: '', cMsg: '', cBotField: '', cSending: false, cSent: false, cError: false, heroMuted: true, mobileNavOpen: false, chatOpen: false, chatMessages: [], chatInput: '', chatLoading: false, noRoleVisible: [0, 1, 2], noRoleNextIndex: 3 };
+  chatSystemPrompt = "You are a friendly assistant embedded in Leandra Pearson's product design portfolio site, answering visitor questions about her. Only use the facts below — never invent metrics, dates, or claims not listed. Keep answers short (2-4 sentences), warm, and conversational; point people to the relevant site section by name when helpful (About, Experience, Selected Products, Playground, or a specific case study). Reply in plain text only, never use markdown formatting like asterisks, bold, or bullet lists, even around section names like Experience or Selected Products. Never use em dashes or en dashes in your replies; use commas, periods, or the word 'to' instead. If asked something not covered here, say you don't have that detail and suggest using the 'Say hello' contact form. When answering a general \"tell me about Leandra\" / bio-style question, reproduce the ABOUT text below nearly verbatim — only light rewording to insert the visitor's name naturally, no summarizing or trimming — and stop there; do not close with a pointer sentence telling them to go check the About, Experience, or Selected Products sections. When a visitor's question matches one of the FAQ questions below — whether they clicked it as a suggested question or typed it in themselves — answer using that exact FAQ answer nearly verbatim, with only light rewording for grammatical flow; do not paraphrase, summarize, or add invented detail.\n\nABOUT: Leandra Pearson is a Creative Product Designer and AI builder based in Atlanta, originally from Queens, NY. She studied Graphic Design at Wood-Tobe Coburn and spent a year at Ringling College of Art and Design before launching her career as a Graphic Designer creating visual communication for brands. After realizing she wanted to solve real-world problems beyond static screens, she transitioned into UX/UI design, teaching herself through hackathons, YouTube, and connecting with other design professionals.\n\nToday she's passionate about solving problems with design and building exciting digital experiences. Her certifications include Enterprise Design Thinking and AI Fundamentals from IBM, plus UX/UI and Figma training from SkillUp. Outside of work, she's an anime enthusiast (loves Witch Hat Atelier, Jujutsu Kaisen, Demon Slayer, and The Apothecary Diaries), enjoys museum exhibits, writes short stories, goes to concerts across many genres, and just generally loves having a good time.\n\nEXPERIENCE: Lead UX/UI Design Apprentice at SPCTRL Cloud (since 2025). UX/UI Designer at Executely (Jan-May 2024). Graphic Designer at The Looma Project (Nov 2022-Nov 2023). Certifications: Enterprise Design Thinking Practitioner (IBM), Introduction to Agile Development and Scrum (IBM), UX/UI Design Fundamentals (SkillUp), UI/UX Wireframing and Prototyping with Figma (SkillUp), AI Fundamentals (IBM).\n\nPROJECT 1 - EXECUTELY (2024, role: User Experience Designer): Built an AI App Center / AI Resource Center to help startup teams move from idea to execution faster. Challenge: fragmented, overwhelming tools. Solution: expanded a popup into a full-page system with a warmer dark-themed interface inspired by Apple and Shopify. Results: 25% increase in customer satisfaction, 30% reduction in production cycle issues.\n\nPROJECT 2 - LOCCI BOX / IBM BOB HACKATHON (2026, 48-hour hackathon, role: Product Designer): A B2B execution infrastructure platform giving engineers an isolated sandbox to write, test, and run code safely, built on IBM BOB. Dual Sandbox lets code and tests run side by side; 4-step BOB review loop (submit, analyze, execute, prove); works as a local MCP server for Claude. Results: 94ms execution time, 100% tenant isolation, 3x faster review cycles. Live at box.locci.cloud.\n\nPROJECT 3 - MEAL PREP PAL (2026, AI Tinkerers hackathon, 8-hour build, role: Product Designer): A B2C meal-prep platform connecting pantry inventory to grocery lists and AI-generated recipe/meal plans, so items you already own are skipped automatically. Live at cook-craft-bot.lovable.app.\n\nPROJECT 4 - BEHAVIOR INSIGHT (2025, for SPCTRL Cloud, role: UX/UI Apprentice): A trauma informed platform that centers parents and aligns care for children with neurodevelopmental disorders. Challenge: children with neurodevelopmental disorders rely on multiple caregivers and institutions with no shared trauma informed system to keep everyone aligned, leaving parents excluded from decisions despite holding the deepest context. Solution: designed it as a parent first clarity engine, centering parents as the source of truth within a multi role system; structured the experience around behavior based inputs and decision driven actions; introduced role specific dashboards, consent and data ownership safeguards, and trauma informed design choices like inclusive colorways and progressive disclosure. What's next: expanding AI driven insights to surface early behavioral patterns, refining the engagement model for sustainable consistency, and deeper system integrations and accessibility features.\n\nDESIGN PROCESS: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features.\n\nTESTIMONIAL: Mike Omondi (Software Engineer, Hackathon Partner) praised her product design skills, attention to detail, and collaboration on Locci Box.\n\nCONTACT: via the 'Say hello' button, which emails leandrastudios@gmail.com.\n\nFAQ: Q: What new roles is Leandra open to? A: She's open to new opportunities, looking for full-time and contract roles. Q: What are Leandra's design specialties? A: Problem solving, spanning the creative, enterprise, and health tech industries. Q: Leandra's resume and the strongest case study? A: Her strongest case study is Locci Box, for AI and product shipment (point them to the Locci Box / IBM BOB Hackathon project and suggest the 'Say hello' form for the resume itself). Q: What's her design process like? A: Leandra's process starts with assessing the problem and doing research — she likes to look at multiple sides of a problem, then uses those observations to complete traditional and rapid UX research. From there she starts thumbnailing and ideating solutions based on the research results and team collaboration, then designs the solutions and features. Q: What tools is Leandra currently using and what's her workflow day to day? A: Claude, Claude Code, and Figma. She's an adaptable designer, but her usual workflow is research, thumbnailing and iteration, more research, then mid-fidelity and high-fidelity prototyping, always looping back to research and brainstorming to stay on track. Q: What's a project Leandra is most proud of problem-solving wise? A: Locci Box, because it solved the problem of creating a secure place for engineers to play and test code, and gave her the opportunity to ship products to GitHub and Claude. Q: What type of products has Leandra designed? A: She's designed for businesses with B2C and B2B audiences, in the mental health and software industries. Q: How does Leandra work with founders on tight deadlines or budgets? A: Communication and honesty are extremely important to her. As long as the scope and budget are communicated upfront, she can make informed decisions. She also encourages founders to research who they're inquiring with and make sure the connection between founder and designer is a good fit.";
   personaQuestions = {
     recruiter: [
       'What new roles is Leandra open to?',
@@ -539,10 +505,6 @@ class Component extends DCLogic {
     { title: 'Planet Cherry', src: 'assets/play-planetcherry.gif', size: '240px', anim: 'lp-drift5', dur: '15s', delay: '-12s', x: '42%', y: '500px' },
     { title: 'Reflection', src: 'assets/play-reflection.gif', size: '210px', anim: 'lp-drift6', dur: '16s', delay: '-8s', x: '73%', y: '430px' },
   ];
-  _askSuggestion(id, text) {
-    this.setState({ askedSuggestions: [...(this.state.askedSuggestions || []), id] });
-    this._sendChat(text);
-  }
   _askPoolSuggestion(slotIdx) {
     const visible = this.state.noRoleVisible;
     const poolIdx = visible[slotIdx];
@@ -560,11 +522,7 @@ class Component extends DCLogic {
     const nextMessages = [...this.state.chatMessages, { role: 'user', content: text }];
     this.setState({ chatMessages: nextMessages, chatInput: '', chatLoading: true });
     try {
-      const persona = this.state.persona;
-      const personaLabel = persona ? this.personaMeta[persona].label : null;
-      const system = personaLabel
-        ? this.chatSystemPrompt + '\n\nThe visitor identified themselves as: ' + personaLabel + '. Prioritize the matching FAQ section above when it applies to their question.'
-        : this.chatSystemPrompt;
+      const system = this.chatSystemPrompt;
       const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 20000));
       const fetchReply = fetch('/.netlify/functions/chat', {
         method: 'POST',
@@ -598,58 +556,20 @@ class Component extends DCLogic {
   renderVals() {
     const heroVideoRef = (el) => this._bindHeroVideo(el);
     const art = this.state.activeArt === null ? null : this.artworks[this.state.activeArt];
-    const persona = this.state.persona;
-    const meta = persona ? this.personaMeta[persona] : null;
-    const order = meta ? meta.order : { executely: 1, locci: 2, mealprep: 3, behavior: 4 };
-    const personaLandingId = { recruiter: 'experience', founder: 'projects', designer: 'top' };
-    const choosePersona = (p) => {
-      this.setState({ persona: p, showPersonaModal: false, personaChosen: true }, () => {
-        if (p !== 'designer') this._scrollToId(personaLandingId[p]);
-      });
+    const visible = this.state.noRoleVisible;
+    const textAt = (slot) => (visible[slot] != null ? this.allQuestions[visible[slot]] : '');
+    const suggestionProps = {
+      suggestion1: textAt(0),
+      suggestion2: textAt(1),
+      suggestion3: textAt(2),
+      showSuggestion1: visible[0] != null,
+      showSuggestion2: visible[1] != null,
+      showSuggestion3: visible[2] != null,
+      askSuggestion1: () => this._askPoolSuggestion(0),
+      askSuggestion2: () => this._askPoolSuggestion(1),
+      askSuggestion3: () => this._askPoolSuggestion(2),
     };
-    let suggestionProps;
-    if (persona) {
-      const activeQs = this.personaQuestions[persona];
-      const qId = (i) => persona + '-' + i;
-      suggestionProps = {
-        suggestion1: activeQs[0] || '',
-        suggestion2: activeQs[1] || '',
-        suggestion3: activeQs[2] || '',
-        showSuggestion1: !!activeQs[0] && !this.state.askedSuggestions?.includes(qId(1)),
-        showSuggestion2: !!activeQs[1] && !this.state.askedSuggestions?.includes(qId(2)),
-        showSuggestion3: !!activeQs[2] && !this.state.askedSuggestions?.includes(qId(3)),
-        askSuggestion1: () => this._askSuggestion(qId(1), activeQs[0]),
-        askSuggestion2: () => this._askSuggestion(qId(2), activeQs[1]),
-        askSuggestion3: () => this._askSuggestion(qId(3), activeQs[2]),
-      };
-    } else {
-      const visible = this.state.noRoleVisible;
-      const textAt = (slot) => (visible[slot] != null ? this.allQuestions[visible[slot]] : '');
-      suggestionProps = {
-        suggestion1: textAt(0),
-        suggestion2: textAt(1),
-        suggestion3: textAt(2),
-        showSuggestion1: visible[0] != null,
-        showSuggestion2: visible[1] != null,
-        showSuggestion3: visible[2] != null,
-        askSuggestion1: () => this._askPoolSuggestion(0),
-        askSuggestion2: () => this._askPoolSuggestion(1),
-        askSuggestion3: () => this._askPoolSuggestion(2),
-      };
-    }
     return {
-      personaModalOpen: this.state.showPersonaModal,
-      choosePersonaRecruiter: () => choosePersona('recruiter'),
-      choosePersonaFounder: () => choosePersona('founder'),
-      choosePersonaDesigner: () => choosePersona('designer'),
-      skipPersona: () => this.setState({ persona: null, showPersonaModal: false, personaChosen: true }),
-      reopenPersonaModal: () => this.setState({ showPersonaModal: true }),
-      showPersonaPill: !!meta,
-      personaPillLabel: meta ? meta.icon + ' ' + meta.label : '',
-      execBadgeDisplay: meta && order.executely === 1 ? 'flex' : 'none',
-      locciBadgeDisplay: meta && order.locci === 1 ? 'flex' : 'none',
-      mealprepBadgeDisplay: meta && order.mealprep === 1 ? 'flex' : 'none',
-      behaviorBadgeDisplay: meta && order.behavior === 1 ? 'flex' : 'none',
       heroVideoRef,
       showMobileNav: this.state.mobileNavOpen,
       toggleMobileNav: () => this.setState({ mobileNavOpen: !this.state.mobileNavOpen }),
