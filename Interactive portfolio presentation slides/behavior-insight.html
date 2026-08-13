@@ -64,10 +64,10 @@
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
@@ -77,10 +77,10 @@
       </div>
     </div>
     <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
-      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
       <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
       <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
     </div>
   </nav>
@@ -151,7 +151,6 @@
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Introduced role specific dashboards and consent safeguards.</strong> <span style="color: #C77B4E;">Gave each caregiver type, parent, educator, and institution, a view suited to their role, with clear consent and data ownership boundaries.</span></li>
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Applied trauma informed design choices.</strong> <span style="color: #C77B4E;">Inclusive colorways and progressive disclosure kept the experience calm and controlled, balancing clarity, trust, and emotional safety across every user.</span></li>
           </ol>
-          <div onclick="toggleSteps('behavior-steps', this)" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">Show fewer steps</div>
         </div>
       </div>
 
@@ -228,13 +227,6 @@
   function togglePlay(e) {
     const video = e.currentTarget;
     if (video.paused) video.play(); else video.pause();
-  }
-  function toggleSteps(listId, labelEl) {
-    const list = document.getElementById(listId);
-    const extras = list.querySelectorAll('.lp-extra-step');
-    const showing = extras[0].style.display !== 'none';
-    extras.forEach(function (li) { li.style.display = showing ? 'none' : 'list-item'; });
-    labelEl.textContent = showing ? 'Show all ' + list.children.length + ' steps' : 'Show fewer steps';
   }
   function openFlowchart() {
     document.getElementById('flowchart-modal').style.display = 'flex';

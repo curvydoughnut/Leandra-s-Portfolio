@@ -116,10 +116,10 @@
         <a href="#top" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
       </div>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <div onClick="{{ openContact }}" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; cursor: pointer; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</div>
         <div onClick="{{ toggleMobileNav }}" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; transform: {{ hamTop }};"></div>
@@ -130,10 +130,10 @@
     </div>
     <sc-if value="{{ showMobileNav }}" hint-placeholder-val="{{ false }}">
       <div style="display: flex; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
-        <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
         <a href="#experience" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
         <a href="#projects" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
         <a href="#playground" onClick="{{ closeMobileNav }}" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+        <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
         <div onClick="{{ openContactMobile }}" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; cursor: pointer;">Say hello</div>
       </div>
     </sc-if>
@@ -162,36 +162,13 @@
       <div class="lp-grid" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
         <div>
           <div class="lp-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
-            <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
-              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
-                <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely</div>
-                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">User Research Based Design</div>
-              </div>
-            </a>
-            <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
-              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
-                <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
-                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Product Creation and Front End Implementation</div>
-              </div>
-            </a>
-          </div>
-          <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View projects</p>
-        </div>
-        <div>
-          <div class="lp-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
             <a href="locci-box.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Locci Box case study">
               <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
                 <img src="assets/laptop-locci-thumb.png" alt="Locci Box landing page on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon</div>
-                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Product Shipment</div>
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">IBM BOB Hackathon, Private Sandbox with Dual Playground</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">A B2B platform with isolated playgrounds and sandboxes to create and test code.</div>
               </div>
             </a>
             <a href="meal-prep-pal.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Meal Prep Pal case study">
@@ -200,11 +177,34 @@
               </div>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Meal Prep Pal</div>
-                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">Generative AI ChatBot Creation and Implementation</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">A B2C platform with an AI chatbot to help users create healthy meals.</div>
               </div>
             </a>
           </div>
           <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View case studies</p>
+        </div>
+        <div>
+          <div class="lp-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+            <a href="executely.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read about the Executely project">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative">
+                <img src="assets/laptop-executely-thumb.png" alt="Executely AI Resource Center on a laptop" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Executely, Software App Feature</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">A B2B and B2C platform feature that helps startups reach MVP sooner.</div>
+              </div>
+            </a>
+            <a href="behavior-insight.html" style="cursor: pointer; display: flex; flex-direction: column; gap: 20px; text-decoration: none;" title="Read the Behavior Insight case study">
+              <div style="background: #EAE6F3; border-radius: 20px; padding: 34px 48px; height: 173px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; position: relative;">
+                <img src="assets/behavior-insight-thumb.webp" alt="Behavior Insight splash screen on a phone" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 24px; font-weight: 500; color: #B84A14;">Behavior Insight</div>
+                <div style="font-size: 18px; font-weight: 400; color: #C77B4E;">A B2C platform for multiple users supporting children with ADHD and autism.</div>
+              </div>
+            </a>
+          </div>
+          <p style="margin: 26px 0 0; font-size: 16px; font-weight: 400; color: #8B7DA8;">↑ View projects</p>
         </div>
       </div>
     </div>
@@ -363,10 +363,13 @@
         <span style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #B84A14;">Leandra.</span>
       </div>
       <div style="margin-top: 12px; font-size: 22px; font-weight: 400; color: #B84A14;">Product designer based in Atlanta</div>
-      <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
-        <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
-        <span style="text-decoration: underline;">Connect on LinkedIn</span>
-      </a>
+      <div style="margin-top: 22px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;">
+        <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
+          <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
+          <span style="text-decoration: underline;">Connect on LinkedIn</span>
+        </a>
+        <a href="about.html" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: underline;">Read more about me →</a>
+      </div>
     </div>
     <div style="border-top: 1px solid #F3E7E0;">
       <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">

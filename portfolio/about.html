@@ -64,10 +64,10 @@
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
@@ -77,10 +77,10 @@
       </div>
     </div>
     <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
-      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
       <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
       <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
     </div>
   </nav>
@@ -140,25 +140,11 @@
     <div style="font-size: 15px; font-weight: 400; color: #B3A9CC;">Click outside the photo to close</div>
   </div>
 
-  <!-- Contact / footer -->
-  <footer id="contact" data-screen-label="Contact" style="background: #FFFFFF;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 110px 32px 90px; display: flex; flex-direction: column; align-items: center;">
-      <img src="assets/portrait-leandra.png" alt="Leandra Pearson" style="width: 260px; height: 260px; border-radius: 50%; object-fit: cover;">
-      <div style="margin-top: 34px; display: flex; align-items: baseline; gap: 14px;">
-        <span style="font-size: 40px; font-weight: 500; color: #B84A14;">Hello! I’m</span>
-        <span style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 44px; color: #B84A14;">Leandra.</span>
-      </div>
-      <div style="margin-top: 12px; font-size: 22px; font-weight: 400; color: #B84A14;">Product designer based in Atlanta</div>
-      <a href="https://www.linkedin.com/in/leandrapearson" target="_blank" rel="noopener" class="lp-linkedin-btn" style="margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none; border: 1.5px solid #5D4E8C; padding: 10px 22px; border-radius: 999px;">
-        <img src="assets/linkedin-logo.png" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain; border-radius: 4px;">
-        <span style="text-decoration: underline;">Connect on LinkedIn</span>
-      </a>
-    </div>
-    <div style="border-top: 1px solid #F3E7E0;">
-      <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
-        <div style="font-size: 14px; color: #5D4E8C;">Leandra Pearson · Product Designer</div>
-        <a href="index.html" style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Back to home ↑</a>
-      </div>
+  <!-- Footer -->
+  <footer id="contact" data-screen-label="Contact" style="background: #FFFFFF; border-top: 1px solid #F3E7E0;">
+    <div class="lp-footer-bar" style="max-width: 1280px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="font-size: 14px; color: #5D4E8C;">Leandra Pearson · Product Designer</div>
+      <a href="index.html" style="font-size: 14px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Back to home ↑</a>
     </div>
   </footer>
 </div>

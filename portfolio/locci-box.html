@@ -64,10 +64,10 @@
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
@@ -77,10 +77,10 @@
       </div>
     </div>
     <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
-      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
       <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
       <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
     </div>
   </nav>
@@ -155,8 +155,8 @@
             <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Vibe coded the interface in Lovable.</strong> <span style="color: #C77B4E;">Iterated in real time, moving between the live project and a vibe-coded wireframe to keep each honest.</span></li>
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Mapped four core surfaces under one mental model.</strong> <span style="color: #C77B4E;">Dashboard, Code Editor, BOB AI Reviewer, and API Keys manager, so users never felt lost.</span></li>
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Designed the Dual Sandbox and a 4-step BOB loop.</strong> <span style="color: #C77B4E;">Code and tests run side by side in under 900ms; the reviewer follows submit, analyze, execute, prove, so AI feedback felt verified, not just suggested.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Fully built the working prototype with Lovable AI.</strong> <span style="color: #C77B4E;">Took the interface from vibe-coded wireframe to a complete, functional prototype using Lovable's AI builder.</span></li>
           </ol>
-          <div onclick="toggleSteps('locci-steps', this)" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">Show fewer steps</div>
           <p style="margin: 24px 0 0; border-top: 1px solid #F3C9B8; padding-top: 20px; font-size: 16px; font-weight: 400; color: #8B7DA8; line-height: 1.6;">Locci Box shipped as a live B2B SaaS platform built on React, TypeScript, Express, and MCP. Hardware isolated microVMs boot in under 100ms per tenant, paired with a full in browser IDE, an AI code reviewer that runs the fix rather than just suggesting it, and an API key manager with rate limits and audit trail. It can also plug into Claude as a local MCP server, meeting developers where they already work.</p>
         </div>
         <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
@@ -239,13 +239,6 @@
   function togglePlay(e) {
     const video = e.currentTarget;
     if (video.paused) video.play(); else video.pause();
-  }
-  function toggleSteps(listId, labelEl) {
-    const list = document.getElementById(listId);
-    const extras = list.querySelectorAll('.lp-extra-step');
-    const showing = extras[0].style.display !== 'none';
-    extras.forEach(function (li) { li.style.display = showing ? 'none' : 'list-item'; });
-    labelEl.textContent = showing ? 'Show all ' + list.children.length + ' steps' : 'Show fewer steps';
   }
   document.querySelectorAll('.lp-mockup-video').forEach(function (video) {
     video.muted = true;

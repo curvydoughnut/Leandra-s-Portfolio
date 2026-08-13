@@ -63,10 +63,10 @@
     <div style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between;">
       <a href="index.html" style="font-family: 'Geist', sans-serif; font-style: italic; font-weight: 600; font-size: 22px; color: #B84A14; text-decoration: none;">Leandra</a>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html#experience" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Experience</a>
         <a href="index.html#projects" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Selected Products</a>
         <a href="index.html#playground" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">Playground</a>
+        <a href="about.html" class="lp-nav-link" style="font-size: 16px; font-weight: 500; color: #5D4E8C; text-decoration: none;">About</a>
         <a href="index.html" class="lp-nav-link lp-hello-btn" style="font-size: 15px; font-weight: 500; color: #FFFFFF; background: #1E1E1C; text-decoration: none; padding: 10px 22px; border-radius: 999px; border: 1.5px solid #1E1E1C; box-sizing: border-box;">Say hello</a>
         <div onclick="toggleMobileNav()" class="lp-hamburger" style="display: none; flex-direction: column; gap: 5px; width: 26px; cursor: pointer; padding: 6px;">
           <div id="ham-top" style="height: 2px; background: #1E1E1C; border-radius: 2px; transition: transform .2s ease, opacity .2s ease;"></div>
@@ -76,10 +76,10 @@
       </div>
     </div>
     <div id="mobile-nav" style="display: none; flex-direction: column; border-top: 1px solid #F3E7E0; background: #FFFFFF;">
-      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html#experience" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Experience</a>
       <a href="index.html#projects" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Selected Products</a>
       <a href="index.html#playground" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">Playground</a>
+      <a href="about.html" style="padding: 16px 24px; font-size: 17px; font-weight: 500; color: #5D4E8C; text-decoration: none; border-bottom: 1px solid #F3E7E0;">About</a>
       <a href="index.html" style="padding: 16px 24px; font-size: 17px; font-weight: 600; color: #B84A14; text-decoration: none;">Say hello</a>
     </div>
   </nav>
@@ -132,7 +132,7 @@
       <div class="lp-cs-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
         <div style="display: flex; flex-direction: column; gap: 20px;">
           <h2 style="margin: 0; font-size: 34px; font-weight: 500; color: #B84A14;">The Problem</h2>
-          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Most people do not hate cooking. They hate the part that comes before it. The average American makes over 200 food related decisions per day, and by dinnertime decision fatigue has already won. Recipe apps, pantry trackers, nutrition apps, and grocery lists all lived separately, forcing users to carry their own context across four tools every week. No single product connected what someone already had in their kitchen to what they should cook next, and American households were losing over $2,000 a year to food waste because of it.</p>
+          <p style="margin: 0; font-size: 19px; font-weight: 400; color: #C77B4E; line-height: 1.6;">Most people do not hate cooking. They hate the part that comes before it. The average American makes 35,000 decisions per day (<a href="https://www.cnbc.com/2025/02/20/adults-makes-35000-decisions-a-day-how-to-avoid-choice-overload.html" target="_blank" rel="noopener" style="color: #B84A14; text-decoration: underline;">source</a>), and by dinnertime decision fatigue has already won. Recipe apps, pantry trackers, nutrition apps, and grocery lists all lived separately, forcing users to carry their own context across four tools every week. No single product connected what someone already had in their kitchen to what they should cook next, and American households were losing over $2,000 a year to food waste because of it (<a href="https://www.traceone.com/resources/plm-compliance-blog/where-americans-lost-most-money-food-waste" target="_blank" rel="noopener" style="color: #B84A14; text-decoration: underline;">source</a>).</p>
         </div>
         <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
           <img src="assets/laptop-preppal-recipes.png" alt="PrepPal recipe library on a laptop" style="width: 100%; height: auto; object-fit: contain;">
@@ -147,8 +147,8 @@
             <li style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Made the Pantry to Grocery List connection the centerpiece of the product.</strong> <span style="color: #C77B4E;">When the AI knows what you already own, it skips those items on your shopping list automatically. It sounds simple but it is the exact loop every other app in the category fails to close.</span></li>
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Designed the empty state chat prompts to teach users the grammar of the product without any onboarding.</strong> <span style="color: #C77B4E;">"Build a 7-day high-protein plan, around 2,200 calories, no pork, $80 budget" is not filler copy. It shows users the full range of what they can ask for before they type a single word.</span></li>
             <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Applied a favorites first, A to Z hierarchy</strong> <span style="color: #C77B4E;">to the recipe book and surfaced cook time and calories above the fold on every recipe card, designing for how people scan when they are tired, not how they browse when they have time.</span></li>
+            <li class="lp-extra-step" style="font-size: 17px; line-height: 1.5;"><strong style="font-weight: 600;">Used the Claude API to power the AI chatbot.</strong> <span style="color: #C77B4E;">Claude drives the empty state chat prompts and meal plan generation, turning a typed request into a usable plan in real time.</span></li>
           </ol>
-          <div onclick="toggleSteps('preppal-steps', this)" style="margin-top: 10px; font-size: 14px; font-weight: 500; color: #5D4E8C; cursor: pointer; text-decoration: underline; align-self: flex-start;">Show fewer steps</div>
         </div>
         <div style="background: #EAE6F3; border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center;">
           <div style="position: relative; width: 100%; aspect-ratio: 3307/1844;">
@@ -214,13 +214,6 @@
   function togglePlay(e) {
     const video = e.currentTarget;
     if (video.paused) video.play(); else video.pause();
-  }
-  function toggleSteps(listId, labelEl) {
-    const list = document.getElementById(listId);
-    const extras = list.querySelectorAll('.lp-extra-step');
-    const showing = extras[0].style.display !== 'none';
-    extras.forEach(function (li) { li.style.display = showing ? 'none' : 'list-item'; });
-    labelEl.textContent = showing ? 'Show all ' + list.children.length + ' steps' : 'Show fewer steps';
   }
   document.querySelectorAll('.lp-mockup-video').forEach(function (video) {
     video.muted = true;
