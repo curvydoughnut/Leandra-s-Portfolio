@@ -162,6 +162,7 @@
       <button class="lp-hit" id="lp-sticker-hit" type="button" aria-label="Click the sticker for a fun fact about Leandra" aria-controls="lp-fact" title="Click the sticker for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"><span class="lp-info" aria-hidden="true">i</span></button>
       <button class="lp-hit" id="lp-pol-hit" type="button" aria-label="Click the polaroid for a fun fact about Leandra" aria-controls="lp-fact" title="Click the polaroid for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"></button>
       <span class="lp-info" id="lp-pol-info" aria-hidden="true" style="top: 0; left: 0; right: auto; z-index: 2; margin: -10px 0 0 -10px;">i</span>
+      <button class="lp-hit" id="lp-jet-hit" type="button" aria-label="Click the JET magazine for a fun fact about Leandra" aria-controls="lp-fact" title="Click the magazine for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"><span class="lp-info" aria-hidden="true">i</span></button>
       <button class="lp-hit" id="lp-poster-hit" type="button" aria-label="Click the poster for a fun fact about Leandra" aria-controls="lp-fact" title="Click the poster for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"><span class="lp-info" aria-hidden="true">i</span></button>
       <svg id="lp-cal-circle" aria-hidden="true" viewBox="0 0 100 80" preserveAspectRatio="none" style="position: absolute; overflow: visible; pointer-events: none; z-index: 1;"><path pathLength="1" d="M52 6 C 78 3, 98 22, 94 42 C 90 65, 68 77, 46 75 C 21 73, 3 56, 6 34 C 9 14, 33 3, 60 9 C 70 12, 74 14, 77 18" fill="none" stroke="#E11D2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg>
       <div id="lp-fact-arrow" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #FFFFFF; transform: rotate(45deg); z-index: 149; box-shadow: -3px 3px 8px rgba(0,0,0,.18);"></div>
@@ -319,12 +320,13 @@
   var artHit = document.getElementById('lp-art-hit');
   var stickerHit = document.getElementById('lp-sticker-hit');
   var polHit = document.getElementById('lp-pol-hit');
+  var jetHit = document.getElementById('lp-jet-hit');
   // Keychain layers: bounding box + pin (pivot) in the collage image's 1920x1080 space
   var kcs = [
     { el: document.getElementById('lp-kc1'), x: 995, y: 89, w: 142, h: 244, px: 1107, py: 96 },
     { el: document.getElementById('lp-kc2'), x: 539, y: 788, w: 147, h: 231, px: 627, py: 781 }
   ];
-  if (!cork || !hit || !posterHit || !artHit || !stickerHit || !polHit || !circle || !fact) return;
+  if (!cork || !hit || !posterHit || !artHit || !stickerHit || !polHit || !jetHit || !circle || !fact) return;
 
   // Coordinates are in the collage image's own 1920x1080 space; the band shows it with
   // background-size: cover, so map them through the same scale/offset.
@@ -359,10 +361,13 @@
     }).join(',') + ')';
     var pi = px(1374, 632), polInfo = document.getElementById('lp-pol-info');
     polInfo.style.left = pi[0] + 'px'; polInfo.style.top = pi[1] + 'px';
+    var ja = px(127, 547), jb = px(493, 1017);
+    jetHit.style.left = ja[0] + 'px'; jetHit.style.top = ja[1] + 'px';
+    jetHit.style.width = (jb[0] - ja[0]) + 'px'; jetHit.style.height = (jb[1] - ja[1]) + 'px';
     var pa = px(1508, 75), pb = px(1717, 372);
     posterHit.style.left = pa[0] + 'px'; posterHit.style.top = pa[1] + 'px';
     posterHit.style.width = (pb[0] - pa[0]) + 'px'; posterHit.style.height = (pb[1] - pa[1]) + 'px';
-    var c = px(1187, 549);
+    var c = px(1188.5, 549.5);
     var cw = Math.max(40 * sc, 26), ch = cw * 0.8;
     circle.style.width = cw + 'px'; circle.style.height = ch + 'px';
     circle.style.left = (c[0] - cw / 2) + 'px'; circle.style.top = (c[1] - ch / 2) + 'px';
@@ -376,6 +381,7 @@
   var facts = {
     cal: ["October 19th is Leandra's Birthday, she loves to celebrate every trip around the sun"],
     polaroid: ["A new artist I love is EARTHSIGNCHELS. I love how animated and expressive she is in her performance as well as the subjects she touches on. Especially in her hit single \u201cDaddy Died\u201d which is about grief and its stages one experiences after a loved one has died."],
+    jet: ["I love Black history and when I can learn more and more every day. This work by Gregory Edwards highlights the rich and deep history of hair in the Black Diaspora."],
     sticker: ["My absolute favorite anime is Demon Slayer and it is an anime I can watch over and over again."],
     art: ["I created the artwork on the calendar inspired by Blaxploitation artwork."],
     poster: [
@@ -392,6 +398,7 @@
       art: artHit.querySelector('.lp-info'),
       poster: posterHit.querySelector('.lp-info'),
       sticker: stickerHit.querySelector('.lp-info'),
+      jet: jetHit.querySelector('.lp-info'),
       polaroid: document.getElementById('lp-pol-info')
     })[key];
   }
@@ -445,12 +452,16 @@
   artHit.addEventListener('click', function (e) { toggle('art', e); });
   stickerHit.addEventListener('click', function (e) { toggle('sticker', e); });
   polHit.addEventListener('click', function (e) { toggle('polaroid', e); });
+  jetHit.addEventListener('click', function (e) { toggle('jet', e); });
   posterHit.addEventListener('click', function (e) { toggle('poster', e); });
-  closeBtn.addEventListener('click', function (e) { e.stopPropagation(); var f = ({ cal: hit, art: artHit, poster: posterHit, sticker: stickerHit, polaroid: polHit })[current] || hit; close(); f.focus(); });
+  closeBtn.addEventListener('click', function (e) { e.stopPropagation(); var f = ({ cal: hit, art: artHit, poster: posterHit, sticker: stickerHit, polaroid: polHit, jet: jetHit })[current] || hit; close(); f.focus(); });
   fact.addEventListener('click', function (e) { e.stopPropagation(); });
   document.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   window.addEventListener('resize', function () { close(); layout(); });
+  window.addEventListener('load', layout);
+  // Re-measure whenever the board's own size changes (e.g. a scrollbar appearing as images load)
+  if ('ResizeObserver' in window) new ResizeObserver(layout).observe(cork);
   layout();
 
   if ('IntersectionObserver' in window) {
