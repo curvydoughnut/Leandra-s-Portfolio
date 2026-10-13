@@ -52,18 +52,17 @@
   #lp-cork.lp-in #lp-cal-circle path { animation: lp-draw 0.9s ease-out 0.3s forwards; }
   #lp-cork.lp-in #lp-cal-hit:hover ~ #lp-cal-circle path { stroke-width: 4; }
   @keyframes lp-draw { to { stroke-dashoffset: 0; } }
-  #lp-fact { opacity: 0; transform: translate(-50%, -46%) scale(.94); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
-  /* On phones the collage is small, so show the note centered in the viewport instead of inside it */
-  @media (max-width: 700px) {
-    #lp-fact { position: fixed !important; z-index: 150 !important; width: min(92vw, 420px) !important; max-height: 80vh !important; }
-  }
-  #lp-fact.lp-wide { width: min(92%, 560px) !important; }
-  #lp-fact.lp-open { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+  #lp-fact { opacity: 0; transform: scale(.8); pointer-events: none; transition: opacity .22s ease, transform .22s cubic-bezier(.2,.9,.3,1.2); }
+  #lp-fact-arrow { opacity: 0; pointer-events: none; transition: opacity .22s ease; }
+  #lp-fact-arrow.lp-open { opacity: 1; }
+  #lp-fact.lp-wide { width: min(calc(100vw - 32px), 520px) !important; }
+  #lp-fact.lp-open { opacity: 1; transform: scale(1); pointer-events: auto; }
   /* "i" info badges on the interactive corkboard pieces */
   .lp-info { position: absolute; top: -9px; right: -9px; width: clamp(16px, 2.2vw, 28px); height: clamp(16px, 2.2vw, 28px); box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #5D4E8C; color: #5D4E8C; font: italic 700 clamp(10px, 1.4vw, 17px)/1 Georgia, 'Times New Roman', serif; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.35); transition: transform .2s ease, background .2s ease, color .2s ease; pointer-events: none; }
   #lp-cork.lp-in .lp-info { animation: lp-info-pulse 2.4s ease-out infinite; }
   .lp-hit:hover .lp-info, .lp-hit:focus-visible .lp-info { transform: scale(1.15); background: #5D4E8C; color: #FFFFFF; animation: none; }
   .lp-hit { overflow: visible; }
+  .lp-info.lp-active { background: #5D4E8C !important; color: #FFFFFF !important; transform: scale(1.15) !important; animation: none !important; }
   #lp-cal-hit:hover ~ #lp-cal-info, #lp-cal-hit:focus-visible ~ #lp-cal-info, #lp-pol-hit:hover + #lp-pol-info, #lp-pol-hit:focus-visible + #lp-pol-info { transform: scale(1.15); background: #5D4E8C; color: #FFFFFF; animation: none; }
   @keyframes lp-info-pulse { 0% { box-shadow: 0 2px 8px rgba(0,0,0,.35), 0 0 0 0 rgba(255,255,255,.85); } 70%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,.35), 0 0 0 11px rgba(255,255,255,0); } }
   /* Keychains swing gently from their pins */
@@ -75,7 +74,7 @@
     #lp-cork.lp-in #lp-cal-circle path { animation: none; stroke-dashoffset: 0; }
     #lp-cork.lp-in .lp-kc { animation: none; }
     #lp-cork.lp-in .lp-info { animation: none; }
-    #lp-fact { transition: none; }
+    #lp-fact, #lp-fact-arrow { transition: none; }
   }
   .lp-gallery-card { will-change: transform, filter, opacity; cursor: pointer; }
   @media (max-width: 640px) {
@@ -155,7 +154,7 @@
         </div>
       </div>
     </div>
-    <div id="lp-cork" role="group" aria-label="Corkboard collage of magazine covers, stickers and posters" style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/9; background: #C9A06B url('assets/about-corkboard-clean.webp') center / 100% 100% no-repeat;">
+    <div id="lp-cork" role="group" aria-label="Corkboard collage of magazine covers, stickers and posters" style="position: relative; box-sizing: border-box; padding: 0 !important; width: 100%; aspect-ratio: 16/9; background: #C9A06B url('assets/about-corkboard-clean.webp') center / 100% 100% no-repeat;">
       <div class="lp-kc" id="lp-kc1" aria-hidden="true" style="background-image: url('assets/kc1.webp');"></div>
       <div class="lp-kc" id="lp-kc2" aria-hidden="true" style="background-image: url('assets/kc2.webp');"></div>
       <button class="lp-hit" id="lp-cal-hit" type="button" aria-label="Click the calendar for a fun fact about Leandra" aria-controls="lp-fact" title="Click the calendar for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"></button><span class="lp-info" id="lp-cal-info" aria-hidden="true" style="top: 0; left: 0; right: auto; z-index: 2;">i</span>
@@ -165,7 +164,8 @@
       <span class="lp-info" id="lp-pol-info" aria-hidden="true" style="top: 0; left: 0; right: auto; z-index: 2; margin: -10px 0 0 -10px;">i</span>
       <button class="lp-hit" id="lp-poster-hit" type="button" aria-label="Click the poster for a fun fact about Leandra" aria-controls="lp-fact" title="Click the poster for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"><span class="lp-info" aria-hidden="true">i</span></button>
       <svg id="lp-cal-circle" aria-hidden="true" viewBox="0 0 100 80" preserveAspectRatio="none" style="position: absolute; overflow: visible; pointer-events: none; z-index: 1;"><path pathLength="1" d="M52 6 C 78 3, 98 22, 94 42 C 90 65, 68 77, 46 75 C 21 73, 3 56, 6 34 C 9 14, 33 3, 60 9 C 70 12, 74 14, 77 18" fill="none" stroke="#E11D2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg>
-      <div id="lp-fact" role="status" aria-live="polite" style="position: absolute; left: 50%; top: 50%; z-index: 3; width: min(88%, 380px); max-height: 90%; overflow-y: auto; box-sizing: border-box; background: #FFFFFF; border-radius: 20px; padding: 26px 28px 24px; box-shadow: 0 20px 50px rgba(0,0,0,.35); font-family: 'Geist', sans-serif;">
+      <div id="lp-fact-arrow" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; background: #FFFFFF; transform: rotate(45deg); z-index: 149; box-shadow: -3px 3px 8px rgba(0,0,0,.18);"></div>
+      <div id="lp-fact" role="status" aria-live="polite" style="position: absolute; left: 0; top: 0; z-index: 150; width: min(calc(100vw - 32px), 380px); max-height: min(80vh, 560px); overflow-y: auto; box-sizing: border-box; background: #FFFFFF; border-radius: 20px; padding: 26px 28px 24px; box-shadow: 0 20px 50px rgba(0,0,0,.35); font-family: 'Geist', sans-serif;">
         <button id="lp-fact-close" type="button" aria-label="Close fun fact" style="position: absolute; top: 10px; right: 12px; width: 32px; height: 32px; border: 0; background: transparent; color: #5D4E8C; font-size: 24px; line-height: 1; cursor: pointer;">&times;</button>
         <div style="font-size: 14px; font-weight: 600; color: #5D4E8C; letter-spacing: .08em; text-transform: uppercase;">Fun Fact</div>
         <div id="lp-fact-body" style="margin-top: 10px; font-size: 20px; font-weight: 500; color: #B84A14; line-height: 1.45;"></div>
@@ -384,7 +384,40 @@
     ]
   };
   var body = document.getElementById('lp-fact-body');
+  var arrow = document.getElementById('lp-fact-arrow');
   var current = null;
+  function badgeFor(key) {
+    return ({
+      cal: document.getElementById('lp-cal-info'),
+      art: artHit.querySelector('.lp-info'),
+      poster: posterHit.querySelector('.lp-info'),
+      sticker: stickerHit.querySelector('.lp-info'),
+      polaroid: document.getElementById('lp-pol-info')
+    })[key];
+  }
+  // Pop the note out beside the "i" badge it belongs to, with a pointer back to it
+  function place(key) {
+    var badge = badgeFor(key);
+    var br = badge.getBoundingClientRect(), cr = cork.getBoundingClientRect();
+    var ax = br.left - cr.left + br.width / 2, ay = br.top - cr.top + br.height / 2;
+    var W = cork.clientWidth, H = cork.clientHeight;
+    var w = fact.offsetWidth, h = fact.offsetHeight;
+    var gap = br.width / 2 + 18, side, left, top;
+    if (ax + gap + w <= W - 8) { side = 'right'; left = ax + gap; }
+    else if (ax - gap - w >= 8) { side = 'left'; left = ax - gap - w; }
+    else { side = 'below'; left = Math.min(Math.max(ax - w / 2, 8), W - w - 8); }
+    if (side === 'below') { top = ay + gap; }
+    else { top = h <= H - 16 ? Math.min(Math.max(ay - 28, 8), H - h - 8) : Math.max(ay - 28, 8); }
+    fact.style.left = left + 'px'; fact.style.top = top + 'px';
+    fact.style.transformOrigin = (ax - left) + 'px ' + (ay - top) + 'px';
+    if (side === 'below') {
+      arrow.style.left = (Math.min(Math.max(ax, left + 26), left + w - 26) - 10) + 'px';
+      arrow.style.top = (top - 10) + 'px';
+    } else {
+      arrow.style.left = ((side === 'right' ? left : left + w) - 10) + 'px';
+      arrow.style.top = (Math.min(Math.max(ay, top + 26), top + h - 26) - 10) + 'px';
+    }
+  }
   function show(key) {
     body.textContent = '';
     facts[key].forEach(function (t, i) {
@@ -395,10 +428,17 @@
     });
     fact.classList.toggle('lp-wide', facts[key].join('').length > 200);
     fact.scrollTop = 0;
+    place(key);
+    setActive(badgeFor(key));
     fact.classList.add('lp-open');
+    arrow.classList.add('lp-open');
     current = key;
   }
-  function close() { fact.classList.remove('lp-open'); current = null; }
+  function setActive(b) {
+    Array.prototype.forEach.call(cork.querySelectorAll('.lp-info.lp-active'), function (x) { x.classList.remove('lp-active'); });
+    if (b) b.classList.add('lp-active');
+  }
+  function close() { fact.classList.remove('lp-open'); arrow.classList.remove('lp-open'); setActive(null); current = null; }
   function toggle(key, e) { e.stopPropagation(); current === key ? close() : show(key); }
 
   hit.addEventListener('click', function (e) { toggle('cal', e); });
@@ -410,7 +450,7 @@
   fact.addEventListener('click', function (e) { e.stopPropagation(); });
   document.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-  window.addEventListener('resize', layout);
+  window.addEventListener('resize', function () { close(); layout(); });
   layout();
 
   if ('IntersectionObserver' in window) {
