@@ -53,10 +53,14 @@
   #lp-cork.lp-in #lp-cal-hit:hover ~ #lp-cal-circle path { stroke-width: 4; }
   @keyframes lp-draw { to { stroke-dashoffset: 0; } }
   #lp-fact { opacity: 0; transform: translate(-50%, -46%) scale(.94); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+  /* On phones the collage is small, so show the note centered in the viewport instead of inside it */
+  @media (max-width: 700px) {
+    #lp-fact { position: fixed !important; z-index: 150 !important; width: min(92vw, 420px) !important; max-height: 80vh !important; }
+  }
   #lp-fact.lp-wide { width: min(92%, 560px) !important; }
   #lp-fact.lp-open { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
   /* "i" info badges on the interactive corkboard pieces */
-  .lp-info { position: absolute; top: -9px; right: -9px; width: clamp(20px, 2.2vw, 28px); height: clamp(20px, 2.2vw, 28px); box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #5D4E8C; color: #5D4E8C; font: italic 700 clamp(12px, 1.4vw, 17px)/1 Georgia, 'Times New Roman', serif; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.35); transition: transform .2s ease, background .2s ease, color .2s ease; pointer-events: none; }
+  .lp-info { position: absolute; top: -9px; right: -9px; width: clamp(16px, 2.2vw, 28px); height: clamp(16px, 2.2vw, 28px); box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #5D4E8C; color: #5D4E8C; font: italic 700 clamp(10px, 1.4vw, 17px)/1 Georgia, 'Times New Roman', serif; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.35); transition: transform .2s ease, background .2s ease, color .2s ease; pointer-events: none; }
   #lp-cork.lp-in .lp-info { animation: lp-info-pulse 2.4s ease-out infinite; }
   .lp-hit:hover .lp-info, .lp-hit:focus-visible .lp-info { transform: scale(1.15); background: #5D4E8C; color: #FFFFFF; animation: none; }
   .lp-hit { overflow: visible; }
@@ -151,7 +155,7 @@
         </div>
       </div>
     </div>
-    <div id="lp-cork" role="group" aria-label="Corkboard collage of magazine covers, stickers and posters" style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/9; min-height: 320px; max-height: 760px; background: #C9A06B url('assets/about-corkboard-clean.webp') center / cover no-repeat;">
+    <div id="lp-cork" role="group" aria-label="Corkboard collage of magazine covers, stickers and posters" style="position: relative; overflow: hidden; width: 100%; aspect-ratio: 16/9; background: #C9A06B url('assets/about-corkboard-clean.webp') center / 100% 100% no-repeat;">
       <div class="lp-kc" id="lp-kc1" aria-hidden="true" style="background-image: url('assets/kc1.webp');"></div>
       <div class="lp-kc" id="lp-kc2" aria-hidden="true" style="background-image: url('assets/kc2.webp');"></div>
       <button class="lp-hit" id="lp-cal-hit" type="button" aria-label="Click the calendar for a fun fact about Leandra" aria-controls="lp-fact" title="Click the calendar for a fun fact" style="position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; z-index: 2;"></button><span class="lp-info" id="lp-cal-info" aria-hidden="true" style="top: 0; left: 0; right: auto; z-index: 2;">i</span>
@@ -404,7 +408,7 @@
   posterHit.addEventListener('click', function (e) { toggle('poster', e); });
   closeBtn.addEventListener('click', function (e) { e.stopPropagation(); var f = ({ cal: hit, art: artHit, poster: posterHit, sticker: stickerHit, polaroid: polHit })[current] || hit; close(); f.focus(); });
   fact.addEventListener('click', function (e) { e.stopPropagation(); });
-  cork.addEventListener('click', close);
+  document.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   window.addEventListener('resize', layout);
   layout();
